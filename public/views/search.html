@@ -1,0 +1,31 @@
+<section id="mealPlan">
+<form"> 
+    <h1>Generate Meal Plan</h1>
+	<input type="text" ng-model="calories" placeholder="Calories">
+	<input type="text" ng-model="timeframe" placeholder="Time Frame">
+	<button type="submit" name="button" ng-click="generateMealPlan(calories,timeframe)">Submit</button>
+</form>
+
+<div ng-repeat="meal in mealPlans">
+    {{meal}} <br>
+    <hr>
+</div>
+</section>
+
+
+<section id ="searchRecipeBasic">
+<form >
+	
+	<h1>Search Recipes Basic</h1>
+
+	<input type="text" ng-model="humanQuery" placeholder="What Do You Want To Cook?">
+	<input type="text" ng-model= "diet" placeholder="Are you following a diet? Vegan, Vegetarian, Ovo Lacto, etc.">
+	<input type="text" ng-model="badIng" placeholder="What Ingredients don't you like?">
+	<input type="text" ng-model="reqInstr" placeholder="Want to Show Instructions?">
+	<input type="text" ng-model="intol" placeholder="Have any intolerances? ">
+	<input type="text" ng-model="recType" placeholder="Main Course, Side Dish, Dessert, Drink, etc.">
+	<input type="text" ng-model="limit" placeholder="Recipes Shown">
+	<button type="submit" name="button" ng-click="searchRecipeBasic(humanQuery, diet, badIng, reqInstr, intol, recType, limit)">Submit</button>
+</form>
+
+</section>

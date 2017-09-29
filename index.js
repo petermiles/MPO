@@ -20,6 +20,7 @@ app.use(express.static('./public'));
 const retrieveCtrl = require('./serverStack/controllers/retrieveCtrl')
 
 app.get('/search/mealplan', retrieveCtrl.generateMealPlan)
+app.put('/search/recipeBasic', retrieveCtrl.searchRecipeBasic)
 
 
 app.listen(port, () => {

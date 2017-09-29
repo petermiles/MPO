@@ -11,19 +11,9 @@
     <title>MPO</title>
 <body ng-controller="dataCtrl">
 
-<form ng-submit="generateMealPlan(calories,timeframe)"> 
-    <h1>Generate Meal Plan</h1>
-	<input type="text" ng-model="calories" placeholder="Calories">
-	<input type="text" ng-model="timeframe" placeholder="Time Frame">
-	<button type="submit" name="button">Submit</button>
-</form>
-
-<div ng-repeat="meals in mealPlans">
-    {{meals}} <br>
-    <hr>
+<div class="container">
+    <ui-view></ui-view>
 </div>
-
-
 
 <!-- Priority Scripts -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
