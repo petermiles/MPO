@@ -11,20 +11,21 @@ const generateMealPlan = (req,res,next) => {
 }
 
 const searchRecipeBasic = (req,res,next) => {
-	console.log(req.body)
 
 	axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search/${req.body.searchQueries}`)
 	.then((result) => {
-		console.log(result.data)
+		res.json(result.data.results)
   	})
 }
 
+const getRecipeInfo = (req,res,next) => {
+	axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/${req.body.id}/information`)
+	.then((result) => {
+		res.json(result.data)
+	})
+}
 module.exports = {
 	generateMealPlan,
-	searchRecipeBasic
+	searchRecipeBasic,
+	getRecipeInfo
 }
-
-
-// https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?diet=vegetarian&instructionsRequired=true&intolerances=gluten%2C+wheat&limitLicense=false&number=5&offset=0&query=salad&type=main+course
-
-

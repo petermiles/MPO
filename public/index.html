@@ -4,18 +4,61 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css">
-
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
     <title>MPO</title>
 <body ng-controller="dataCtrl">
 
-<div class="container">
-    <ui-view></ui-view>
-</div>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark indigo">
 
-<!-- Priority Scripts -->
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#">Meal Prep Online</a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="search">Search</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">My Recipes</a>
+            </li>
+
+            <!-- Dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Preferences</a>
+                    <a class="dropdown-item" href="#">Account Settings</a>
+                    <a class="dropdown-item" href="#">Log Out</a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+
+
+
+
+
+
+    <ui-view></ui-view>
+
+
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -25,12 +68,13 @@
 <script src="frontEndJS/controllers/dataCtrl.js"></script>
 <script src="frontEndJS/services/dataServ.js"></script>
 
+<!-- Directives --> 
+<script src="frontEndJS/directives/navbar.js"></script>
 
 <!-- Style Scripts --> 
 <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.js"></script>
 </body>
 
 </html>

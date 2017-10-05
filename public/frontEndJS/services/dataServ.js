@@ -41,23 +41,32 @@ angular.module("MPOApp").service("dataServ", function($http) {
 		console.log(searchQueries)
 		return $http.put(`/search/recipeBasic/`, {searchQueries})
 		.then(response => {
-			console.log(response)
+			return response
 		})
 		.catch((err) => {
 			console.log(err)
 		})
 	}
 
+
 	
 	
+	this.getRecipeInfo = (id, stepBreakdown) => {
+		let recipeId = {id}
+		return $http.put(`/search/getRecipeInfo/` , recipeId)
+		.then(response => {
+			return response
+		})
+	}
 })
 
 
- // 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search?
- // query=undefined
- // &diet=vegetarian
- // &excludeIngredients=undefined
- // &instructionsRequired=undefined
- // &intolerances=false
- // &type=undefined
- // &number=undefined'
+
+
+
+
+
+
+
+
+
