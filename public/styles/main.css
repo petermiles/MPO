@@ -3,6 +3,40 @@ body {
   padding: 0;
 }
 
+
+nav {
+	position: fixed;
+}
+
+.testBg {
+	background-color: salmon;
+	width: 100%;
+}
+
+.center {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+}
+
+.flex {
+	display: flex;
+	justify-content: center;
+}
+
+.paddingTop {
+	padding-top: 2vh;
+}
+
+.borderBot1px {
+	border-bottom: 1px solid black;
+}
+
+
+/* Search Heros */
+
 .searchHero{
 
 	padding-top: 5vh;
@@ -17,8 +51,15 @@ body {
 
 }
 
-nav {
-	position: fixed;
+
+/* Recipe Search & Results */
+
+.w200vw {
+	max-width: 200vw;
+}
+
+.w100vw {
+	width: 100vw;
 }
 
 .recipeResults {
@@ -27,11 +68,13 @@ nav {
 	align-items: center;
 }
 
-.padding-0{
-    padding-right:0;
-    padding-left:0;
+.paddingRecipes{
+    padding: 2vh 0;
 }
 
+.instructionsBreak {
+	border-bottom: .5px solid salmon;
+}
 
 /*
 .recipeTitleOverlay {

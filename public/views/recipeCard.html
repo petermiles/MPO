@@ -1,0 +1,56 @@
+<div class="container paddingTop">
+	<h1 class="text-center h1-responsive display-2"><b>{{recipeData.title}}</b></h1>
+    <div class="row">
+        <div class="col-4"><img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipeData.id}}-556x370.jpg" alt="{{recipeData.title}}"></div>
+        <div class="col-8 center">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="text-center h3-responsive">
+							<!-- This recipe is <b>{{diets}}</b>. -->
+							 This recipe serves <b>{{recipeData.servings}}</b> and costs <b>${{pricePerServing}}</b> per serving.
+							<br>
+							  It uses <b>{{ingredientLength}} ingredients </b> and can be completed in <b>{{stepsLength}} steps</b>. 
+							 <br>
+							 This recipe is ready to eat in <b>{{recipeData.readyInMinutes}} minutes</b>.
+							 <!-- It can be cooked in <b>{{recipeData.cookingMinutes}} minutes</b> with <b>{{recipeData.preparationMinutes}} minutes</b> of preparation.  -->
+							</h3>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-12 paddingTop" id="recipeParagraph">
+            <h3 class="text-center h3-responsive">
+							<!-- This recipe is <b>{{diets}}</b>. -->
+							 <!-- This recipe serves <b>{{recipeData.servings}}</b> and costs <b>${{pricePerServing}}</b> per serving.
+							<br>
+							  It uses <b>{{ingredientLength}} ingredients </b> and can be completed in <b>{{stepsLength}} steps</b>. 
+							 <br>
+							 This recipe is ready to eat in <b>{{recipeData.readyInMinutes}} minutes</b>. -->
+							 <!-- It can be cooked in <b>{{recipeData.cookingMinutes}} minutes</b> with <b>{{recipeData.preparationMinutes}} minutes</b> of preparation.  -->
+							<!-- </h3> -->
+        <!-- </div>
+    </div>  -->
+    <hr>
+    <h1 class="h1-responsive borderBot1px">Ingredients</h1>
+    <div class="row">
+        <div class="col-2" ng-repeat="ingredient in recipeIngredients">
+            <img class="img-fluid" ng-src='{{ingredient.image}}' alt="Card image cap">
+            <h4 class="card-title">{{ingredient.name}}</h4>
+        </div>
+    </div>
+
+	<h1 class="h1-responsive borderBot1px">Instructions</h1>
+	<div class="row instructionsBreak" ng-repeat="instruction in recipeInstructions">
+		<div class="col-1 center">
+			<h1>{{instruction.number}}</h1>
+		</div>
+			<hr>
+		<div class="col-11 center">	
+			<p class="text-center">{{instruction.step}} </p>
+		</div>	
+	</div>
+</div>
+
+

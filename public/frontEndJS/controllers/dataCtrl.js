@@ -15,10 +15,4 @@ angular.module('MPOApp').controller('dataCtrl', function ($scope, dataServ) {
 		})
 	}
 
-	$scope.getRecipeInfo = function(id) {
-		dataServ.getRecipeInfo(id).then((result) => {
-			$scope.recipeInstructions = result
-			console.log(result)
-		})
-	}
 })

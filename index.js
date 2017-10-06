@@ -22,6 +22,7 @@ const retrieveCtrl = require('./serverStack/controllers/retrieveCtrl')
 app.get('/search/mealplan', retrieveCtrl.generateMealPlan)
 app.put('/search/recipeBasic', retrieveCtrl.searchRecipeBasic)
 app.put('/search/getRecipeInfo', retrieveCtrl.getRecipeInfo)
+// app.get('/search/saveRecipeData', retrieveCtrl.saveRecipeData)
 
 
 app.listen(port, () => {

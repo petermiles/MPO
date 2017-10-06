@@ -9,6 +9,11 @@ angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRout
 		templateUrl: "views/search.html",
 		controller: "dataCtrl"
 	})
+	.state("recipeCard", {
+		url: "/recipe/:id",
+		templateUrl: "views/recipeCard.html",
+		controller: "recipeCtrl"
+	})
 
 
 

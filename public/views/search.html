@@ -10,8 +10,8 @@
     {{meal}} <br>
     <hr>
 </div>
-</section>
- -->
+</section> -->
+
 <div class="container">
 	<div class="row searchHero"> 
 		<div class="md-form col-10">
@@ -22,10 +22,9 @@
 		</div>        
 	</div>
 </div>	
-<div class="container-fluid">
 <div class="row recipeResults">
-	<div class="col-4 padding-0" ng-repeat= "recipe in recipeResults">
-		<a ng-click="getRecipeInfo(recipe.id)" data-toggle="modal" data-target="#basicExample">
+	<div class="col-4 paddingRecipes" ng-repeat= "recipe in recipeResults">
+		<a ng-click="getRecipeInfo(recipe.id)" ui-sref="recipeCard({id:recipe.id})">
 			<div class="card hoverable">
    			 	<img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="Card image cap">
 		    <div class="card-body">
@@ -34,7 +33,6 @@
 		</div>
 		</a>
 	</div>
-</div>
 </div>
 
 <!-- <div class="row">

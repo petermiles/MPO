@@ -43,15 +43,10 @@ angular.module("MPOApp").service("dataServ", function($http) {
 		.then(response => {
 			return response
 		})
-		.catch((err) => {
-			console.log(err)
-		})
 	}
 
-
 	
-	
-	this.getRecipeInfo = (id, stepBreakdown) => {
+	this.getRecipeInfo = (id) => {
 		let recipeId = {id}
 		return $http.put(`/search/getRecipeInfo/` , recipeId)
 		.then(response => {
@@ -59,14 +54,3 @@ angular.module("MPOApp").service("dataServ", function($http) {
 		})
 	}
 })
-
-
-
-
-
-
-
-
-
-
-
