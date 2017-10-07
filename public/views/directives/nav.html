@@ -1,34 +1,33 @@
-<nav class="navbar navbar-expand-lg navbar-dark green">
+<nav class="navbar navbar-expand-lg navbar-dark indigo">
+
     <a class="navbar-brand" href="#">Meal Prep Online</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item" ng-class="{active:isActive('/')}">
-                <a class="nav-link" ui-sref="home">Home<span class="sr-only">(current)</span></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+        aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item" ng-class="{active:isActive('#/search')}">
+            <li class="nav-item">
                 <a class="nav-link" ui-sref="search">Search</a>
             </li>
-            <li class="nav-item" ng-class="{active:isActive('/#watchlist')}">
-                <a class="nav-link" ui-sref="watchlist">My Preferences</a>
+            <li class="nav-item">
+                <a class="nav-link" href="#">My Recipes</a>
             </li>
-            <li class="nav-item" ng-class="{active:isActive('/#pantry')}">
-                <a class="nav-link" ui-sref="watchlist">My Pantry</a>
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="login">Login</a>
             </li>
-            <li class="nav-item" ng-class="{active:isActive('/')}">
-                <a class="nav-link mr-sm-2" data-toggle="modal" data-target="#loginModal">Login</a>
-            </li>
-        </ul>
-        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <!--Content-->
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div id="firebaseui-auth-container" id="loginTemplate"></div>
-                    </div>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account</a>
+                <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#">Preferences</a>
+                    <a class="dropdown-item" href="#">Account Settings</a>
+                    <a class="dropdown-item" href="#">Log Out</a>
                 </div>
-            </div>
-        </div
+            </li>
+
+        </ul>
+    </div>
 </nav>

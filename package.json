@@ -21,7 +21,11 @@
     "axios": "^0.16.2",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
-    "express": "^4.15.5",
+    "express": "^4.16.1",
+    "express-firebase-middleware": "^1.0.0",
+    "firebase": "^4.5.0",
+    "firebase-admin": "^5.4.1",
+    "firebaseui": "^2.3.0",
     "massive": "^4.2.0",
     "unirest": "^0.5.1"
   }

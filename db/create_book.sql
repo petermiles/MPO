@@ -1,0 +1,1 @@
+INSERT INTO recipe_books (name, uid) VALUES ($1, $2)

@@ -9,11 +9,11 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
         $scope.pricePerServing = (result.data.pricePerServing / 100).toFixed(2)
 
 
-       //  	let ingredients = result.data.extendedIngredients
-       //  	let ingArr = [];
-       //  	for (let i = 0; i < ingredients.length; i++) {
-    			// ingArr.push(ingredients[i].name)
-       //  	}
+        //    let ingredients = result.data.extendedIngredients
+        //    let ingArr = [];
+        //    for (let i = 0; i < ingredients.length; i++) {
+        // ingArr.push(ingredients[i].name)
+        //    }
         // $scope.recipeIngredients = ingArr
 
         $scope.recipeIngredients = result.data.extendedIngredients
@@ -24,6 +24,6 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
     })
 
     // dataServ.visualizeReciptCost($stateParams.id).then(result => {
-    // 	console.log(result)
+    //  console.log(result)
     // })
 })

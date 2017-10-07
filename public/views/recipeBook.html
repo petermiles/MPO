@@ -1,0 +1,19 @@
+<div class="container">
+    <h1 class="text-center display-1">My RecipeBook</h1>
+    <form>
+        <div class="md-form">
+            <textarea type="text" id="form7" class="md-textarea" ng-model="name"></textarea>
+            <label for="form7">Book Name</label>
+        </div>
+        <div class="center">
+            <button class="btn btn-primary text-center" ng-click="createRecipeBook(name)">Create Recipe Book</button>
+            <button class="btn btn-primary text-center" ng-click="getRecipeBooks()">Get Recipe Books</button>
+        </div>
+    </form>
+
+
+    <div ng-repeat="books in recipeBooks ">
+        <p>{{recipeBooks.name}}</p>
+        <p>{{recipeBooks.uid}}</p>
+    </div>
+</div>
