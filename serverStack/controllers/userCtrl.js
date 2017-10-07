@@ -8,7 +8,7 @@ const createRecipeBook = (req, res) => {
 	console.log(req.body)
     req.app
         .get('db')
-        .create_book(req.params.id)
+        .create_book(req.body)
         .then(result => res.json(result))
 }
 

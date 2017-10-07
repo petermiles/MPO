@@ -1,6 +1,6 @@
 angular.module('MPOApp').service("recipeServ", function($http) {
 
-
+	
 
     this.getRecipeInfo = (id, stepBreakdown) => {
         let recipeId = { id }

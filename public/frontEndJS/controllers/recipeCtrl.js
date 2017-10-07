@@ -1,5 +1,5 @@
 angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $stateParams) {
-
+    
     dataServ.getRecipeInfo($stateParams.id).then((result) => {
         console.log(result)
 

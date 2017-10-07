@@ -10,7 +10,6 @@ angular.module("MPOApp").service("userServ", function($http) {
             var providerData = user.providerData;
             this.user = user
         };
-        console.log(user.uid)
     })
 
     this.createUser = (firstName, lastName, email, password) => {
@@ -35,7 +34,7 @@ angular.module("MPOApp").service("userServ", function($http) {
     this.createRecipeBook = (name) => {
         var id = [name, this.user.uid]
         console.log(id, "info to be passed")
-        return $http.post('/users/createRecipeBook', id)
+        return $http.post(`/users/createRecipeBook`, id)
     }
 
     this.getRecipeBooks = (user) => {
@@ -44,6 +43,4 @@ angular.module("MPOApp").service("userServ", function($http) {
             .then((result) => books = result)
             .then((books) => console.log(books))
     }
-
-
 })

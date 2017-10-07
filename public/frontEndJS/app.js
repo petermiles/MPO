@@ -25,5 +25,17 @@ angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRout
             controller: "userCtrl"
         })
 
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var uid = user.uid;
+            var providerData = user.providerData;
+            this.user = user
+        };
+        console.log("this is the user:", uid, email)
+    })
 
 })

@@ -1,5 +1,7 @@
 angular.module('MPOApp').controller('userCtrl', function($scope, userServ) {
 
+	
+	
     $scope.userInfo = userServ.userInfo
     $scope.createUser = userServ.createUser
     $scope.signIn = userServ.signIn
@@ -9,5 +11,4 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ) {
     $scope.getRecipeBooks = userServ.getRecipeBooks
 
     $scope.recipeBooks = userServ.recipeBooks
-    c
 })

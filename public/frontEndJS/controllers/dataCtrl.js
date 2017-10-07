@@ -1,4 +1,8 @@
 angular.module('MPOApp').controller('dataCtrl', function($scope, dataServ) {
+
+    
+
+
     dataServ.persistResults ? $scope.recipeResults = dataServ.persistResults : null
 
     //Generative Functions
