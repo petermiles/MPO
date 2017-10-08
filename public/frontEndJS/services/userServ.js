@@ -2,15 +2,12 @@ angular.module("MPOApp").service("userServ", function($http) {
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var uid = user.uid;
-            var providerData = user.providerData;
             this.user = user
+            return user
         };
     })
+
+
 
     this.createUser = (firstName, lastName, email, password) => {
         firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
@@ -33,14 +30,40 @@ angular.module("MPOApp").service("userServ", function($http) {
 
     this.createRecipeBook = (name) => {
         var id = [name, this.user.uid]
-        console.log(id, "info to be passed")
         return $http.post(`/users/createRecipeBook`, id)
+        .then(result => {return result})
     }
 
     this.getRecipeBooks = (user) => {
         let id = this.user.uid;
         return $http.get(`/users/getRecipeBooks/${id}`, id)
-            .then((result) => books = result)
-            .then((books) => console.log(books))
+            .then((result) => {return result})
+    }
+
+    this.deleteBook = (bookId) => {
+        let books = [bookId, this.user.uid]
+        console.log(books)
+        return $http.post(`/users/deleteBook`, books)
+            .then((result) => {return result})
+    }
+
+    this.saveRecipeToBook = (title, recipeId, image, id) => {
+        let recipe = [title, recipeId, image, id]
+        return $http.post(`/users/saveRecipe`, recipe)
+    }
+
+    this.getRecipesFromBooks = (id) => {
+        return $http.get(`/users/getRecipesFromBooks/${id}`)
+        .then(result => {
+            return result
+        })
+    }
+
+    this.deleteRecipeFromBook = (id, fkey) => {
+        let deleteId = [id.toString(), fkey.toString()]
+        return $http.post('/users/deleteRecipeFromBook', deleteId)
+        .then(result => {
+            return result
+        })
     }
 })

@@ -1,0 +1,26 @@
+<h1 class="text-center"> My Meal Plans </h1>
+<div class="container">
+    <div class="row center">
+        <form class="md-form">
+            <input type="text" id="mealPrepName" class="form-control validate" ng-model="name">
+            <label for="mealPrepName">Name Your Meal Plan</label>
+            <input type="text" id="mealPrepNotes" ng-model="notes" placeholder="Notes">
+            <button class="btn btn-primary" ng-click="createMealPlan(name, notes)">Create Meal Plan</button>
+            <button class="btn btn-primary" ng-click="getMealPlans()">Get Meal Plans</button>
+        </form>
+    </div>
+    <div class="row">
+        <div class="col-4" ng-repeat="mealPlan in mealPlans">
+            <div class="card">
+                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <h4 class="card-title">{{mealPlan.name}}</h4>
+                    <p class="card-text">{{mealPlan.notes}}</p>
+                    <button class="btn btn-danger" ng-click="deleteMealPlan(mealPlan.id)">Delete</button>
+                </div>
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+</div>

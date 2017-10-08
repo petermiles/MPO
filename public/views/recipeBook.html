@@ -1,19 +1,28 @@
 <div class="container">
-    <h1 class="text-center display-1">My RecipeBook</h1>
+    <h1 class="text-center display-1">My Recipe Books</h1>
+    <!-- Add "users" Recipe Books -->
     <form>
         <div class="md-form">
             <textarea type="text" id="form7" class="md-textarea" ng-model="name"></textarea>
             <label for="form7">Book Name</label>
         </div>
-        <div class="center">
+        <div class="text-center">
             <button class="btn btn-primary text-center" ng-click="createRecipeBook(name)">Create Recipe Book</button>
             <button class="btn btn-primary text-center" ng-click="getRecipeBooks()">Get Recipe Books</button>
         </div>
     </form>
-
-
-    <div ng-repeat="books in recipeBooks ">
-        <p>{{recipeBooks.name}}</p>
-        <p>{{recipeBooks.uid}}</p>
+    <div class="row">
+        <div class="col-4" ng-repeat="books in userBooks">
+            <a ui-sref="books({id:books.id})" ng-click="getRecipesFromBooks(books.id)">
+                <div class="card">
+                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">{{books.name}}</h4>
+                        <p class="card-text"></p>
+                        <a class="btn btn-danger" ng-click="deleteBook(books.id)">Delete</a>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </div>

@@ -4,124 +4,114 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css">
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css" />
-
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-firestore.js"></script>
-        <script>
-            // Initialize Firebase
-            var config = {
-                apiKey: "AIzaSyDsih2I78E9gJVGkgA1qM1NKwN8eAbCm6c",
-                authDomain: "mpoapp.firebaseapp.com",
-                databaseURL: "https://mpoapp.firebaseio.com",
-                projectId: "mpoapp",
-                storageBucket: "mpoapp.appspot.com",
-                messagingSenderId: "758459000147"
-            };
-            firebase.initializeApp(config);
-        </script>
-
-         <script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDsih2I78E9gJVGkgA1qM1NKwN8eAbCm6c",
+        authDomain: "mpoapp.firebaseapp.com",
+        databaseURL: "https://mpoapp.firebaseio.com",
+        projectId: "mpoapp",
+        storageBucket: "mpoapp.appspot.com",
+        messagingSenderId: "758459000147"
+    };
+    firebase.initializeApp(config);
+    </script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css" />
     <script type="text/javascript">
-      // FirebaseUI config.
-      var uiConfig = {
+    // FirebaseUI config.
+    var uiConfig = {
         signInSuccessUrl: '/#/login',
         signInOptions: [
-          // Leave the lines as is for the providers you want to offer your users.
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          firebase.auth.EmailAuthProvider.PROVIDER_ID
+            // Leave the lines as is for the providers you want to offer your users.
+            firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+            firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+            firebase.auth.EmailAuthProvider.PROVIDER_ID
         ]
-      };
+    };
 
-      // Initialize the FirebaseUI Widget using Firebase.
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
-  </script>
+    // Initialize the FirebaseUI Widget using Firebase.
+    var ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
     <title>MPO</title>
 </head>
 
-    <body>
-
-        <!-- <navbar></navbar> -->
-
-        <nav class="navbar navbar-expand-lg navbar-dark indigo">
-
-            <a class="navbar-brand" href="#">Meal Prep Online</a>
-
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="search">Search</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="recipeBook">My Recipes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="login" >Login</a>
-                        <!-- data-toggle="modal" data-target="#loginModal -->
-                    </li>
-
-                </ul>
-
-                        <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <!--Content-->
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div id="firebaseui-auth-container" id="loginTemplate"></div>
+<body>
+    <!-- <navbar></navbar> -->
+    <nav class="navbar navbar-expand-lg navbar-dark indigo">
+        <a class="navbar-brand" href="#">Meal Prep Online</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="search">Search</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="recipeBook">My Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="mealPreps">My Meal Preps</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="login">Login</a>
+                </li>
+            </ul>
+            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <!--Content-->
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div id="firebaseui-auth-container" id="loginTemplate"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-            </div>
-        </nav>
+    </nav>
+    <ui-view></ui-view>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="frontEndJS/moment.js"></script>
+    <!-- Authentication Scripts -->
+    <script src="frontEndJS/directives/login.js"></script>
+    <!-- Internal Scripts -->
+    <script src="frontEndJS/app.js"></script>
+    <script src="frontEndJS/user.js"></script>
+    
+    <script src="frontEndJS/controllers/recipeCtrl.js"></script>
+    <script src="frontEndJS/services/recipeServ.js"></script>
+    <script src="frontEndJS/controllers/userCtrl.js"></script>
+    <script src="frontEndJS/services/userServ.js"></script>
+    <script src="frontEndJS/controllers/dataCtrl.js"></script>
+    <script src="frontEndJS/services/dataServ.js"></script>
+    <script src="frontEndJS/controllers/recipeBooksCtrl.js"></script>
+    <script src="frontEndJS/controllers/mealPrepCtrl.js"></script>
+    <script src="frontEndJS/services/mealPrepServ.js"></script>
 
+    <!-- Directives -->
+    <script src="frontEndJS/directives/navbar.js"></script>
 
-        
-        
+    <!-- Style Scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.js"></script>
+</body>
 
-
-        <ui-view></ui-view>
-
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-        <!-- Authentication Scripts -->
-        <script src="frontEndJS/directives/login.js"></script>
-        
-        <!-- Internal Scripts -->
-        <script src="frontEndJS/app.js"></script>
-        <script src="frontEndJS/controllers/userCtrl.js"></script>
-        <script src="frontEndJS/services/userServ.js"></script>
-        <script src="frontEndJS/controllers/dataCtrl.js"></script>
-        <script src="frontEndJS/controllers/recipeCtrl.js"></script>
-        <script src="frontEndJS/services/dataServ.js"></script>
-        <script src="frontEndJS/services/recipeServ.js"></script>
-
-        <!-- Directives -->
-        <script src="frontEndJS/directives/navbar.js"></script>
-
-        <!-- Style Scripts -->
-        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-        <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.js"></script>
-    </body>
 </html>

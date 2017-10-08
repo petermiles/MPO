@@ -1,4 +1,11 @@
-angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRouterProvider) {
+angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRouterProvider, $provide, ) {
+
+
+    $provide.factory('user', firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            return user
+        }
+    }))
 
     $urlRouterProvider.otherwise("/");
 
@@ -13,6 +20,12 @@ angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRout
             url: "/recipe/:id",
             templateUrl: "views/recipeCard.html",
             controller: "recipeCtrl"
+        //     ,
+        //     resolve : {
+        //         recipeInfo(recipeServ, $stateParams.id){
+        //             recipeServ.getRecipeInfo($stateParams.id)
+        //         }
+        //     }
         })
         .state("login", {
             url: "/login",
@@ -20,22 +33,41 @@ angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRout
             controller: "userCtrl"
         })
         .state("recipeBook", {
-            url: "/recipeBook",
+            url: "/Books",
             templateUrl: "views/recipeBook.html",
+            controller: "userCtrl" 
+            // Add resolve so it pulls recipe books on page enter
+            // Do I have to pass anything into the function or can I just invoke it?
+            // Really need to figure out how that contant works.
+        })
+        .state("books", {
+            url: "/Books/Yours/:id",
+            templateUrl: "views/yourbooks.html",
+            controller: "recipeBooksCtrl",
+            resolve: {
+                recipes(userServ, $stateParams) {
+                    console.log($stateParams)
+                    return userServ.getRecipesFromBooks($stateParams.id)
+                }
+            }
+
+        })
+        .state("mealPreps", {
+            url: "/MealPreps",
+            templateUrl: "views/mealPreps.html", 
             controller: "userCtrl"
+            // ,
+            // resolve: {
+            //     mealPlans(mealPrepServ, $stateParams) {
+            //         return mealPrepServ.getMealPlans($stateParams.id)
+            //     }
+            // }
         })
 
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var uid = user.uid;
-            var providerData = user.providerData;
-            this.user = user
-        };
-        console.log("this is the user:", uid, email)
-    })
+        .state('mealPrepComplex' , {
+            url: "/Your/MealPreps",
+            templateUrl: "views/mealPrepComplex.html",
+            controller: "mealPrepCtrl"
+        })
 
 })

@@ -1,14 +1,56 @@
-angular.module('MPOApp').controller('userCtrl', function($scope, userServ) {
+angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealPrepServ, $stateParams) {
 
-	
-	
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            return user
+        }
+    })
+
     $scope.userInfo = userServ.userInfo
     $scope.createUser = userServ.createUser
     $scope.signIn = userServ.signIn
     $scope.signOut = userServ.signOut
 
-    $scope.createRecipeBook = userServ.createRecipeBook
-    $scope.getRecipeBooks = userServ.getRecipeBooks
+    $scope.loginWithPhoneNumber = userServ.loginInWithPhoneNumber
 
-    $scope.recipeBooks = userServ.recipeBooks
+    $scope.createRecipeBook = (name) => {
+        userServ.createRecipeBook(name)
+            .then((result => {
+                return $scope.userBooks = result.data
+            }))
+    }
+    $scope.getRecipeBooks = (user) => {
+        userServ.getRecipeBooks(user)
+            .then(result => {
+                console.log(result.data)
+                return $scope.userBooks = result.data
+            })
+    }
+
+    $scope.deleteBook = (bookId) => {
+        userServ.deleteBook(bookId)
+        .then((result) => {
+            console.log(result)
+            return $scope.userBooks = result.data
+        })
+    }
+
+    $scope.createMealPlan = (name, notes) => {
+        mealPrepServ.createMealPlan(name, notes).then(result => {
+            $scope.mealPlans = result.data
+        })
+    }
+
+    $scope.deleteMealPlan = (planId) => {
+        mealPrepServ.deleteMealPlan(planId).then(result => {
+            $scope.mealPlans = result.data
+        })
+    }
+
+    $scope.getMealPlans = (id) => {
+        mealPrepServ.getMealPlans(id).then(result => {
+            $scope.mealPlans = result.data
+        })
+    }
+
 })

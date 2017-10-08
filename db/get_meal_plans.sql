@@ -1,0 +1,1 @@
+SELECT * FROM meal_plans WHERE uid = $1;
