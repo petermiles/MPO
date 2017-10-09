@@ -4,6 +4,7 @@ angular.module('MPOApp').controller('recipeBooksCtrl', function($scope, userServ
         if (user) {
             this.user = user
             return user
+            console.log(user)
         };
     })
 
