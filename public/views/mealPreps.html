@@ -11,16 +11,16 @@
     </div>
     <div class="row">
         <div class="col-4" ng-repeat="mealPlan in mealPlans">
-            <div class="card">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h4 class="card-title">{{mealPlan.name}}</h4>
-                    <p class="card-text">{{mealPlan.notes}}</p>
-                    <button class="btn btn-danger" ng-click="deleteMealPlan(mealPlan.id)">Delete</button>
-                </div>
+            <a ui-sref="mealPrepCalendar({id:mealPlan.name})">
+                <div class="card">
+                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">{{mealPlan.name}}</h4>
+                <p class="card-text">{{mealPlan.notes}}</p>
+                <button class="btn btn-danger" ng-click="deleteMealPlan(mealPlan.id)">Delete</button>
+            </div>
             </div>
         </div>
-        </a>
     </div>
-</div>
 </div>

@@ -14,6 +14,8 @@
     <div class="row">
         <div class="col-4" ng-repeat="books in userBooks">
             <a ui-sref="books({id:books.id})" ng-click="getRecipesFromBooks(books.id)">
+            <!-- Change ui-sref to books.name -->
+            
                 <div class="card">
                     <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
                     <div class="card-body">

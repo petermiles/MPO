@@ -1,4 +1,4 @@
-angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRouterProvider, $provide, ) {
+angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRouterProvider, $provide) {
 
 
     $provide.factory('user', firebase.auth().onAuthStateChanged(user => {
@@ -7,7 +7,7 @@ angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRout
         }
     }))
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/Your/MealPreps");
 
 
     $stateProvider
@@ -63,11 +63,15 @@ angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRout
             //     }
             // }
         })
-
-        .state('mealPrepComplex' , {
+        .state('mealPrepCalendar', {
             url: "/Your/MealPreps",
             templateUrl: "views/mealPrepComplex.html",
-            controller: "mealPrepCtrl"
+            controller: 'mealPrepCtrl',
+            resolve: {
+                mealPlans(mealPrepServ){
+
+                }
+            }
         })
 
 })

@@ -8,9 +8,24 @@ nav {
 	position: fixed;
 }
 
-.testBg {
-	background-color: salmon;
+/* Utilities */
+
+.posRel-wid100 {
+	position: relative;
 	width: 100%;
+}
+
+.paddingRight0 {
+	padding-right: 0;
+}
+
+.testBg {
+	background-color: aliceblue;
+	width: 100%;
+}
+
+.salmonBg {
+	background-color: salmon;
 }
 
 .center {
@@ -88,3 +103,65 @@ nav {
 	  text-align:left;
 	  color:white;
 }*/
+
+
+/* Calendar Styles */
+
+.table  {
+	width: 100%;
+}
+
+.table, thead, td, tr, tbody, th {
+	border: 1px solid black;
+}
+
+.flexCalendar {
+	display: flex;
+	flex-direction: row;
+}
+
+.toolBarWidth {
+	width: 30vw
+}
+
+.calendarWidth {
+	width: 70vw
+}
+
+.timeName {
+	transform : rotate(-90deg);
+	left: -40px;
+}
+
+.calendarSlot {
+	border: 1px solid black;
+}
+
+.calendarPadding {
+	padding-top: 2vh
+}
+
+.servingSetUp {
+	height: 10vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center
+}
+
+.recipeSetup {
+	height: 20vh;
+	display: flex;
+	flex-direction: column;;
+	justify-content: center;
+}
+
+.sideBarPadding {
+	margin: 1vh 0;
+}
+
+
+
+
+
+
+
