@@ -10,6 +10,10 @@ nav {
 
 /* Utilities */
 
+.width100 {
+	max-width: 100%;
+}
+
 .posRel-wid100 {
 	position: relative;
 	width: 100%;
@@ -114,7 +118,9 @@ nav {
 .table, thead, td, tr, tbody, th {
 	border: 1px solid black;
 }
-
+li {
+	width: parent;
+}	
 .flexCalendar {
 	display: flex;
 	flex-direction: row;
@@ -149,7 +155,7 @@ nav {
 }
 
 .recipeSetup {
-	height: 20vh;
+	min-height: 20vh;
 	display: flex;
 	flex-direction: column;;
 	justify-content: center;
@@ -159,6 +165,11 @@ nav {
 	margin: 1vh 0;
 }
 
+.sideBarRecipeSize {
+	display: flex;
+	flex-direction: column;;
+	justify-content: center;
+}
 
 
 

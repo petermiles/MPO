@@ -48,7 +48,8 @@ angular.module("MPOApp").service("userServ", function($http) {
     }
 
     this.saveRecipeToBook = (title, recipeId, image, id) => {
-        let recipe = [title, recipeId, image, id]
+        let thumbnail = `https://spoonacular.com/recipeImages/${recipeId}-240x150.jpg`
+        let recipe = [title, recipeId, image, id, thumbnail]
         return $http.post(`/users/saveRecipe`, recipe)
     }
 

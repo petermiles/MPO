@@ -2,40 +2,59 @@
     <div class="row calendarPadding">
         <div class="col-3">
             <div class="servingSetUp testBg sideBarPadding">
-                <div class="panel-heading" role="tab" id="headingOne">
+                <div class="panel-heading" role="tab" id="servingsInfo">
                     <h4 class="panel-title text-center">
-        <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="trigger collapsed">
+        <a role="button" data-toggle="collapse" href="#servingsCollapse" aria-expanded="true" aria-controls="servingsCollapse" class="trigger collapsed">
           Servings
         </a>
       </h4>
                 </div>
-                <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <div id="servingsCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="servingsInfo">
                     <div class="panel-body">
                         <input type="text" placeholder="How many are you serving?">
                     </div>
                 </div>
             </div>
-            <div class="recipeSetup testBg sideBarPadding">
+            <div class="recipeSetup testBg sideBarPadding parent wrapper">
                 <div class="panel-heading" role="tab" id="headingTwo">
                     <h4 class="text-center">
-        <a role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo" class="trigger collapsed" ng-click="getRecipeBooks()">
+        <a role="button" data-toggle="collapse" href="#recipeBookNames" aria-expanded="true" aria-controls="recipeBookNames" class="trigger collapsed" ng-click="getRecipeBooks()">
           Recipes
         </a>
       </h4>
                 </div>
-                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div id="recipeBookNames" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                     <div class="panel-body">
                         <input type="text" name="searchRecipes" placeholder="Search Your Recipe Boxes">
-                        <div ng-repeat="books in recipeBooks">
-                            <button class="btn">{{books.name}}</button>
+                        <button ng-repeat="books in recipeBooks" class="btn" data-toggle="collapse" href="#booksRecipes" aria-expanded="true" aria-controls="booksRecipes" class="trigger" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <!-- Find turn off the collapse, buttons shouldn't collapse the whole recipe panel -->
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="recipesInBooks">
+                        </div>
+                        <div id="booksRecipes" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="recipesInBooks">
+                            <div ui-sortable="sortableOptions" class="apps-container source" ng-model="recipes">
+                                <div class="app" ng-repeat="recipe in recipes">
+                                    <img ng-src="{{recipe.profile_pic_thumbnail}}">
+                                    <p>{{recipe.tiitle}}</p>
+                                </div>
+                            </div>
+                            <!-- <div ng-repeat="recipe in recipes">
+                                <div id="recipeSpecific" ng-model="recipe">
+                                    <img class="width100" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                    <span>
+                                        {{recipe.name}}
+                                    </span>
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-9 ">
+        <div class="col-9">
             <div id="calendar ">
-                <table class="table ">
+                <table class="table">
                     <thead>
                         <tr>
                             <td id="backButton " style="width:25px ">Back</td>
@@ -50,220 +69,49 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th>Desc</th>
-                            <th class="calendarToday ">Monday</th>
-                            <th>Tuesday</th>
-                            <th>Wednesday</th>
-                            <th>Thursday</th>
-                            <th>Friday</th>
-                            <th>Saturday</th>
-                            <th>Sunday</th>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
                         </tr>
                         <tr>
-                            <td class="tableRowDesc ">
-                                <div> Morning </div>
-                            </td>
-                            <td id="morningSlot1 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn ">add</button>
-                            </td>
-                            <td id="morningSlot2 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="morningSlot3 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="morningSlot4 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="morningSlot5 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="morningSlot6 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="morningSlot7 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tableRowDesc ">
-                                <div> Noon </div>
-                            </td>
-                            <td id="noonSlot1 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="noonSlot2 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="noonSlot3 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="noonSlot4 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="noonSlot5 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="noonSlot6 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="noonSlot7 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tableRowDesc ">
-                                <div> Evening </div>
-                            </td>
-                            <td id="eveningSlot1 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="eveningSlot2 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="eveningSlot3 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="eveningSlot4 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="eveningSlot5 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="eveningSlot6 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                            <td id="eveningSlot7 " class="calendarSlot ">
-                                test
-                                <br>
-                                <button class="btn btn-small ">add</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="tableRowDesc ">
-                                <div> Summary </div>
-                            </td>
-                            <td id="summarySlot1 ">
-                                <br> Fat: 0g
-                                <br> Calories: <span class="fat ">0</span>g
-                                <br> Protein: <span class="protein ">0</span>g
-                                <br> Carbs: <span class="carbohydrates ">0</span>g
-                                <br>
-                                <hr style="margin: 5px 0px "> Est. Cost: $<span class="cost ">0</span>
-                                <hr style="margin: 5px 0px ">
-                                <a href="# " class="showAllNutrients " ng-click="showAllNutrients() ">show all nutrients</a>
-                                <div class="moreNutrients "></div>
-                            </td>
-                            <td id="summarySlot2 " class="calendarSlot ">
-                                <br> Fat: 0g
-                                <br> Calories: <span class="fat ">0</span>g
-                                <br> Protein: <span class="protein ">0</span>g
-                                <br> Carbs: <span class="carbohydrates ">0</span>g
-                                <br>
-                                <hr style="margin: 5px 0px "> Est. Cost: $<span class="cost ">0</span>
-                                <hr style="margin: 5px 0px ">
-                                <a href="# " class="showAllNutrients " ng-click="showAllNutrients() ">show all nutrients</a>
-                                <div class="moreNutrients "></div>
-                            </td>
-                            <td id="summarySlot3 " class="calendarSlot ">
-                                <br> Fat: 0g
-                                <br> Calories: <span class="fat ">0</span>g
-                                <br> Protein: <span class="protein ">0</span>g
-                                <br> Carbs: <span class="carbohydrates ">0</span>g
-                                <br>
-                                <hr style="margin: 5px 0px "> Est. Cost: $<span class="cost ">0</span>
-                                <hr style="margin: 5px 0px ">
-                                <a href="# " class="showAllNutrients " ng-click="showAllNutrients() ">show all nutrients</a>
-                                <div class="moreNutrients "></div>
-                            </td>
-                            <td id="summarySlot4 " class="calendarSlot ">
-                                <br> Fat: 0g
-                                <br> Calories: <span class="fat ">0</span>g
-                                <br> Protein: <span class="protein ">0</span>g
-                                <br> Carbs: <span class="carbohydrates ">0</span>g
-                                <br>
-                                <hr style="margin: 5px 0px "> Est. Cost: $<span class="cost ">0</span>
-                                <hr style="margin: 5px 0px ">
-                                <a href="# " class="showAllNutrients " ng-click="showAllNutrients() ">show all nutrients</a>
-                                <div class="moreNutrients "></div>
-                            </td>
-                            <td id="summarySlot5 " class="calendarSlot ">
-                                <br> Fat: 0g
-                                <br> Calories: <span class="fat ">0</span>g
-                                <br> Protein: <span class="protein ">0</span>g
-                                <br> Carbs: <span class="carbohydrates ">0</span>g
-                                <br>
-                                <hr style="margin: 5px 0px "> Est. Cost: $<span class="cost ">0</span>
-                                <hr style="margin: 5px 0px ">
-                                <a href="# " class="showAllNutrients " ng-click="showAllNutrients() ">show all nutrients</a>
-                                <div class="moreNutrients "></div>
-                            </td>
-                            <td id="summarySlot6 " class="calendarSlot ">
-                                <br> Fat: 0g
-                                <br> Calories: <span class="fat ">0</span>g
-                                <br> Protein: <span class="protein ">0</span>g
-                                <br> Carbs: <span class="carbohydrates ">0</span>g
-                                <br>
-                                <hr style="margin: 5px 0px "> Est. Cost: $<span class="cost ">0</span>
-                                <hr style="margin: 5px 0px ">
-                                <a href="# " class="showAllNutrients " ng-click="showAllNutrients() ">show all nutrients</a>
-                                <div class="moreNutrients "></div>
-                            </td>
-                            <td id="summarySlot7 " class="calendarSlot ">
-                                <br> Fat: 0g
-                                <br> Calories: <span class="fat ">0</span>g
-                                <br> Protein: <span class="protein ">0</span>g
-                                <br> Carbs: <span class="carbohydrates ">0</span>g
-                                <br>
-                                <hr style="margin: 5px 0px "> Est. Cost: $<span class="cost ">0</span>
-                                <hr style="margin: 5px 0px ">
-                                <a href="# " class="showAllNutrients " ng-click="showAllNutrients() ">show all nutrients</a>
-                                <div class="moreNutrients "></div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <td></td>
+                            <td <div ui-sortable="sortableOptions" class="apps-container screen floatleft" ng-model="list2">
+                                <div class="app" ng-repeat="m1 in list2 track by $index">
+                                    <img ng-src="{{m1.profile_pic_thumbnail}}">
+                                    <p> {{m1.title}}</p>
+                                </div>
             </div>
+            <button class="btn" ng-click="testFunction(list2)"></button>
+            </td>
+            <td>
+                <ul id="sortable3" class="connectedSortable">
+                    <li>&nbsp;</li>
+                </ul>
+            </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>
+                    <ul id="sortable4" class="connectedSortable">
+                        <li>&nbsp;</li>
+                    </ul>
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            </tbody>
+            </table>
         </div>
     </div>
 </div>

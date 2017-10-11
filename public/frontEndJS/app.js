@@ -1,5 +1,11 @@
-angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRouterProvider, $provide) {
+angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($stateProvider, $urlRouterProvider, $provide) {
 
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            this.user = user
+            console.log(user, "from app.js")
+        };
+    })  
 
     $provide.factory('user', firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -66,12 +72,11 @@ angular.module('MPOApp', ['ui.router']).config(function($stateProvider, $urlRout
         .state('mealPrepCalendar', {
             url: "/Your/MealPreps",
             templateUrl: "views/mealPrepComplex.html",
-            controller: 'mealPrepCtrl',
-            resolve: {
-                mealPlans(mealPrepServ){
+            controller: 'mealPrepCtrl'
+            // resolve: {
+            //     mealPlans(mealPrepServ){
 
-                }
-            }
+            //     }
+            // }
         })
-
 })
