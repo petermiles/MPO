@@ -1,4 +1,5 @@
 angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope, mealPrepServ, $stateParams, userServ) {
+    const pageId = $stateParams.id
 
     $scope.getRecipeBooks = () => {
         userServ.getRecipeBooks().then(result => {
@@ -6,10 +7,6 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
         })
     }
     $scope.pageTitle = $stateParams.id
-
-    // $scope.getRecipesFromBooks = () => {
-    // user
-    // }
 
     $scope.getRecipes = (id) => {
         userServ.getRecipesFromBooks(id)
@@ -25,10 +22,6 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
             .then(result => {
                 return result
             })
-    }
-
-    $scope.testFunction = (test) => {
-console.log(test)
     }
 
     $scope.sortableOptions = {
@@ -55,19 +48,20 @@ console.log(test)
 
     var calendarCells = {}
     for (var i = 0; i < 7; i++) {
-        calendarCells['morning' + (i+1)] = []
-        calendarCells['noon' + (i+1)] = []
-        calendarCells['evening' + (i+1)] = []
+        calendarCells['morning' + (i + 1)] = []
+        calendarCells['noon' + (i + 1)] = []
+        calendarCells['evening' + (i + 1)] = []
     }
-    $scope.calendarData = calendarCells
-    console.log($scope.calendarData)
 
+    $scope.calendarData = calendarCells;
 
-    // $scope.morning1 = []
-    // $scope.morning2 = []
-    // $scope.morning3 = []
-    // $scope.morning4 = []
-    // $scope.morning5 = []
-    // $scope.morning6 = []
-    // $scope.morning7 = []
+    $scope.saveMealPlanData = (m1, m2, m3, m4, m5, m6, m7, n1, n2, n3, n4, n5, n6, n7, a1, a2, a3, a4, a5, a6, a7) =>
+        mealPrepServ.saveMealPlanData(m1, m2, m3, m4, m5, m6, m7, n1, n2, n3, n4, n5, n6, n7, a1, a2, a3, a4, a5, a6, a7, pageId).then((result) => {
+            console.log(JSON.parse(result.data[0].recipes))
+        })
+    $scope.getMealPrepData = () => {
+        mealPrepServ.getMealPrepData(pageId).then(result => {
+            console.log(result)
+        })
+    }
 })

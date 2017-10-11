@@ -1,0 +1,1 @@
+INSERT INTO meal_plans_recipes (recipes, fkey) VALUES ($1, $2);

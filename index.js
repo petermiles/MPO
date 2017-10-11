@@ -23,6 +23,7 @@ app.use(express.static('./public'));
 const userCtrl = require('./serverStack/controllers/userCtrl')
 app.get('/users/getRecipeBooks/:id', userCtrl.getRecipeBooks)
 app.get('/users/getRecipesFromBooks/:id', userCtrl.getRecipesFromBooks)
+app.get('/users/getMealPrepData/:id', userCtrl.getMealPrepData)
 
 
 app.post('/users/createUser', userCtrl.createUser)
@@ -35,6 +36,7 @@ app.post('/users/saveRecipe', userCtrl.saveRecipe)
 app.post('/users/createMealPlan', userCtrl.createMealPlan)
 app.post('/users/getMealPlans', userCtrl.getMealPlans)
 app.post('/users/deleteMealPlan', userCtrl.deleteMealPlan)
+app.post('/users/insertMealPlanData', userCtrl.insertMealPlanData)
 
 app.post(`/users/deleteBook`, userCtrl.deleteBook)
 
@@ -54,4 +56,3 @@ app.put('/search/getRecipeInfo', retrieveCtrl.getRecipeInfo)
 app.listen(port, () => {
     console.log(`Listening on ${port}.`)
 })
-

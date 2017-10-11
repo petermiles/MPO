@@ -1,6 +1,7 @@
 <div class="container-fluid">
+    <h1 class="text-center">{{pageTitle}}</h1>
     <div class="row calendarPadding">
-        <div class="col-3">
+        <div class="col-2">
             <div class="servingSetUp testBg sideBarPadding">
                 <div class="panel-heading" role="tab" id="servingsInfo">
                     <h4 class="panel-title text-center">
@@ -36,7 +37,7 @@
                             <div ui-sortable="sortableOptions" class="apps-container source" ng-model="recipes">
                                 <div class="app" ng-repeat="recipe in recipes">
                                     <img ng-src="{{recipe.profile_pic_thumbnail}}">
-                                    <p>{{recipe.tiitle}}</p>
+                                    <p>{{recipe.name}}</p>
                                 </div>
                             </div>
                             <!-- <div ng-repeat="recipe in recipes">
@@ -52,19 +53,19 @@
                 </div>
             </div>
         </div>
-        <div class="col-9">
-            <div id="calendar ">
+        <div class="col-10">
+            <div id="calendar">
                 <table class="table">
                     <thead>
                         <tr>
-                            <td id="backButton " style="width:25px ">Back</td>
-                            <td colspan="7 " id="calendarHead " class="today ">
-                                <div class="posRel-wid100 ">
-                                    <span class="prevWeek " title="previousWeek " ng-click="previousWeek() "></span>
-                                    <div id="currentWeek " class="text-center ">Current Week: October 9th - October 15h</div>
+                            <td id="backButton" style="width:25px">Back</td>
+                            <td colspan="7" id="calendarHead" class="today">
+                                <div class="posRel-wid100">
+                                    <span class="prevWeek" title="previousWeek" ng-click="previousWeek()"></span>
+                                    <div id="currentWeek" class="text-center">Current Week: October 9th - October 15h</div>
                                 </div>
                             </td>
-                            <!-- <td id="backButton " style="width:25px ">Next</td> -->
+                            <!-- <td id="backButton" style="width:25px ">Next</td> -->
                         </tr>
                     </thead>
                     <tbody>
@@ -83,49 +84,49 @@
                             <td ui-sortable="sortableOptions" class="apps-container screen floatleft" ng-model="calendarData.morning1">
                                 <div class="app" ng-repeat="m1 in calendarData.morning1 track by $index">
                                     <img ng-src="{{m1.profile_pic_thumbnail}}">
-                                    <p> {{m1.title}}</p>
+                                    <p> {{m1.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.morning1)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.morning2">
                                 <div class="app" ng-repeat="m2 in calendarData.morning2 track by $index">
                                     <img ng-src="{{m2.profile_pic_thumbnail}}">
-                                    <p> {{m2.title}}</p>
+                                    <p> {{m2.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.morning2)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.morning3">
                                 <div class="app" ng-repeat="m3 in calendarData.morning3 track by $index">
                                     <img ng-src="{{m3.profile_pic_thumbnail}}">
-                                    <p> {{m3.title}}</p>
+                                    <p> {{m3.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.morning3)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.morning4">
                                 <div class="app" ng-repeat="m4 in calendarData.morning4 track by $index">
                                     <img ng-src="{{m4.profile_pic_thumbnail}}">
-                                    <p> {{m4.title}}</p>
+                                    <p> {{m4.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.morning4)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.morning5">
                                 <div class="app" ng-repeat="m5 in calendarData.morning5 track by $index">
                                     <img ng-src="{{m5.profile_pic_thumbnail}}">
-                                    <p> {{m5.title}}</p>
+                                    <p> {{m5.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.morning5)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.morning6">
                                 <div class="app" ng-repeat="m6 in calendarData.morning6 track by $index">
                                     <img ng-src="{{m6.profile_pic_thumbnail}}">
-                                    <p> {{m6.title}}</p>
+                                    <p> {{m6.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.morning6)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.morning7">
                                 <div class="app" ng-repeat="m7 in calendarData.morning7 track by $index">
                                     <img ng-src="{{m7.profile_pic_thumbnail}}">
-                                    <p> {{m7.title}}</p>
+                                    <p> {{m7.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.morning7)"></button>
                             </td>
@@ -135,49 +136,49 @@
                             <td ui-sortable="sortableOptions" class="apps-container screen floatleft" ng-model="calendarData.noon1">
                                 <div class="app" ng-repeat="n1 in calendarData.noon1 track by $index">
                                     <img ng-src="{{n1.profile_pic_thumbnail}}">
-                                    <p> {{n1.title}}</p>
+                                    <p> {{n1.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.noon1)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.noon2">
                                 <div class="app" ng-repeat="n2 in calendarData.noon2 track by $index">
                                     <img ng-src="{{n2.profile_pic_thumbnail}}">
-                                    <p> {{n2.title}}</p>
+                                    <p> {{n2.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.noon2)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.noon3">
                                 <div class="app" ng-repeat="n3 in calendarData.noon3 track by $index">
                                     <img ng-src="{{n3.profile_pic_thumbnail}}">
-                                    <p> {{n3.title}}</p>
+                                    <p> {{n3.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.noon3)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.noon4">
                                 <div class="app" ng-repeat="n4 in calendarData.noon4 track by $index">
                                     <img ng-src="{{n4.profile_pic_thumbnail}}">
-                                    <p> {{n4.title}}</p>
+                                    <p> {{n4.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.noon4)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.noon5">
                                 <div class="app" ng-repeat="n5 in calendarData.noon5 track by $index">
                                     <img ng-src="{{n5.profile_pic_thumbnail}}">
-                                    <p> {{n5.title}}</p>
+                                    <p> {{n5.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.noon5)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.noon6">
                                 <div class="app" ng-repeat="n6 in calendarData.noon6 track by $index">
                                     <img ng-src="{{n6.profile_pic_thumbnail}}">
-                                    <p> {{n6.title}}</p>
+                                    <p> {{n6.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.noon6)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.noon7">
                                 <div class="app" ng-repeat="n7 in calendarData.noon7 track by $index">
                                     <img ng-src="{{n7.profile_pic_thumbnail}}">
-                                    <p> {{n7.title}}</p>
+                                    <p> {{n7.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.noon7)"></button>
                             </td>
@@ -187,57 +188,60 @@
                             <td ui-sortable="sortableOptions" class="apps-container screen floatleft" ng-model="calendarData.evening1">
                                 <div class="app" ng-repeat="e1 in calendarData.evening1 track by $index">
                                     <img ng-src="{{e1.profile_pic_thumbnail}}">
-                                    <p> {{e1.title}}</p>
+                                    <p> {{e1.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.evening1)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.evening2">
                                 <div class="app" ng-repeat="e2 in calendarData.evening2 track by $index">
                                     <img ng-src="{{e2.profile_pic_thumbnail}}">
-                                    <p> {{e2.title}}</p>
+                                    <p> {{e2.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.evening2)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.evening3">
                                 <div class="app" ng-repeat="e3 in calendarData.evening3 track by $index">
                                     <img ng-src="{{e3.profile_pic_thumbnail}}">
-                                    <p> {{e3.title}}</p>
+                                    <p> {{e3.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.evening3)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.evening4">
                                 <div class="app" ng-repeat="e4 in calendarData.evening4 track by $index">
                                     <img ng-src="{{e4.profile_pic_thumbnail}}">
-                                    <p> {{e4.title}}</p>
+                                    <p> {{e4.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.evening4)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.evening5">
                                 <div class="app" ng-repeat="e5 in calendarData.evening5 track by $index">
                                     <img ng-src="{{e5.profile_pic_thumbnail}}">
-                                    <p> {{e5.title}}</p>
+                                    <p> {{e5.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.evening5)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.evening6">
                                 <div class="app" ng-repeat="e6 in calendarData.evening6 track by $index">
                                     <img ng-src="{{e6.profile_pic_thumbnail}}">
-                                    <p> {{e6.title}}</p>
+                                    <p> {{e6.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.evening6)"></button>
                             </td>
                             <td ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.evening7">
                                 <div class="app" ng-repeat="e7 in calendarData.evening7 track by $index">
                                     <img ng-src="{{e7.profile_pic_thumbnail}}">
-                                    <p> {{e7.title}}</p>
+                                    <p> {{e7.name}}</p>
                                 </div>
                                 <button class="btn" ng-click="testFunction(calendarData.evening7)"></button>
                             </td>
                         </tr>
-
-                        
                     </tbody>
                 </table>
+                <button class="btn" ng-click="saveMealPlanData(calendarData.morning1,calendarData.morning2,calendarData.morning3,calendarData.morning4,calendarData.morning5,calendarData.morning6,calendarData.morning7,calendarData.noon1,calendarData.noon2,calendarData.noon3,calendarData.noon4,calendarData.noon5,calendarData.noon6,calendarData.noon7,calendarData.evening1,calendarData.evening2,calendarData.evening3,calendarData.evening4,calendarData.evening5,calendarData.evening6,calendarData.evening7)"> Save Meal Prep </button>
+                <button class="btn btn-primary" ng-click="getMealPrepData()">
+                    Get Data
+                </button>
             </div>
         </div>
     </div>
+</div>

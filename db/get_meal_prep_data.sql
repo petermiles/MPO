@@ -1,0 +1,1 @@
+SELECT recipes FROM meal_plans_recipes WHERE fkey = $1;

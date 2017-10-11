@@ -81,6 +81,25 @@ const deleteMealPlan = (req,res) => {
     })
 }
 
+const insertMealPlanData = (req,res) => {
+    req.app
+    .get('db').
+    insert_meal_plan_data(req.body)
+    .then(result => {
+        return res.json(result)
+    })
+}
+
+const getMealPrepData = (req,res) => {
+    console.log(req.params)
+    req.app
+    .get('db')
+    .get_meal_prep_data(req.params.id)
+    .then(result => {
+        return res.json(result)
+    })
+}
+
 module.exports = {
     createUser,
     createRecipeBook,
@@ -91,5 +110,7 @@ module.exports = {
     deleteRecipeFromBook,
     createMealPlan,
     getMealPlans,
-    deleteMealPlan
+    deleteMealPlan,
+    insertMealPlanData,
+    getMealPrepData
 }
