@@ -1,5 +1,4 @@
-angular.module('MPOApp').service('mealPrepServ', function($http) {
-
+angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams) {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             this.user = user
@@ -9,7 +8,6 @@ angular.module('MPOApp').service('mealPrepServ', function($http) {
 
     this.createMealPlan = (name, notes) => {
         let mealPrepInfo = [name, notes, this.user.uid]
-        console.log(mealPrepInfo)
         return $http.post('/users/createMealPlan', mealPrepInfo)
             .then(result => {
                 return result
@@ -32,25 +30,22 @@ angular.module('MPOApp').service('mealPrepServ', function($http) {
             })
     }
 
-    this.saveMealPlanData = (m1, m2, m3, m4, m5, m6, m7, n1, n2, n3, n4, n5, n6, n7, a1, a2, a3, a4, a5, a6, a7, pageId) => {
-        let data = { m1, m2, m3, m4, m5, m6, m7, n1, n2, n3, n4, n5, n6, n7, a1, a2, a3, a4, a5, a6, a7}
-        let mealPrepData = [JSON.stringify(data), pageId]
+    this.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7) => {
+        let data = [{ morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7 }, $stateParams.id]
+        let mealPrepData = [JSON.stringify(data), $stateParams.id]
         return $http.post('/users/insertMealPlanData', mealPrepData).then(
-            result => {return result}
+            result => { return result }
         )
     }
 
-    this.getMealPrepData = (pageId) => {
-        console.log(pageId)
-        return $http.get(`/users/getMealPrepData/${pageId}`, pageId).then(result => {
+    this.getMealPrepData = () => {
+        var pageId = $stateParams.id
+        return $http.get(`/users/getMealPlanData/${pageId}`).then(result => {
             let res = (JSON.parse(result.data[0].recipes))
-            console.log(res_.values)
-            // let obj = Object.keys(JSON.parse(result.data[0].recipes))
-            // return Object.keys(obj).map(x => {
-            //     return[Number(x), obj[x]]
-            // })
+            return res
         })
     }
+
 
 
 

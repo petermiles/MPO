@@ -55,13 +55,14 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
 
     $scope.calendarData = calendarCells;
 
-    $scope.saveMealPlanData = (m1, m2, m3, m4, m5, m6, m7, n1, n2, n3, n4, n5, n6, n7, a1, a2, a3, a4, a5, a6, a7) =>
-        mealPrepServ.saveMealPlanData(m1, m2, m3, m4, m5, m6, m7, n1, n2, n3, n4, n5, n6, n7, a1, a2, a3, a4, a5, a6, a7, pageId).then((result) => {
-            console.log(JSON.parse(result.data[0].recipes))
-        })
+    $scope.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7) =>
+        mealPrepServ.saveMealPlanData(morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7)
+
     $scope.getMealPrepData = () => {
-        mealPrepServ.getMealPrepData(pageId).then(result => {
-            console.log(result)
+        mealPrepServ.getMealPrepData().then(result => {
+            $scope.calendarData = result[0]
+            console.log($scope.calendarData)
+
         })
     }
 })

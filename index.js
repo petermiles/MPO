@@ -23,7 +23,7 @@ app.use(express.static('./public'));
 const userCtrl = require('./serverStack/controllers/userCtrl')
 app.get('/users/getRecipeBooks/:id', userCtrl.getRecipeBooks)
 app.get('/users/getRecipesFromBooks/:id', userCtrl.getRecipesFromBooks)
-app.get('/users/getMealPrepData/:id', userCtrl.getMealPrepData)
+app.get('/users/getMealPlanData/:id', userCtrl.getMealPrepData)
 
 
 app.post('/users/createUser', userCtrl.createUser)

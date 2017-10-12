@@ -96,6 +96,7 @@ const getMealPrepData = (req,res) => {
     .get('db')
     .get_meal_prep_data(req.params.id)
     .then(result => {
+        // console.log(result)
         return res.json(result)
     })
 }
