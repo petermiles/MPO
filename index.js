@@ -3,6 +3,7 @@ const { json } = require('body-parser');
 const massive = require('massive');
 const cors = require('cors');
 const axios = require('axios');
+const _ = require('underscore-node')
 
 const { secret, dbUser, database } = require('./serverStack/config.js')
 const connectionString = `postgres://${dbUser}@localhost/${database}`;
@@ -30,6 +31,12 @@ app.post('/users/createUser', userCtrl.createUser)
 app.post('/users/createRecipeBook', userCtrl.createRecipeBook)
 app.post('/users/deleteRecipeFromBook', userCtrl.deleteRecipeFromBook)
 app.post('/users/saveRecipe', userCtrl.saveRecipe)
+app.post('/users/saveItemsToGroceryList', userCtrl.saveItemsToGroceryList)
+
+app.post('/users/createGroceryList', userCtrl.createGroceryList)
+app.get('/users/GetGroceryLists/:id', userCtrl.getGroceryLists)
+app.post('/users/getItemsInGroceryList', userCtrl.getItemsInGroceryList)
+app.post('/users/deleteGroceryList', userCtrl.deleteGroceryList)
 
 //should probably refactor this into it's own file
 
@@ -47,6 +54,7 @@ app.get('/search/mealplan', retrieveCtrl.generateMealPlan)
 
 app.put('/search/recipeBasic', retrieveCtrl.searchRecipeBasic)
 app.put('/search/getRecipeInfo', retrieveCtrl.getRecipeInfo)
+app.put('/search/getRecipeNutrition', retrieveCtrl.getRecipeNutrition)
 
 
 

@@ -18,12 +18,25 @@
                 </div>
                 <div class="modal-body">
                     <div ng-repeat="books in userBooksModal">
-                        <button class="btn btn-primary" ng-click="saveRecipeToBook(recipeData.title, recipeData.id, recipeData.image, books.id)" data-dismiss="modal">{{books.name}}</button>
+                        <button class="btn btn-primary" ng-click="saveRecipeToBook(recipeData.title, recipeData.id, recipeData.image, books.id, recipeData)" data-dismiss="modal">{{books.name}}</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="groceryLists" tabindex="-1" role="dialog" aria-labelledby="groceryListsModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100" id="groceryListsModal">Which Grocery List?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div ng-repeat="list in groceryLists">
+                        <button class="btn btn-primary" ng-click="saveToGroceryList(list.id, recipeIngredients)" data-dismiss="modal">{{list.name}}</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -46,13 +59,16 @@
         </div>
     </div>
     <hr>
-    <h1 class="h1-responsive borderBot1px">Ingredients</h1>
     <div class="row">
-        <div class="col-3" ng-repeat="ingredient in recipeIngredients">
-            <img class="img-fluid" ng-src='{{ingredient.image}}' alt="Card image cap">
+        <h1 class="h1-responsive borderBot1px">Ingredients</h1>
+    </div>
+    <div class="row">
+        <div class="col-3" ng-repeat="ingredient in recipeIngredients" ng-model="recipeIngredients">
+            <img class="img-fluid" ng-src='{{ingredient.image}}' alt="{{ingredient.title}}">
             <h4 class="card-title"><b>{{ingredient.amount}} {{ingredient.unit}}</b> {{ingredient.name}}</h4>
         </div>
     </div>
+    <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
     <h1 class="h1-responsive borderBot1px">Instructions</h1>
     <div class="row instructionsBreak" ng-repeat="instruction in recipeInstructions">
         <div class="col-1 center">
@@ -64,3 +80,4 @@
         </div>
     </div>
 </div>
+{{recipeNutrition}}

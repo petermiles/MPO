@@ -3,14 +3,20 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             this.user = user
-            console.log(user, "from app.js")
+            return this.user
+            // console.log(user, "from app.js")
         };
-    })  
+    })
 
-    $urlRouterProvider.otherwise("/Your/MealPreps");
+    $urlRouterProvider.otherwise("/");
 
 
     $stateProvider
+        .state("home", {
+            url: "/home",
+            templateUrl: "views/home.html",
+            controller: "dataCtrl"
+        })
         .state("search", {
             url: "/search",
             templateUrl: "views/search.html",
@@ -20,12 +26,6 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
             url: "/recipe/:id",
             templateUrl: "views/recipeCard.html",
             controller: "recipeCtrl"
-        //     ,
-        //     resolve : {
-        //         recipeInfo(recipeServ, $stateParams.id){
-        //             recipeServ.getRecipeInfo($stateParams.id)
-        //         }
-        //     }
         })
         .state("login", {
             url: "/login",
@@ -35,7 +35,7 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
         .state("recipeBook", {
             url: "/Books",
             templateUrl: "views/recipeBook.html",
-            controller: "userCtrl" 
+            controller: "userCtrl"
             // Add resolve so it pulls recipe books on page enter
             // Do I have to pass anything into the function or can I just invoke it?
             // Really need to figure out how that contant works.
@@ -46,7 +46,6 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
             controller: "recipeBooksCtrl",
             resolve: {
                 recipes(userServ, $stateParams) {
-                    console.log($stateParams)
                     return userServ.getRecipesFromBooks($stateParams.id)
                 }
             }
@@ -54,7 +53,7 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
         })
         .state("mealPreps", {
             url: "/MealPreps",
-            templateUrl: "views/mealPreps.html", 
+            templateUrl: "views/mealPreps.html",
             controller: "userCtrl"
             // ,
             // resolve: {
@@ -70,6 +69,22 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
             // resolve: {
             //     mealPlans(mealPrepServ){
 
+            //     }
+            // }
+        })
+        .state('groceryLists', {
+            url: "/GroceryLists",
+            templateUrl: "views/groceryList.html",
+            controller: 'groceryListCtrl'
+        })
+        .state('groceryListsComplex', {
+            url: "/Your/GroceryLists/:id",
+            templateUrl: "views/groceryListComplex.html",
+            controller: 'yourGroceryListCtrl'
+            // ,
+            // resolve: {
+            //     groceries(groceryListServ, $stateParams.id) {
+            //         return groceryListServ.getItemsInGroceryLists($stateParams.id)
             //     }
             // }
         })

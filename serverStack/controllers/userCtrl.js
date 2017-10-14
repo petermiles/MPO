@@ -43,60 +43,104 @@ const getRecipesFromBooks = (req, res) => {
         })
 }
 
-const deleteRecipeFromBook = (req,res) => {
+const deleteRecipeFromBook = (req, res) => {
     console.log(req.body)
     req.app
-    .get('db')
-    .delete_recipe_from_book(req.body)
-    .then(result => {
-        return res.json(result)
-    })
+        .get('db')
+        .delete_recipe_from_book(req.body)
+        .then(result => {
+            return res.json(result)
+        })
 }
 
-const createMealPlan = (req,res) => {
+const createMealPlan = (req, res) => {
     req.app
-    .get('db')
-    .create_meal_plan(req.body)
-    .then(result => {
-        return res.json(result)
-    })
+        .get('db')
+        .create_meal_plan(req.body)
+        .then(result => {
+            return res.json(result)
+        })
 }
 
-const getMealPlans = (req,res) => {
+const getMealPlans = (req, res) => {
     console.log(req.body)
     req.app
-    .get('db')
-    .get_meal_plans(req.body)
-    .then(result => {
-        return res.json(result)
-    })
+        .get('db')
+        .get_meal_plans(req.body)
+        .then(result => {
+            return res.json(result)
+        })
 }
 
-const deleteMealPlan = (req,res) => {
+const deleteMealPlan = (req, res) => {
     req.app
-    .get('db')
-    .delete_meal_plan(req.body)
-    .then(result => {
-        return res.json(result)
-    })
+        .get('db')
+        .delete_meal_plan(req.body)
+        .then(result => {
+            return res.json(result)
+        })
 }
 
-const insertMealPlanData = (req,res) => {
+const insertMealPlanData = (req, res) => {
     req.app
-    .get('db').
+        .get('db').
     insert_meal_plan_data(req.body)
-    .then(result => {
-        return res.json(result)
-    })
+        .then(result => {
+            return res.json(result)
+        })
 }
 
-const getMealPrepData = (req,res) => {
+const getMealPrepData = (req, res) => {
     console.log(req.params)
     req.app
+        .get('db')
+        .get_meal_prep_data(req.params.id)
+        .then(result => {
+            // console.log(result)
+            return res.json(result)
+        })
+}
+
+const createGroceryList = (req, res) => {
+    req.app
+        .get('db')
+        .create_grocery_list(req.body)
+        .then(result => {
+            return res.json(result)
+        })
+}
+
+const deleteGroceryList = (req,res) => {
+    req.app
     .get('db')
-    .get_meal_prep_data(req.params.id)
+    .delete_grocery_list(req.body)
     .then(result => {
-        // console.log(result)
+        return res.json(result)
+    })
+}
+
+const getGroceryLists = (req,res) => {
+    req.app
+    .get('db')
+    .get_grocery_lists(req.params.id)
+    .then(result => {
+        return res.json(result)
+    })
+}
+
+const saveItemsToGroceryList = (req, res) => {
+    req.app
+    .get('db')
+    .add_items_to_grocery_list(req.body)
+}
+
+const getItemsInGroceryList = (req,res) => {
+    console.log(req.body)
+    req.app
+    .get('db')
+    .get_items_from_grocery_list(req.body)
+    .then(result => {
+        console.log(res.json(result))
         return res.json(result)
     })
 }
@@ -113,5 +157,10 @@ module.exports = {
     getMealPlans,
     deleteMealPlan,
     insertMealPlanData,
-    getMealPrepData
+    getMealPrepData,
+    createGroceryList,
+    deleteGroceryList,
+    getGroceryLists,
+    saveItemsToGroceryList,
+    getItemsInGroceryList
 }

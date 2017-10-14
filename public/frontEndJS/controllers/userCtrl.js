@@ -19,10 +19,9 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
                 return $scope.userBooks = result.data
             }))
     }
-    $scope.getRecipeBooks = (whatever) => {
-        userServ.getRecipeBooks(whatever)
+    $scope.getRecipeBooks = () => {
+        userServ.getRecipeBooks()
             .then(result => {
-                console.log(result.data)
                 return $scope.userBooks = result.data
             })
     }
@@ -30,7 +29,6 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
     $scope.deleteBook = (bookId) => {
         userServ.deleteBook(bookId)
         .then((result) => {
-            console.log(result)
             return $scope.userBooks = result.data
         })
     }

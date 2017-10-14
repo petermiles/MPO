@@ -1,1 +1,1 @@
-SELECT * FROM user_books WHERE fkey = $1;
+SELECT * FROM user_recipes WHERE fkey = $1;

@@ -15,7 +15,7 @@
 <div class="container">
 	<div class="row searchHero"> 
 		<div class="md-form col-10">
-    		<input type="text" ng-model="humanQuery" placeholder="What Do You Want To Cook?">
+    		<input type="text" ng-model="humanQuery" placeholder="What Do You Want To Cook?" ng-submit="searchRecipeBasic(humanQuery, diet, badIng, reqInstr, intol, recType, limit)">
 		</div>
 		<div class="col-2">
 		<button class="btn btn-primary btn-large" type="submit" name="button" ng-click="searchRecipeBasic(humanQuery, diet, badIng, reqInstr, intol, recType, limit)">Submit</button>  

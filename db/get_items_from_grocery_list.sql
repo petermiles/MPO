@@ -1,0 +1,1 @@
+SELECT * FROM grocery_list_items WHERE fkey = $1;

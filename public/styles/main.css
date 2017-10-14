@@ -13,6 +13,9 @@ nav {
 .width100 {
 	max-width: 100%;
 }
+.height90vh{
+	height: 90vh;
+}
 
 .posRel-wid100 {
 	position: relative;
@@ -38,6 +41,10 @@ nav {
 	justify-content: center;
 	align-items: center;
 
+}
+
+.mainHero {
+	margin: 33vh 0;
 }
 
 .flex {
@@ -171,6 +178,11 @@ li {
 	flex-direction: column;;
 	justify-content: center;
 }
+
+
+
+
+
 
 
 

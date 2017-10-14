@@ -12,6 +12,8 @@
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-firestore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="uiScripts.js"></script>
     <script>
     // Initialize Firebase
     var config = {
@@ -44,17 +46,19 @@
     ui.start('#firebaseui-auth-container', uiConfig);
     </script>
     <title>MPO</title>
+
+    
 </head>
 
 <body>
     <!-- <navbar></navbar> -->
     <nav class="navbar navbar-expand-lg navbar-dark indigo">
-        <a class="navbar-brand" href="#">Meal Prep Online</a>
+        <a class="navbar-brand" ui-sref="home">Meal Prep Online</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" ui-sref="home">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" ui-sref="search">Search</a>
@@ -64,6 +68,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" ui-sref="mealPreps">My Meal Preps</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref="groceryLists">My Grocery Lists</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" ui-sref="login">Login</a>
@@ -82,7 +89,7 @@
         </div>
     </nav>
     <ui-view></ui-view>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.4/angular.min.js"></script>
     <script src="https://rawgithub.com/angular-ui/ui-sortable/master/src/sortable.js"></script>
@@ -90,6 +97,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="frontEndJS/moment.js"></script>
     <script src="underscore.js"></script>
+    <!--   <script src="typed.js"></script> -->
     <!-- Authentication Scripts -->
     <script src="frontEndJS/directives/login.js"></script>
     <!-- Internal Scripts -->
@@ -104,11 +112,14 @@
     <script src="frontEndJS/controllers/recipeBooksCtrl.js"></script>
     <script src="frontEndJS/controllers/mealPrepCtrl.js"></script>
     <script src="frontEndJS/services/mealPrepServ.js"></script>
+    <script src="frontEndJS/controllers/groceryListCtrl.js"></script>
+    <script src="frontEndJS/controllers/yourGroceryListCtrl.js"></script>
+    <script src="frontEndJS/services/groceryListServ.js"></script>
     <!-- Directives -->
     <script src="frontEndJS/directives/navbar.js"></script>
+    <script type="text/javascript" src="typed.js"></script>
     <!-- Style Scripts -->
     <!-- <script src="sortable.js"></script> -->
-    <script src="uiScripts.js"></script>
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.4.1/js/mdb.js"></script>

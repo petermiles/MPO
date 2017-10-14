@@ -47,6 +47,56 @@ angular.module("MPOApp").service("dataServ", function($http) {
 
     this.persistResults;
 
+    this.parseIngredients = (data) => {
+        let ingredientInfo = []
+        _.mapObject(data, x => {
+
+            ingredientInfo.push({ "amount": x.amount, "unit": x.unit, "id": x.id })
+            // $http.put('/search/getRecipeNutrition', ingredientInfo)
+        })
+        _.map(ingredientInfo, x => {
+            // console.log(x)
+            if (x.unit === "") {
+                let params = ['?']
+
+                params.push(`amount=${x.amount}`)
+
+                let searchQuery = params.join('')
+                // console.log(searchQuery)
+                $http.put('/search/getRecipeNutrition', { "id": x.id, "searchQueries": searchQuery }).then(result => {
+                    console.log(result)
+                    return result
+                })
+            } else if (x.unit !== "") {
+                let params = ['?']
+                params.push(`amount=${x.amount}`)
+                params.push(`&unit=${x.unit}`)
+                let searchQuery = params.join('')
+                $http.put('/search/getRecipeNutrition', { "id": x.id, "searchQueries": searchQuery }).then(result => {
+                    // console.log(result)
+                    return result.data
+                })
+            }
+        })
+        //     let params = ['?']
+        //     // https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/9266/information?amount=1&unit=cup
+        // if (x.amount) {
+        //     params.push(`amount=${x.amount}`)
+        // }
+        // if (x.unit) {
+        //     params.push(`&unit=${x.unit}`)
+        // }
+        // let searchQuery = params.join('')
+        // console.log(params)
+
+        // console.log(unitData)
+        // for (var i = 0; i < params.length; i++) {
+        //     $http.put('/search/getRecipeNutrition', { "id": params.id, "searchQueries": searchQuery })
+        // }
+        // console.log(params)
+    }
+
+
 
 
     this.getRecipeInfo = (id) => {
