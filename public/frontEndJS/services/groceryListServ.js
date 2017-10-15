@@ -45,21 +45,15 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
     }
 
     this.groceryListDataManipulation = (id, data) => {
-        let listData = $http.post(`/users/getItemsInGroceryList`, [id]).then(result => {
-            // console.log(JSON.parse(result.data[0].items))
-            //             console.log(data)
+        return $http.post(`/users/getItemsInGroceryList`, [id]).then(result => {
+            
             let existingData = JSON.parse(result.data[0].items)
             let newData = data
             let arr = []
 
-            // console.log(data);
-
-            // console.log(newData, existingData)
-
             existingData.push(data);
             let merged = _.flatten(existingData);
 
-            // console.log('Totes: ', totes);
 
             for (let i = 0; i < merged.length; i++) {
                 for (let j = merged.length - 1; j > i; j--) {
@@ -69,84 +63,16 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
                     }
                 }
             }
-            console.log(merged);
+
+            let newList = [id, JSON.stringify(merged)]
+            return newList
 
 
-
-            // var included = existingData.reduce((acc, data, i) => existingData.name === data.name ? acc = i : acc, false)
-            // console.log(included)
-
-            // if (included) {
-            //     existingData[included].amount += data.amount
-            // } else {
-            //     arr.push(data)
-            // }
-            // console.log(existingData)
-
-
-            // let listDataFinal = []
-            // existingData.forEach(x => {
-            //     let test = newData.find(y => { return y.name == x.name })
-            //     if (test) {
-            //         existingData.amount += x.amount
-            //     } else {
-            //         listDataFinal.push(x)
-            //     }
-            // })
-
-
-
-
-            //     if (JSON.parse(result.data[0].items)) {
-            //         console.log('nope')
-            //         let listDataOriginal = JSON.parse(result.data[0].items)
-            //         listDataOriginal.forEach(x => {
-            //             existingData = listDataMiddle.find(y => { return y.name == x.name })
-            //             if (existingData) {
-            //                 existingData.amount += x.amount
-            //             } else {
-            //                 listDataOriginal.push(x)
-            //             }
-            //         })
-            //         // console.log(listDataOriginal)
-
-            // }
+        }).then(result => {
+            console.log(result)
+            return $http.post('/users/saveItemsToGroceryList', result)
         })
     }
-    //             })
-    //             let listDataFinal = [id, listDataMiddle]
-    //             console.log(listDataFinal)
-    //             $http.post('/users/saveItemsToGroceryList', listDataFinal).then(result => {
-    //                 let data = result
-
-    //             })
-    //         }
-    //         else {
-    //             let listDataFinal = [id, JSON.stringify(data)]
-    //             return $http.post('/users/saveItemsToGroceryList', listDataFinal).then(result => {
-    //         //         let data = result
-    //         //         return data
-    //         //     })
-    //         // }
-    //         return result
-    //     }
-    //     // let listDataOriginal = JSON.parse(result.data[0].items)
-    //     // let listDataMiddle = []
-    //     // listDataOriginal.forEach(x => {
-    //     //     existingData = listDataMiddle.find(y => { return y.name == x.name })
-    //     //     if (existingData) {
-    //     //         existingData.amount += x.amount
-    //     //     } else {
-    //     //         listDataMiddle.push(x)
-    //     //     }
-    //     // })
-    //     // let listDataFinal = [id, JSON.stringify(listDataMiddle)]
-    //     // console.log(listDataFinal)
-    //     // return $http.post('/users/saveItemsToGroceryList', listDataFinal)
-    //     // return listDataFinal
-    // })
-    // // .then(() => {
-    // //     console.log(listDataFinal)
-    // //     $http.post('/users/saveItemsToGroceryList', listDataFinal
+    //        
 
 })

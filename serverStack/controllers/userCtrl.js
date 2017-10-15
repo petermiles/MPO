@@ -91,12 +91,10 @@ const insertMealPlanData = (req, res) => {
 }
 
 const getMealPrepData = (req, res) => {
-    console.log(req.params)
     req.app
         .get('db')
         .get_meal_prep_data(req.params.id)
         .then(result => {
-            // console.log(result)
             return res.json(result)
         })
 }
@@ -135,12 +133,11 @@ const saveItemsToGroceryList = (req, res) => {
 }
 
 const getItemsInGroceryList = (req,res) => {
-    console.log(req.body)
     req.app
     .get('db')
     .get_items_from_grocery_list(req.body)
     .then(result => {
-        console.log(res.json(result))
+        // console.log(res.json(result))
         return res.json(result)
     })
 }
