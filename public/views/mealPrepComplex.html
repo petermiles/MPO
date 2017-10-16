@@ -28,8 +28,7 @@
                     <div class="panel-body">
                         <input type="text" name="searchRecipes" placeholder="Search Your Recipe Boxes">
                         <button ng-repeat="books in recipeBooks" class="btn" data-toggle="collapse" href="#booksRecipes" aria-expanded="true" aria-controls="booksRecipes" class="trigger" ng-click="getRecipes(books.id)">{{books.name}}</button>
-                        <!-- Find turn off the collapse, buttons shouldn't collapse the whole recipe panel -->
-                    <!-- </div>
+                    </div>
                     <div class="panel panel-default">
                         <div class="panel-heading" role="tab" id="recipesInBooks">
                         </div>
@@ -40,15 +39,15 @@
                                     <p>{{recipe.name}}</p>
                                 </div>
                             </div>
-                            <!-- <div ng-repeat="recipe in recipes">
+                            <div ng-repeat="recipe in recipes">
                                 <div id="recipeSpecific" ng-model="recipe">
                                     <img class="width100" ng-src="{{recipe.profile_pic_thumbnail}}">
                                     <span>
                                         {{recipe.name}}
                                     </span>
                                 </div>
-                            </div> -->
-                        <<!-- /div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -64,9 +63,9 @@
                                     <span class="prevWeek" title="previousWeek" ng-click="previousWeek()"></span>
                                     <div id="currentWeek" class="text-center">Current Week: October 9th - October 15h</div>
                                 </div>
-                            </td> -->
-                            <!-- <td id="backButton" style="width:25px ">Next</td> -->
-                        <!-- </tr>
+                            </td>
+                            <td id="backButton" style="width:25px ">Next</td>
+                        </tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -242,18 +241,6 @@
                     Get Data
                 </button>
             </div>
-        </div> -->
-<!--     </div> -->
-<!-- </div>  -->
-
-
-
-<div data-ng-init='init()'>
-    <div id="calendar-container">
-        <div id="calendar-header">
-            <span id="calendar-month-year"></span>
-        </div>
-        <div id="calendar-dates">
         </div>
     </div>
 </div>

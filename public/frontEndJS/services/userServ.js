@@ -36,7 +36,7 @@ angular.module("MPOApp").service("userServ", function($http) {
 
     this.getRecipeBooks = (user) => {
         let id = this.user.uid;
-        return $http.get(`/users/getRecipeBooks/${id}`, id)
+        return $http.get(`/users/getRecipeBooks/${this.user.uid}`)
             .then((result) => {return result})
     }
 

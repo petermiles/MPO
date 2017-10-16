@@ -1,17 +1,16 @@
-angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope, mealPrepServ, $stateParams, userServ) {
+angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope, mealPrepServ, $stateParams, userServ, mealPlans) {
+    console.log(mealPlans)
     const pageId = $stateParams.id
+    $scope.pageTitle = $stateParams.id
 
     $scope.getRecipeBooks = () => {
         userServ.getRecipeBooks().then(result => {
             $scope.recipeBooks = result.data
         })
     }
-    $scope.pageTitle = $stateParams.id
-
     $scope.getRecipes = (id) => {
         userServ.getRecipesFromBooks(id)
             .then(result => {
-                console.log(result.data)
                 $scope.recipes = result.data
             })
     }
@@ -46,6 +45,8 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
         }
     };
 
+    // mealPrepServ.createCalendar()
+
     var calendarCells = {}
     for (var i = 0; i < 7; i++) {
         calendarCells['morning' + (i + 1)] = []
@@ -53,17 +54,23 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
         calendarCells['evening' + (i + 1)] = []
     }
 
-    $scope.calendarData = calendarCells;
+
+    if (!mealPlans[0]) {
+        $scope.calendarData = calendarCells;
+
+    } else if (mealPlans[0]) {
+        $scope.calendarData = mealPlans[0]
+    }
 
     $scope.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7) =>
         mealPrepServ.saveMealPlanData(morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7)
 
-    $scope.getMealPrepData = () => {
-        mealPrepServ.getMealPrepData().then(result => {
-            $scope.calendarData = result[0]
-            console.log($scope.calendarData)
+    // $scope.getMealPrepData = () => {
+    //     mealPrepServ.getMealPrepData(pageId).then(result => {
+    //         $scope.calendarData = result[0]
+    //         console.log($scope.calendarData)
 
-        })
-    }
+    //     })
+    // }
 
 })

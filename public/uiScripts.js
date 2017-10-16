@@ -1,4 +1,4 @@
-// window.onload = function(){
+// function(){
 //     var d = new Date();
 //     var month_name = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 //     var month = d.getMonth();   //0-11

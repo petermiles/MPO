@@ -41,7 +41,7 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
             // Really need to figure out how that contant works.
         })
         .state("books", {
-            url: "/Books/Yours/:id",
+            url: "/Your/Books/:id",
             templateUrl: "views/yourbooks.html",
             controller: "recipeBooksCtrl",
             resolve: {
@@ -65,12 +65,12 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
         .state('mealPrepCalendar', {
             url: "/Your/MealPreps/:id",
             templateUrl: "views/mealPrepComplex.html",
-            controller: 'mealPrepCtrl'
-            // resolve: {
-            //     mealPlans(mealPrepServ){
-
-            //     }
-            // }
+            controller: 'mealPrepCtrl',
+            resolve: {
+                mealPlans(mealPrepServ, $stateParams) {
+                    return mealPrepServ.getMealPrepData($stateParams.id)
+                }
+            }
         })
         .state('groceryLists', {
             url: "/GroceryLists",
@@ -83,8 +83,10 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
             controller: 'yourGroceryListCtrl'
             // ,
             // resolve: {
-            //     groceries(groceryListServ, $stateParams.id) {
-            //         return groceryListServ.getItemsInGroceryLists($stateParams.id)
+            //     groceries(groceryListServ, $stateParams) {
+            //         return groceryListServ.getItemsInGroceryLists($stateParams.id).then(result => {
+            //             console.log(result)
+            //         })
             //     }
             // }
         })

@@ -1,14 +1,22 @@
 <div class="container">
     <h1 class="text-center">Grocery List ID {{pageId}}</h1>
+    <div class="center" ng-show="noItemsHero">
+        <div class="card text-center center">
+            <div class="card-body">
+                <h2 class="card-title">You don't have any items saved in your grocery list!</h2>
+                <p class="card-text">Try adding some groceries from a recipe card.</p>
+                <a class="btn green" ui-sref="search">Search Recipes</a>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="col-12">
-			<ul class="list-group">
-				<li class="group-item" ng-repeat ="item in groceryList track by $index">
-				<img ng-src="{{item.image}}" alt={{item.name}}>
-				<h3>{{item.amount}} {{item.unit}} of {{item.name}} </h3>
-				<!-- <h4> {{item.originalString}}</h4> -->
-				<p> This item might be found in the <b>{{item.aisle}}</b> section of your grocery store. </p>
-			</ul>
+            <ul class="list-group">
+                <li class="group-item" ng-repeat="item in groceryList track by $index">
+                    <img ng-src="{{item.image}}" alt={{item.name}}>
+                    <h3>{{item.amount}} {{item.unit}} of {{item.name}} </h3>
+                    <p> This item might be found in the <b>{{item.aisle}}</b> section of your grocery store. </p>
+            </ul>
         </div>
     </div>
 </div>

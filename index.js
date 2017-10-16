@@ -37,6 +37,7 @@ app.post('/users/createGroceryList', userCtrl.createGroceryList)
 app.get('/users/GetGroceryLists/:id', userCtrl.getGroceryLists)
 app.post('/users/getItemsInGroceryList', userCtrl.getItemsInGroceryList)
 app.post('/users/deleteGroceryList', userCtrl.deleteGroceryList)
+app.post('/users/updateGroceryList', userCtrl.updateGroceryList)
 
 //should probably refactor this into it's own file
 

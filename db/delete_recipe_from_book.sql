@@ -1,2 +1,2 @@
-DELETE FROM user_books WHERE id = $1;
-SELECT * FROM user_books WHERE fkey = $2;
+DELETE FROM user_recipes WHERE id = $1;
+SELECT * FROM user_recipes WHERE fkey = $2;

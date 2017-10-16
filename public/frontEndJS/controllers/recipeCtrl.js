@@ -29,11 +29,15 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
         /////////////////////
 
 
-        // dataServ.parseIngredients = dataServ.parseIngredients($scope.recipeIngredients)
+        
         return $scope.recipeData = result.data
+    }).then(result => {
+        dataServ.parseIngredients(result.extendedIngredients)
     })
 
-
+    $scope.createGroceryList = () => {
+        groceryListServ.createGroceryList
+    }
 
     $scope.saveRecipeToBook = (title, recipeId, image, id) => {
         userServ.saveRecipeToBook(title, recipeId, image, id)

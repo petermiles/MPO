@@ -44,7 +44,6 @@ const getRecipesFromBooks = (req, res) => {
 }
 
 const deleteRecipeFromBook = (req, res) => {
-    console.log(req.body)
     req.app
         .get('db')
         .delete_recipe_from_book(req.body)
@@ -63,7 +62,6 @@ const createMealPlan = (req, res) => {
 }
 
 const getMealPlans = (req, res) => {
-    console.log(req.body)
     req.app
         .get('db')
         .get_meal_plans(req.body)
@@ -83,8 +81,8 @@ const deleteMealPlan = (req, res) => {
 
 const insertMealPlanData = (req, res) => {
     req.app
-        .get('db').
-    insert_meal_plan_data(req.body)
+        .get('db')
+        .insert_meal_plan_data(req.body)
         .then(result => {
             return res.json(result)
         })
@@ -108,38 +106,46 @@ const createGroceryList = (req, res) => {
         })
 }
 
-const deleteGroceryList = (req,res) => {
+const deleteGroceryList = (req, res) => {
     req.app
-    .get('db')
-    .delete_grocery_list(req.body)
-    .then(result => {
-        return res.json(result)
-    })
+        .get('db')
+        .delete_grocery_list(req.body)
+        .then(result => {
+            return res.json(result)
+        })
 }
 
-const getGroceryLists = (req,res) => {
+const getGroceryLists = (req, res) => {
     req.app
-    .get('db')
-    .get_grocery_lists(req.params.id)
-    .then(result => {
-        return res.json(result)
-    })
+        .get('db')
+        .get_grocery_lists(req.params.id)
+        .then(result => {
+            return res.json(result)
+        })
 }
 
 const saveItemsToGroceryList = (req, res) => {
     req.app
-    .get('db')
-    .add_items_to_grocery_list(req.body)
+        .get('db')
+        .add_items_to_grocery_list(req.body)
 }
 
-const getItemsInGroceryList = (req,res) => {
+const updateGroceryList = (req, res) => {
     req.app
-    .get('db')
-    .get_items_from_grocery_list(req.body)
-    .then(result => {
-        // console.log(res.json(result))
-        return res.json(result)
-    })
+        .get('db')
+        .update_grocery_list(req.body)
+}
+
+
+
+const getItemsInGroceryList = (req, res) => {
+    req.app
+        .get('db')
+        .get_items_from_grocery_list(req.body)
+        .then(result => {
+            // console.log(res.json(result))
+            return res.json(result)
+        })
 }
 
 module.exports = {
@@ -159,5 +165,6 @@ module.exports = {
     deleteGroceryList,
     getGroceryLists,
     saveItemsToGroceryList,
-    getItemsInGroceryList
+    getItemsInGroceryList,
+    updateGroceryList
 }

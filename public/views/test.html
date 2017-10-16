@@ -1,57 +1,6 @@
-angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $compile) {
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            this.user = user
-            return user
-        };
-    })
-
-    this.createMealPlan = (name, notes) => {
-        let mealPrepInfo = [name, notes, this.user.uid]
-        return $http.post('/users/createMealPlan', mealPrepInfo)
-            .then(result => {
-                return result
-            })
-    }
-
-    this.deleteMealPlan = (id) => {
-        let mealPrepInfo = [id, this.user.uid]
-        return $http.post('/users/deleteMealPlan', mealPrepInfo)
-            .then(result => {
-                return result
-            })
-    }
-    //figure out constant and then use resolve
-    this.getMealPlans = (id) => {
-        let userId = [this.user.uid]
-        return $http.post('/users/getMealPlans', userId)
-            .then(result => {
-                return result
-            })
-    }
-
-
-
-    this.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7) => {
-        let data = [{ morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7 }, $stateParams.id]
-        let mealPrepData = [JSON.stringify(data), $stateParams.id]
-        return $http.post('/users/insertMealPlanData', mealPrepData).then(
-            result => { return result }
-        )
-    }
-
-    this.getMealPrepData = (id) => {
-        var pageId = $stateParams.id
-        return $http.get(`/users/getMealPlanData/${id}`).then(result => {
-            if (result.data.length) {
-                return JSON.parse(result.data[0].recipes)
-            } else if (!result.data.length) {
-                return result
-            }
-        })
-    }
-
-    this.createCalendar = () => {
+this.createCalendar = () => {
+        console.log("test")
+        console.log("test")
         var d = new Date();
         var month_name = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
         var month = d.getMonth(); //0-11
@@ -182,7 +131,7 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
                 div.appendChild(img)
                 let text = document.createElement('p')
                 text.innerHTML = `{{e${c}.name}}`
-                div.appendChild(text)
+            div.appendChild(text)
                 td.className = "apps-container";
                 td.setAttribute("ui-sortable", "sortableOptions");
                 td.setAttribute("ng-model", `calendarData.morning${c}`)
@@ -190,6 +139,6 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
             }
         }
         table.appendChild(tr);
-        return table
+
+        return table;
     }
-})
