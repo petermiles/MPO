@@ -29,29 +29,41 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
         /////////////////////
 
 
-        
+
         return $scope.recipeData = result.data
     }).then(result => {
-        dataServ.parseIngredients(result.extendedIngredients)
+        dataServ.parseIngredients([result.extendedIngredients, result.servings])
+            .then(result => {
+                $scope.nutrition = result
+                return $scope.nutrition
+            })
     })
 
     $scope.createGroceryList = () => {
-        groceryListServ.createGroceryList
-    }
-
-    $scope.saveRecipeToBook = (title, recipeId, image, id) => {
-        userServ.saveRecipeToBook(title, recipeId, image, id)
-    }
-
-
-
-    $scope.getRecipeBooksModal = (user) => {
-        userServ.getRecipeBooks(user).then(result => {
-            return $scope.userBooksModal = result.data
+        groceryListServ.createGroceryList.then(result => {
+            console.log(result)
+            $scope.booksExist = true
         })
     }
 
-    // dataServ.visualizeReciptCost($stateParams.id).then(result => {
-    //  console.log(result)
-    // })
+
+    $scope.saveRecipeToBook = (title, recipeId, image, id, pricePerServing) => {
+        userServ.saveRecipeToBook(title, recipeId, image, id, (pricePerServing * 100), $scope.nutrition)
+    }
+
+    $scope.booksExist = true;
+    $scope.createRecipeBook = (name) => {
+        userServ.createRecipeBook(name).then(result => {
+            $scope.booksExist = true
+            $scope.userBooksModal = result.data
+        })
+    }
+    $scope.getRecipeBooksModal = (user) => {
+        userServ.getRecipeBooks(user).then(result => {
+            if (!result.data.length) {
+                $scope.booksExist = false
+            }
+            return $scope.userBooksModal = result.data
+        })
+    }
 })

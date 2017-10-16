@@ -29,7 +29,7 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
         })
         .state("login", {
             url: "/login",
-            templateUrl: "views/directives/login.html",
+            templateUrl: "views/login.html",
             controller: "userCtrl"
         })
         .state("recipeBook", {
@@ -42,7 +42,7 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
         })
         .state("books", {
             url: "/Your/Books/:id",
-            templateUrl: "views/yourbooks.html",
+            templateUrl: "views/recipeBookComplex.html",
             controller: "recipeBooksCtrl",
             resolve: {
                 recipes(userServ, $stateParams) {

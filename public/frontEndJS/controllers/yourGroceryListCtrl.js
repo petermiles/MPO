@@ -11,8 +11,6 @@ angular.module('MPOApp').controller('yourGroceryListCtrl', function($scope, user
         }
     })
 
-
-
     // $scope.groceryList = groceryItems
 
     $scope.pageId = $stateParams.id

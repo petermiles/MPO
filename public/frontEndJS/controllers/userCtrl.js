@@ -1,5 +1,5 @@
 angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealPrepServ, $stateParams) {
-
+    
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             return user

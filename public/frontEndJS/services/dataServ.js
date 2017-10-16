@@ -48,40 +48,48 @@ angular.module("MPOApp").service("dataServ", function($http) {
     this.persistResults;
 
     this.parseIngredients = (data) => {
+        let servings = data[1]
         let ingredientInfo = []
+        console.log(servings)
 
-        _.mapObject(data, x => {
-
-            ingredientInfo.push({ "amount": x.amount, "unit": x.unit, "id": x.id })
+        _.mapObject(data[0], x => {
+            let unit = x.unitLong
+            ingredientInfo.push({
+                "amount": x.amount,
+                "unit": (function() {
+                    if (x.unitLong.charAt(x.unitLong.length - 1) === "s") {
+                        let unit = x.unitLong.substring(0, x.unitLong.length - 1)
+                        return unit
+                    } else if (x.unitLong.charAt(x.unitLong.length - 1) !== "s") {
+                        return unit
+                    }
+                })(),
+                "id": x.id
+            })
         })
-        let ingredientData = []
-
 
         const calls = _.map(ingredientInfo, x => {
             if (x.unit === "") {
-                console.log(x.unit)
                 let params = ['?', `amount=${x.amount}`]
-                return $http.put('/search/getRecipeNutrition', { "id": x.id, "searchQueries": params.join('') }).then(result => { return result.data })
+                return $http.put('/search/getRecipeNutrition', { "id": x.id, "searchQueries": params.join('') }).then(result => {
+                    return result.data
+                })
             } else if (x.unit !== "") {
-                console.log(x.unit)
                 let params = ['?']
                 params.push(`amount=${x.amount}`)
                 params.push(`&unit=${x.unit}`)
-                return $http.put('/search/getRecipeNutrition', { "id": x.id, "searchQueries": params.join('') }).then(result => { return result.data })
+                return $http.put('/search/getRecipeNutrition', { "id": x.id, "searchQueries": params.join('') }).then(result => {
+                    return result.data
+                })
             }
         })
 
-        Promise.all(calls).then(data => {
-            console.log(data)
+        return Promise.all(calls).then(data => {
             let nutrients = []
             _.map(data, x => {
                 nutrients.push(x.nutrition.nutrients)
             })
-            console.log(nutrients)
-
             let mergedNutrients = _.flatten(nutrients)
-            console.log(mergedNutrients)
-
             for (let i = 0; i < mergedNutrients.length; i++) {
                 for (let j = mergedNutrients.length - 1; j > i; j--) {
                     if (mergedNutrients[j].title === mergedNutrients[i].title) {
@@ -90,12 +98,15 @@ angular.module("MPOApp").service("dataServ", function($http) {
                     }
                 }
             }
-            console.log(mergedNutrients)
-
-
-
-
-
+            let middleData = [mergedNutrients, servings]
+            return middleData
+        }).then(result => {
+            let data = result[0]
+            let finalData = [{}, result[1]];
+            data.forEach(x => {
+                finalData[0][x.title] = x
+            })
+            return finalData
         })
     }
 

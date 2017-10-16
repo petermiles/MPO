@@ -18,7 +18,13 @@
                 </div>
                 <div class="modal-body">
                     <div ng-repeat="books in userBooksModal">
-                        <button class="btn btn-primary" ng-click="saveRecipeToBook(recipeData.title, recipeData.id, recipeData.image, books.id, recipeData)" data-dismiss="modal">{{books.name}}</button>
+                        <button class="btn btn-primary" ng-click="saveRecipeToBook(recipeData.title, recipeData.id, recipeData.image, books.id, recipeData.pricePerServing)" data-dismiss="modal">{{books.name}}</button>
+                    </div>
+                    <div ng-hide="booksExist">
+                        <h1 class="text-center">You haven't created a recipe book yet!</h1>
+                        <br>
+                        <input ng-model="recipeBookName">
+                        <button class="btn" ng-click="createRecipeBook(recipeBookName)"> Add Recipe Book </button>
                     </div>
                 </div>
             </div>
