@@ -1,0 +1,1 @@
+INSERT INTO recipe_information (recipe_id,title,amount,unit,podn) VALUES ($1,$2,$3,$4,$5)

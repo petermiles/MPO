@@ -36,6 +36,8 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
             .then(result => {
                 $scope.nutrition = result
                 return $scope.nutrition
+            }).then(result => {
+                userServ.saveRecipeNutrition(result, $scope.recipeData.id)
             })
     })
 
@@ -50,6 +52,7 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
     $scope.saveRecipeToBook = (title, recipeId, image, id, pricePerServing) => {
         userServ.saveRecipeToBook(title, recipeId, image, id, (pricePerServing * 100), $scope.nutrition)
     }
+
 
     $scope.booksExist = true;
     $scope.createRecipeBook = (name) => {

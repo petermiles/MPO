@@ -24,30 +24,31 @@ app.use(express.static('./public'));
 const userCtrl = require('./serverStack/controllers/userCtrl')
 app.get('/users/getRecipeBooks/:id', userCtrl.getRecipeBooks)
 app.get('/users/getRecipesFromBooks/:id', userCtrl.getRecipesFromBooks)
-app.get('/users/getMealPlanData/:id', userCtrl.getMealPrepData)
-
-
-app.post('/users/createUser', userCtrl.createUser)
 app.post('/users/createRecipeBook', userCtrl.createRecipeBook)
 app.post('/users/deleteRecipeFromBook', userCtrl.deleteRecipeFromBook)
-app.post('/users/saveRecipe', userCtrl.saveRecipe)
-app.post('/users/saveItemsToGroceryList', userCtrl.saveItemsToGroceryList)
+app.post('/users/saveRecipeNutrition', userCtrl.saveRecipeNutrition)
+app.post('/users/getRecipeNutrition', userCtrl.getRecipeNutrition)
 
-app.post('/users/createGroceryList', userCtrl.createGroceryList)
+app.post('/users/createUser', userCtrl.createUser)
+app.post('/users/saveRecipe', userCtrl.saveRecipe)
+
 app.get('/users/GetGroceryLists/:id', userCtrl.getGroceryLists)
+app.post('/users/saveItemsToGroceryList', userCtrl.saveItemsToGroceryList)
+app.post('/users/createGroceryList', userCtrl.createGroceryList)
 app.post('/users/getItemsInGroceryList', userCtrl.getItemsInGroceryList)
 app.post('/users/deleteGroceryList', userCtrl.deleteGroceryList)
 app.post('/users/updateGroceryList', userCtrl.updateGroceryList)
 
 //should probably refactor this into it's own file
 
+app.get('/users/getMealPlanData/:id', userCtrl.getMealPrepData)
 app.post('/users/createMealPlan', userCtrl.createMealPlan)
 app.post('/users/getMealPlans', userCtrl.getMealPlans)
 app.post('/users/deleteMealPlan', userCtrl.deleteMealPlan)
 app.post('/users/insertMealPlanData', userCtrl.insertMealPlanData)
+app.post('/users/updateMealPlanData', userCtrl.updateMealPlanData)
 
 app.post(`/users/deleteBook`, userCtrl.deleteBook)
-
 
 const retrieveCtrl = require('./serverStack/controllers/retrieveCtrl')
 

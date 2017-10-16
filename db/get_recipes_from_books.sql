@@ -1,1 +1,1 @@
-SELECT * FROM user_recipes WHERE fkey = $1;
+SELECT DISTINCT ON (recipe_id) * FROM user_recipes WHERE fkey = $1 ORDER BY recipe_id;

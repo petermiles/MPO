@@ -1,7 +1,7 @@
 <div class="container">
     <h1 class="display-3 text-center">Recipe Book ID {{pageTitle}}</h1>
-    <div class="row">
-        <div class="col-4" ng-repeat="recipe in recipes">
+    <div class="row" >
+        <div class="col-6" ng-repeat="recipe in recipes">
             <div class="card">
                 <img class="img-fluid" ng-src="{{recipe.profile_pic}}" alt="Card image cap">
                 <div class="card-body">
@@ -12,14 +12,15 @@
                 </div>
             </div>
         </div>
-        <div ng-show="noBooks" class="container">
-            <h1 class="text-center"> Looks like you haven't added any recipes to your books. </h1>
-            <h3 class="text-center">
-                    You can add recipes straight to your recipe book from the <button class ="btn" ui-sref="search"><b>search</b> </button>page.</h3>
-            </h3>
-        </div>
     </div>
-    <!-- <div class="modal fade" id="mealPlans" tabindex="-1" role="dialog" aria-labelledby="mealPlansModal" aria-hidden="true">
+    <div ng-show="noBooks" class="container">
+        <h1 class="text-center"> Looks like you haven't added any recipes to your books. </h1>
+        <h3 class="text-center">
+            You can add recipes straight to your recipe book from the <button class ="btn" ui-sref="search"><b>search</b> </button>page.
+        </h3>
+    </div>
+</div>
+<!-- <div class="modal fade" id="mealPlans" tabindex="-1" role="dialog" aria-labelledby="mealPlansModal" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">

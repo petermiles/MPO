@@ -1,5 +1,5 @@
 angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope, mealPrepServ, $stateParams, userServ, mealPlans) {
-    console.log(mealPlans)
+    console.log(mealPlans[0])
     const pageId = $stateParams.id
     $scope.pageTitle = $stateParams.id
 
@@ -8,10 +8,12 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
             $scope.recipeBooks = result.data
         })
     }
+
     $scope.getRecipes = (id) => {
         userServ.getRecipesFromBooks(id)
             .then(result => {
                 $scope.recipes = result.data
+                $scope.nutrients = result
             })
     }
 
@@ -45,7 +47,23 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
         }
     };
 
-    // mealPrepServ.createCalendar()
+
+
+
+    $scope.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7) => {
+        mealPrepServ.getMealPrepData(pageId).then(result => {
+            if (!result.data) {
+                mealPrepServ.updateMealPlanData(morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7).then(result => {
+                    console.log("updated", )
+                    return $scope.calendarData = (JSON.parse(result.data[0].recipes))[0]
+                })
+            } else if (!result[0]) {
+                mealPrepServ.saveMealPlanData(morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7).then(result => {
+                    return $scope.calendarData = (JSON.parse(result.data[0].recipes))[0]
+                })
+            }
+        })
+    }
 
     var calendarCells = {}
     for (var i = 0; i < 7; i++) {
@@ -53,24 +71,11 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
         calendarCells['noon' + (i + 1)] = []
         calendarCells['evening' + (i + 1)] = []
     }
-
-
-    if (!mealPlans[0]) {
-        $scope.calendarData = calendarCells;
-
-    } else if (mealPlans[0]) {
+    if (mealPlans[0]) {
         $scope.calendarData = mealPlans[0]
+    } else if (!mealPlans[0]) {
+        $scope.calendarData = calendarCells;
     }
 
-    $scope.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7) =>
-        mealPrepServ.saveMealPlanData(morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7)
-
-    // $scope.getMealPrepData = () => {
-    //     mealPrepServ.getMealPrepData(pageId).then(result => {
-    //         $scope.calendarData = result[0]
-    //         console.log($scope.calendarData)
-
-    //     })
-    // }
 
 })

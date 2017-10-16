@@ -32,12 +32,23 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
 
 
 
-    this.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7) => {
-        let data = [{ morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, afternoon1, afternoon2, afternoon3, afternoon4, afternoon5, afternoon6, afternoon7 }, $stateParams.id]
+    this.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7) => {
+        let data = [{ morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7 }, $stateParams.id]
         let mealPrepData = [JSON.stringify(data), $stateParams.id]
         return $http.post('/users/insertMealPlanData', mealPrepData).then(
             result => { return result }
         )
+    }
+
+    this.updateMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7) => {
+        let data = [{ morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7 }, $stateParams.id]
+        let mealPrepData = [JSON.stringify(data), $stateParams.id]
+        return $http.post('/users/updateMealPlanData', mealPrepData).then(
+            result => {
+                return result
+            }
+        )
+
     }
 
     this.getMealPrepData = (id) => {

@@ -50,7 +50,6 @@ angular.module("MPOApp").service("dataServ", function($http) {
     this.parseIngredients = (data) => {
         let servings = data[1]
         let ingredientInfo = []
-        console.log(servings)
 
         _.mapObject(data[0], x => {
             let unit = x.unitLong

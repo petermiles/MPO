@@ -34,6 +34,25 @@ const saveRecipe = (req, res) => {
         })
 }
 
+const saveRecipeNutrition = (req,res) => {
+    req.app
+    .get('db')
+    .save_recipe_nutrition(req.body)
+    .then(result => {
+        return result
+    })
+}
+
+const getRecipeNutrition = (req,res) => {
+    console.log(req.body)
+    req.app
+    .get('db')
+    .get_recipe_nutrition(req.body)
+    .then(result => {
+        return res.json(result)
+    })
+}
+
 const getRecipesFromBooks = (req, res) => {
     req.app
         .get('db')
@@ -88,6 +107,15 @@ const insertMealPlanData = (req, res) => {
         })
 }
 
+const updateMealPlanData = (req,res) => {
+    req.app
+    .get('db')
+    .update_meal_plan_data(req.body)
+    .then(result => {
+        return res.json(result)
+    })
+}
+
 const getMealPrepData = (req, res) => {
     req.app
         .get('db')
@@ -128,6 +156,9 @@ const saveItemsToGroceryList = (req, res) => {
     req.app
         .get('db')
         .add_items_to_grocery_list(req.body)
+        .then(result => {
+            return res.json(result)
+        })
 }
 
 const updateGroceryList = (req, res) => {
@@ -143,7 +174,6 @@ const getItemsInGroceryList = (req, res) => {
         .get('db')
         .get_items_from_grocery_list(req.body)
         .then(result => {
-            // console.log(res.json(result))
             return res.json(result)
         })
 }
@@ -154,12 +184,15 @@ module.exports = {
     getRecipeBooks,
     deleteBook,
     saveRecipe,
+    saveRecipeNutrition,
+    getRecipeNutrition,
     getRecipesFromBooks,
     deleteRecipeFromBook,
     createMealPlan,
     getMealPlans,
     deleteMealPlan,
     insertMealPlanData,
+    updateMealPlanData,
     getMealPrepData,
     createGroceryList,
     deleteGroceryList,

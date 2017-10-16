@@ -26,7 +26,6 @@ const getRecipeInfo = (req, res) => {
 
 const getRecipeNutrition = (req, res) => {
     axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/ingredients/${req.body.id}/information${req.body.searchQueries}`).then(result => {
-    	console.log(result)
         return res.json(result.data)
     })
 }
