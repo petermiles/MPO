@@ -1,7 +1,11 @@
 angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealPrepServ, $stateParams) {
-    
+    $scope.showSignUp = true;
+    $scope.showSignIn = true;
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
+            console.log(user)
+            $scope.showSignUp = false;
+            $scope.showSignIn = false;
             return user
         }
     })
@@ -28,9 +32,9 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
 
     $scope.deleteBook = (bookId) => {
         userServ.deleteBook(bookId)
-        .then((result) => {
-            return $scope.userBooks = result.data
-        })
+            .then((result) => {
+                return $scope.userBooks = result.data
+            })
     }
 
     $scope.createMealPlan = (name, notes) => {

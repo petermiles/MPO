@@ -47,24 +47,100 @@ angular.module("MPOApp").service("userServ", function($http) {
             .then((result) => { return result })
     }
 
-    this.saveRecipeToBook = (title, recipeId, image, id, pricePerServing, recipeNutrition) => {
+    this.saveRecipeToBook = (title, recipeId, image, id, pricePerServing, nutrition, data) => {
+        let servings = data.servings
+        let nutritionData = JSON.stringify(nutrition[0])
         let thumbnail = `https://spoonacular.com/recipeImages/${recipeId}-240x150.jpg`
-        let recipe = [title, recipeId, image, id, thumbnail, pricePerServing, JSON.stringify(recipeNutrition[0])]
-        return $http.post(`/users/saveRecipe`, recipe)
+        let recipe = [title, recipeId, image, id, thumbnail, pricePerServing, nutritionData]
+        return $http.post(`/users/saveRecipe`, recipe).then(result => {
+            return result.data
+        }).then((result) => {
+            let recipeSearch = [recipeId]
+            return $http.post('/users/getRecipeNutrition').then(result => {
+                let pulledData = result.data
+                let tempArr = []
+                _.mapObject(pulledData, x => {
+                    _.map(x, y => {
+                        tempArr.push(x.recipe_id)
+                    })
+                })
+                let uniqueArr = _.uniq(tempArr)
+                console.log(uniqueArr)
+                if (uniqueArr.length) {
+                    for (var i = 0; i < uniqueArr.length; i++) {
+                        console.log(uniqueArr[i])
+                        if (uniqueArr[i] === recipeId) {
+                            console.log("same recipe found")
+                            // return false
+                            // console.log("same")
+                            let existingNutritionObj = {}
+                            _.mapObject(nutrition[0], x => {
+                                let title = recipeId
+                                let amount = (x.amount / servings)
+                                let podn = (x.percentOfDailyNeeds * 10)
+                                let recipeNutrition = [recipeId, x.title, amount, x.unit, x.percentOfDailyNeeds]
+                                // return $http.post('/users/saveRecipeNutrition', recipeNutrition).then(result => {
+                                let existingNutritionObj = {
+                                    title: recipe[0],
+                                    recipeId: recipe[1],
+                                    image: recipe[2],
+                                    thumbnail: recipe[3],
+                                    pricePerServing: recipe[4],
+                                    nutrition: result.data
+                                }
+                                // console.log(existingNutritionObj)
+                                return existingNutritionObj
+
+
+
+                            })
+                        } else if (uniqueArr[i] !== recipeId) {
+                            console.log("different recipe")
+                        }
+
+                        // _.mapObject(nutrition[0], x => {
+                        //     let amount = (x.amount / servings)
+                        //     let podn = (x.percentOfDailyNeeds * 10)
+                        //     let recipeNutrition = [recipeId, x.title, amount, x.unit, x.percentOfDailyNeeds]
+                        //     console.log()
+                        //     return $http.post('/users/saveRecipeNutrition', recipeNutrition).then(result => {
+                        //         let existingNutritionObj = { title: recipe[0], recipeId: recipe[1], image: recipe[2], thumbnail: recipe[3], pricePerServing: recipe[4], nutrition: result.data }
+                        //         console.log(existingNutritionObj)
+                        //         return existingNutritionObj
+                        //     })
+                        // })
+
+                        // console.log("different")
+                        // let existingNutritionObj = { title: recipe[0], recipeId: recipe[1], image: recipe[2], thumbnail: recipe[3], pricePerServing: recipe[4], nutrition: result.data }
+                        // return $http.post('/users/saveRecipeNutrition', recipeNutrition).then(result => {
+                        //     let existingNutritionObj = { title: recipe[0], recipeId: recipe[1], image: recipe[2], thumbnail: recipe[3], pricePerServing: recipe[4], nutrition: result.data }
+                        //     console.log(existingNutritionObj)
+                        //     return existingNutritionObj
+                        // })
+
+                        // console.log(existingNutritionObj)
+                        // return existingNutritionObj
+                    }
+                } else if (!uniqueArr.length) {
+                    _.mapObject(nutrition[0], x => {
+                        let amount = (x.amount / servings)
+                        let podn = (x.percentOfDailyNeeds * 10)
+                        let recipeNutrition = [recipeId, x.title, amount, x.unit, x.percentOfDailyNeeds]
+                        console.log()
+                        return $http.post('/users/saveRecipeNutrition', recipeNutrition).then(result => {
+                            let existingNutritionObj = { title: recipe[0], recipeId: recipe[1], image: recipe[2], thumbnail: recipe[3], pricePerServing: recipe[4], nutrition: result.data }
+                            console.log(existingNutritionObj)
+                            return existingNutritionObj
+                        })
+                    })
+                }
+
+            })
+        })
     }
 
     this.saveRecipeNutrition = (nutrition, id) => {
-        return $http.post('/users/getRecipeNutrition', [id]).then(result => {
-            console.log(result)
-            if (result.data.length < 1) {
-                _.mapObject(nutrition[0], x => {
-                    let recipeNutrition = [id, x.title, x.amount.toFixed(2), x.unit, x.percentOfDailyNeeds]
-                    return $http.post('/users/saveRecipeNutrition', recipeNutrition)
-                })
-            } else if (result.data[0]) {
-                return false
-            }
-        })
+
     }
 
     this.getRecipesFromBooks = (id) => {

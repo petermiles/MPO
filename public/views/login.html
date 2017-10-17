@@ -1,5 +1,5 @@
-<form>
-    <!-- <div ng-show="signUpForm"> -->
+<form ng-show="showSignUp">
+    <div>
         <p class="h5 text-center mb-4">Sign up</p>
         <div class="md-form">
             <i class="fa fa-user prefix grey-text"></i>
@@ -11,7 +11,7 @@
             <input type="text" id="orangeForm-name" class="form-control" ng-model="lastName">
             <label for="orangeForm-name">Last Name</label>
         </div>
-    <!-- </div> -->
+    </div>
     <!-- Get rid of last name -->
     <div class="md-form">
         <i class="fa fa-envelope prefix grey-text"></i>
@@ -27,7 +27,7 @@
         <button class="btn btn-deep-orange" ng-click="createUser(firstName, lastName, email,password)">Sign up</button>
     </div>
 </form>
-<form>
+<form ng-show="showSignIn">
     <p class="h5 text-center mb-4">Sign in</p>
     <div class="md-form">
         <i class="fa fa-envelope prefix grey-text"></i>

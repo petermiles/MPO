@@ -15,7 +15,6 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
 
     $scope.saveToGroceryList = (id, data) => {
         groceryListServ.groceryListDataManipulation(id, data)
-        // groceryListServ.saveItemsToGroceryList(id, data)
     }
 
     dataServ.getRecipeInfo($stateParams.id).then((result) => {
@@ -31,14 +30,6 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
 
 
         return $scope.recipeData = result.data
-    }).then(result => {
-        dataServ.parseIngredients([result.extendedIngredients, result.servings])
-            .then(result => {
-                $scope.nutrition = result
-                return $scope.nutrition
-            }).then(result => {
-                userServ.saveRecipeNutrition(result, $scope.recipeData.id)
-            })
     })
 
     $scope.createGroceryList = () => {
@@ -48,9 +39,12 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
         })
     }
 
-
-    $scope.saveRecipeToBook = (title, recipeId, image, id, pricePerServing) => {
-        userServ.saveRecipeToBook(title, recipeId, image, id, (pricePerServing * 100), $scope.nutrition)
+    $scope.saveRecipeToBook = (title, recipeId, image, id, pricePerServing, data) => {
+        let ingredients = $scope.recipeData.extendedIngredients
+        dataServ.parseIngredients(ingredients).then(result => {
+            userServ.saveRecipeToBook(title, recipeId, image, id, pricePerServing, result, data)
+        })
+        
     }
 
 

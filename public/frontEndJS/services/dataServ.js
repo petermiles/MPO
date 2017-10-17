@@ -51,7 +51,7 @@ angular.module("MPOApp").service("dataServ", function($http) {
         let servings = data[1]
         let ingredientInfo = []
 
-        _.mapObject(data[0], x => {
+        _.mapObject(data, x => {
             let unit = x.unitLong
             ingredientInfo.push({
                 "amount": x.amount,
@@ -68,16 +68,20 @@ angular.module("MPOApp").service("dataServ", function($http) {
         })
 
         const calls = _.map(ingredientInfo, x => {
-            if (x.unit === "") {
-                let params = ['?', `amount=${x.amount}`]
-                return $http.put('/search/getRecipeNutrition', { "id": x.id, "searchQueries": params.join('') }).then(result => {
-                    return result.data
-                })
-            } else if (x.unit !== "") {
+            if (x.unit != "") {
+                // console.log(x, "has unit")
                 let params = ['?']
                 params.push(`amount=${x.amount}`)
                 params.push(`&unit=${x.unit}`)
                 return $http.put('/search/getRecipeNutrition', { "id": x.id, "searchQueries": params.join('') }).then(result => {
+                    // console.log(result.data)
+                    return result.data
+                })
+                } else if (x.unit == "") {
+                // console.log(x, "has no unit")
+                let params = ['?', `amount=${x.amount}`]
+                return $http.put('/search/getRecipeNutrition', { "id": x.id, "searchQueries": params.join('') }).then(result => {
+                    // console.log(result.data)
                     return result.data
                 })
             }
@@ -98,6 +102,7 @@ angular.module("MPOApp").service("dataServ", function($http) {
                 }
             }
             let middleData = [mergedNutrients, servings]
+            console.log(middleData)
             return middleData
         }).then(result => {
             let data = result[0]

@@ -30,7 +30,7 @@ const saveRecipe = (req, res) => {
         .get('db')
         .save_recipe(req.body)
         .then(result => {
-            return result
+            return res.json(result)
         })
 }
 
@@ -44,7 +44,6 @@ const saveRecipeNutrition = (req,res) => {
 }
 
 const getRecipeNutrition = (req,res) => {
-    console.log(req.body)
     req.app
     .get('db')
     .get_recipe_nutrition(req.body)
