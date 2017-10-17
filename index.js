@@ -57,6 +57,7 @@ app.get('/search/mealplan', retrieveCtrl.generateMealPlan)
 app.put('/search/recipeBasic', retrieveCtrl.searchRecipeBasic)
 app.put('/search/getRecipeInfo', retrieveCtrl.getRecipeInfo)
 app.put('/search/getRecipeNutrition', retrieveCtrl.getRecipeNutrition)
+app.put('/search/parseGroceryListSearch', retrieveCtrl.parseGroceryListSearch)
 
 
 

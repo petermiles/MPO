@@ -9,6 +9,7 @@ const generateMealPlan = (req, res) => {
 }
 
 const searchRecipeBasic = (req, res) => {
+    console.log(req.body)
 
     axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search/${req.body.searchQueries}`)
         .then((result) => {
@@ -29,9 +30,16 @@ const getRecipeNutrition = (req, res) => {
         return res.json(result.data)
     })
 }
+
+const parseGroceryListSearch = (req,res) => {
+    axios.post(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/parseIngredients?includeNutrition=false`)
+}
+
+
 module.exports = {
     generateMealPlan,
     searchRecipeBasic,
     getRecipeInfo,
-    getRecipeNutrition
+    getRecipeNutrition,
+    parseGroceryListSearch
 }

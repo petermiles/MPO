@@ -1,26 +1,25 @@
 angular.module('MPOApp').controller('groceryListCtrl', function($scope, userServ, $stateParams, groceryListServ) {
+	
+    $scope.pageId = $stateParams.id;
 
-	// console.log(groceryItems)
-	$scope.pageId = $stateParams.id
+    $scope.createGroceryList = (name) => {
+        groceryListServ.createGroceryList(name).then(result => {
+            $scope.groceryLists = result.data
+        })
+    }
 
-	$scope.createGroceryList = (name) => {
-		groceryListServ.createGroceryList(name).then(result => {
-			$scope.groceryLists = result.data
-		})
-	}
-
-	$scope.getGroceryLists = () => {
+    $scope.getGroceryLists = () => {
 		groceryListServ.getGroceryLists().then(result => {
 			$scope.groceryLists = result.data
 		})
 	}
-
-	$scope.deleteGroceryList= (listId) => {
-		groceryListServ.deleteGroceryList(listId).then(result => {
-			$scope.groceryLists = result.data
-		})
-	}
-
 	
+    $scope.deleteGroceryList = (listId) => {
+        groceryListServ.deleteGroceryList(listId).then(result => {
+            $scope.groceryLists = result.data
+        })
+    }
+
+
 
 })

@@ -6,13 +6,13 @@
             <input type="text" id="groceryListName" ng-model="name"></input>
             <label for="groceryListName">Grocery List Name</label>
         </div>
-        <div class="text-center">
-            <button class="btn btn-primary text-center" ng-click="createGroceryList(name)">Create Recipe Book</button>
-            <button class="btn btn-primary text-center" ng-click="getGroceryLists()">Get Recipe Books</button>
+        <div class="center">
+            <button class="btn btn-primary text-center" ng-click="createGroceryList(name)">Create Grocery List</button>
+            <button class="btn btn-primary text-center" ng-click="getGroceryLists()">Get Grocery Lists</button>
         </div>
     </form>
     <div class="row">
-        <div class="col-3" ng-repeat="list in groceryLists">
+        <div class="col-6" ng-repeat="list in groceryLists">
             <a ui-sref="groceryListsComplex({id:list.id})" ng-click="getGroceryLists(list.id)">
                 <!-- Change ui-sref to books.name -->
                 <div class="card">

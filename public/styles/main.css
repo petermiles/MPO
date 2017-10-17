@@ -60,6 +60,42 @@ nav {
 	border-bottom: 1px solid black;
 }
 
+.form-control {
+	color: black !important;
+}
+
+a:link {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+a:visited {
+    text-decoration: inherit;
+    color: inherit;
+    cursor: auto;
+}
+
+/*.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+*/
+
 
 /* Search Heros */
 
@@ -100,6 +136,11 @@ nav {
 
 .instructionsBreak {
 	border-bottom: .5px solid salmon;
+}
+
+.ingredient-image {
+	width: 100px;
+	height: 100px;
 }
 
 /*

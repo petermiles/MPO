@@ -11,7 +11,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title w-100" id="myModalLabel">Which Recipe Book?</h4>
+                    <h4 class="modal-title w-100" id="recipeBooksModal">Which Recipe Book?</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="modal fade" id="groceryLists" tabindex="-1" role="dialog" aria-labelledby="groceryListsModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title w-100" id="groceryListsModal">Which Grocery List?</h4>
@@ -70,7 +70,7 @@
     </div>
     <div class="row">
         <div class="col-3" ng-repeat="ingredient in recipeIngredients" ng-model="recipeIngredients">
-            <img class="img-fluid" ng-src='{{ingredient.image}}' alt="{{ingredient.title}}">
+            <img class="img-fluid ingredient-image" ng-src='{{ingredient.image}}' alt="{{ingredient.title}}">
             <h4 class="card-title"><b>{{ingredient.amount}} {{ingredient.unit}}</b> {{ingredient.name}}</h4>
         </div>
     </div>

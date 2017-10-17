@@ -12,30 +12,38 @@ angular.module("MPOApp").service("dataServ", function($http) {
         })
     }
 
+    this.parseGroceryListSearch = (text) => {
+        return $http.post('/search/parseGroceryListSearch', [text])
+        .then(result => {
+            return result
+        })
+    }
+
     this.searchRecipeBasic = (humanQuery, diet, badIng, reqInstr, intol, recType, limit) => {
         let params = ['?'];
 
-        if (diet) {
-            params.push(`&diet=${diet}`)
-        }
-        if (badIng) {
-            params.push(`&excludeIngredients=${badIng}`)
-        }
-        if (reqInstr) {
-            params.push(`&instructionsRequired=${reqInstr}`)
-        }
-        if (intol) {
-            params.push(`&intolerances=${intol}`)
-        }
-        if (humanQuery) {
+        // if (diet) {
+        //     params.push(`&diet=${diet}`)
+        // }
+        // if (badIng) {
+        //     params.push(`&excludeIngredients=${badIng}`)
+        // }
+        // if (reqInstr) {
+        //     params.push(`&instructionsRequired=true`)
+        // }
+        // // if (intol) {
+        // //     params.push(`&intolerances=${intol}`)
+        // // }
+        // if (humanQuery) {
             params.push(`query=${humanQuery}`)
-        }
-        if (limit) {
-            params.push(`&number=${limit}`)
-        }
-        if (recType) {
-            params.push(`&type=${recType}`)
-        }
+            params.push(`&instructionsRequired=true`)
+        // }
+        // if (limit) {
+            params.push(`&number=12`)
+        // }
+        // if (recType) {
+        //     params.push(`&type=${recType}`)
+        // }
         let searchQueries = params.join('')
 
         console.log(searchQueries)

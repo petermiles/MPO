@@ -26,7 +26,7 @@
 	<div class="col-4" ng-repeat= "recipe in recipeResults">
 		<a ng-click="getRecipeInfo(recipe.id)" ui-sref="recipeCard({id:recipe.id})">
 			<div class="card hoverable">
-   			 	<img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="Card image cap">
+   			 	<img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="{{recipe.title}}">
 		    <div class="card-body">
 		        <h4 class="card-title text-center">{{recipe.title}}</h4>
 		    </div>

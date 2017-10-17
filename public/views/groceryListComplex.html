@@ -1,5 +1,13 @@
 <div class="container">
     <h1 class="text-center">Grocery List ID {{pageId}}</h1>
+    <div class="row">
+        <div class="col-12">
+            <div class="md-form">
+                <input type="text" id="groceryProduc" class="form-control">
+                <label for="form5">Search For Grocery Products</label>
+            </div>
+        </div>
+    </div>
     <div class="center" ng-show="noItemsHero">
         <div class="card text-center center">
             <div class="card-body">
@@ -9,14 +17,14 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <ul class="list-group">
-                <li class="group-item" ng-repeat="item in groceryList track by $index">
-                    <img ng-src="{{item.image}}" alt={{item.name}}>
-                    <h3>{{item.amount}} {{item.unit}} of {{item.name}} </h3>
-                    <p> This item might be found in the <b>{{item.aisle}}</b> section of your grocery store. </p>
-            </ul>
+    <div class="row" ng-repeat="item in groceryList track by $index">
+        <div class="col-2 center">
+            <button class="btn btn-danger" ng-click="deleteItemFromGroceryList(item.id)">Delete</button>
+        </div>
+        <div class="col-10">
+            <img ng-src="{{item.image}}" alt={{item.name}}>
+            <h3>{{item.amount}} {{item.unit}} of {{item.name}} </h3>
+            <p> This item might be found in the <b>{{item.aisle}}</b> section of your grocery store. </p>
         </div>
     </div>
 </div>

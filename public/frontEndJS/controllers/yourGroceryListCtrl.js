@@ -1,4 +1,4 @@
-angular.module('MPOApp').controller('yourGroceryListCtrl', function($scope, userServ, $stateParams, groceryListServ) {
+angular.module('MPOApp').controller('yourGroceryListCtrl', function($scope, userServ, $stateParams, groceryListServ, dataServ) {
     let id = $stateParams.id
 
     groceryListServ.getItemsInList(id).then(result => {
@@ -6,12 +6,20 @@ angular.module('MPOApp').controller('yourGroceryListCtrl', function($scope, user
             $scope.noItemsHero = true;
             return $scope.noItemsHero
         } else if (result.data) {
-        	$scope.noItemsHero = false;
+            $scope.noItemsHero = false;
             $scope.groceryList = JSON.parse(result.data[0].items)
         }
     })
 
-    // $scope.groceryList = groceryItems
+    $scope.deleteItemFromGroceryList = (data) => {
+        groceryListServ.deleteItemFromGroceryList(id, data).then(result => {
+            $scope.groceryList = result[1]
+        })
+    }
+
+    $scope.parseGroceryListSearch = (text) => {
+        dataServ.parseGroceryListSearch(text)
+    }
 
     $scope.pageId = $stateParams.id
 

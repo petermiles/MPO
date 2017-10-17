@@ -8,10 +8,7 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
     })
 
     this.saveItemsToGroceryList = (id, data) => {
-        console.log(id, data)
         let items = [id, JSON.stringify(data)]
-        console.log(items)
-        // console.log(data)
         return $http.post('/users/saveItemsToGroceryList', items)
     }
 
@@ -27,11 +24,10 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
             .then((result) => { return result })
     }
 
+
     this.getItemsInList = (id) => {
-        console.log(id)
         return $http.post('/users/getItemsInGroceryList', [id])
             .then(result => {
-                // console.log(JSON.parse(result.data[0].items))
                 return result
             })
     }
@@ -44,10 +40,37 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
             })
     }
 
+    this.deleteItemFromGroceryList = (listId, data) => {
+        return $http.post(`/users/getItemsInGroceryList`, [listId]).then(result => {
+            let currentList = JSON.parse(result.data[0].items)
+            let moddedList = []
+            _.map(currentList, x => {
+                if (x.id !== data) {
+                    moddedList.push(x)
+                }
+            })
+
+            let finalList = [listId, JSON.stringify(moddedList)]
+            // return finalList
+            return $http.post('/users/updateGroceryList', [finalList[0], finalList[1]]).then(result => {
+                // console.log(result)
+                let dataResults = [result.data[0].id, JSON.parse(result.data[0].items)]
+                return dataResults
+            })
+
+        })
+      //   .then(result => {
+      //     let dataPassed = [result[0], result[1]]
+      //     return $http.post('/users/updateGroceryList', dataPassed).then(result => {
+      //       console.log(result.data[0])
+      //         return result.data[0]
+      //     })
+      // })
+    }
+
     this.groceryListDataManipulation = (id, data) => {
 
         return $http.post(`/users/getItemsInGroceryList`, [id]).then(result => {
-            console.log(result)
             if (!result.data.length) {
                 $http.post('/users/saveItemsToGroceryList', [id, JSON.stringify(data)])
             } else if (result.data.length) {

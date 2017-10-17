@@ -1,13 +1,5 @@
 angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($stateProvider, $urlRouterProvider, $provide) {
 
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            this.user = user
-            return this.user
-            // console.log(user, "from app.js")
-        };
-    })
-
     $urlRouterProvider.otherwise("/");
 
 
@@ -36,9 +28,6 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
             url: "/Books",
             templateUrl: "views/recipeBook.html",
             controller: "userCtrl"
-            // Add resolve so it pulls recipe books on page enter
-            // Do I have to pass anything into the function or can I just invoke it?
-            // Really need to figure out how that contant works.
         })
         .state("books", {
             url: "/Your/Books/:id",
@@ -55,12 +44,6 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
             url: "/MealPreps",
             templateUrl: "views/mealPreps.html",
             controller: "userCtrl"
-            // ,
-            // resolve: {
-            //     mealPlans(mealPrepServ, $stateParams) {
-            //         return mealPrepServ.getMealPlans($stateParams.id)
-            //     }
-            // }
         })
         .state('mealPrepCalendar', {
             url: "/Your/MealPreps/:id",
@@ -76,18 +59,12 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
             url: "/GroceryLists",
             templateUrl: "views/groceryList.html",
             controller: 'groceryListCtrl'
+
         })
         .state('groceryListsComplex', {
             url: "/Your/GroceryLists/:id",
             templateUrl: "views/groceryListComplex.html",
             controller: 'yourGroceryListCtrl'
-            // ,
-            // resolve: {
-            //     groceries(groceryListServ, $stateParams) {
-            //         return groceryListServ.getItemsInGroceryLists($stateParams.id).then(result => {
-            //             console.log(result)
-            //         })
-            //     }
-            // }
+
         })
 })
