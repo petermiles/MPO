@@ -1,6 +1,7 @@
 angular.module('MPOApp').controller('groceryListCtrl', function($scope, userServ, $stateParams, groceryListServ) {
-	
+
     $scope.pageId = $stateParams.id;
+
 
     $scope.createGroceryList = (name) => {
         groceryListServ.createGroceryList(name).then(result => {
@@ -9,11 +10,11 @@ angular.module('MPOApp').controller('groceryListCtrl', function($scope, userServ
     }
 
     $scope.getGroceryLists = () => {
-		groceryListServ.getGroceryLists().then(result => {
-			$scope.groceryLists = result.data
-		})
-	}
-	
+        groceryListServ.getGroceryLists().then(result => {
+            $scope.groceryLists = result.data
+        })
+    }
+
     $scope.deleteGroceryList = (listId) => {
         groceryListServ.deleteGroceryList(listId).then(result => {
             $scope.groceryLists = result.data

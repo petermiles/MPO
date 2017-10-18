@@ -1,50 +1,7 @@
 <div class="container-fluid">
     <h1 class="text-center">{{pageTitle}}</h1>
-    <div class="row calendarPadding">
-        <div class="col-2">
-            <div class="servingSetUp testBg sideBarPadding">
-                <div class="panel-heading" role="tab" id="servingsInfo">
-                    <h4 class="panel-title text-center">
-        <button class="btn" data-target="#servingsCollapse" data-toggle="collapse"  aria-expanded="true" aria-controls="servingsCollapse" class="trigger collapsed">
-          Servings
-        </button>
-      </h4>
-                </div>
-                <div id="servingsCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="servingsInfo">
-                    <div class="panel-body">
-                        <input type="text" placeholder="How many are you serving?">
-                    </div>
-                </div>
-            </div>
-            <div class="recipeSetup testBg sideBarPadding parent wrapper">
-                <div class="panel-heading" role="tab" id="headingTwo">
-                    <h4 class="text-center">
-        <button class="btn" role="button" data-target="#recipeBookNames" data-toggle="collapse" aria-expanded="true" aria-controls="recipeBookNames" class="trigger collapsed" ng-click="getRecipeBooks()">
-          Recipes
-        </button>
-      </h4>
-                </div>
-                <div id="recipeBookNames" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                    <div class="panel-body">
-                        <input type="text" name="searchRecipes" placeholder="Search Your Recipe Boxes">
-                        <button ng-repeat="books in recipeBooks" class="btn" data-toggle="collapse" href="#booksRecipes" aria-expanded="true" aria-controls="booksRecipes" class="trigger" ng-click="getRecipes(books.id)">{{books.name}}</button>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="recipesInBooks">
-                        </div>
-                        <div id="booksRecipes" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="recipesInBooks">
-                            <div ui-sortable="sortableOptions" class="apps-container source" ng-model="recipes">
-                                <div class="app" ng-repeat="recipe in recipes">
-                                    <img ng-src="{{recipe.profile_pic_thumbnail}}">
-                                    <p>{{recipe.name}}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-10">
+    <div class="row">
+        <div class="col-12">
             <div id="calendar">
                 <table class="table">
                     <thead id="calendarHeader">
@@ -232,6 +189,73 @@
                 <button class="btn btn-primary" ng-click="getMealPrepData()">
                     Get Data
                 </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="row calendarPadding">
+            <div class="col-12">
+                <!--           <div class="servingSetUp testBg sideBarPadding">
+                <div class="panel-heading" role="tab" id="servingsInfo">
+                    <h4 class="panel-title text-center">
+        <button class="btn" data-target="#servingsCollapse" data-toggle="collapse"  aria-expanded="true" aria-controls="servingsCollapse" class="trigger collapsed">
+          Servings
+        </button>
+      </h4>
+                </div>
+                <div id="servingsCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="servingsInfo">
+                    <div class="panel-body">
+                        <input type="text" placeholder="How many are you serving?">
+                    </div>
+                </div>
+            </div> -->
+                <!-- <div class="recipeSetup testBg sideBarPadding sticky-bottom">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="text-center">
+        <button class="btn" role="button" data-target="#recipeBookNames" data-toggle="collapse" aria-expanded="true" aria-controls="recipeBookNames" class="trigger collapsed" ng-click="getRecipeBooks()">
+          Recipes
+        </button>
+      </h4> -->
+                <!-- </div> -->
+                <!-- <div id="recipeBookNames" class="panel-collapse collapse zindex1" role="tabpanel" aria-labelledby="headingTwo" z-index="">
+                        <div class="panel-body">
+                            <input type="text" name="searchRecipes" placeholder="Search Your Recipe Boxes">
+                            <button ng-repeat="books in recipeBooks" class="btn" data-toggle="collapse" href="#booksRecipes" aria-expanded="true" aria-controls="booksRecipes" class="trigger" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="recipesInBooks">
+                            </div>
+                            <div id="booksRecipes" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="recipesInBooks">
+                                <div ui-sortable="sortableOptions" class="apps-container source" ng-model="recipes">
+                                    <div class="app" ng-repeat="recipe in recipes">
+                                        <img ng-src="{{recipe.profile_pic_thumbnail}}">
+                                        <p>{{recipe.name}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+            </div>
+        </div>
+    </div>
+    <div id="mybutton">
+        <button class="btn btn-primary" data-target="#recipeBookNames" data-toggle="collapse" ng-click="getRecipeBooks()">Add Recipes</button>
+        <div id="recipeBookNames" class="panel-collapse collapse salmonBg" role="tabpanel" aria-labelledby="headingTwo" z-index="">
+            <div class="panel-body">
+                <input type="text" name="searchRecipes" placeholder="Search Your Recipe Boxes">
+                <button ng-repeat="books in recipeBooks" class="btn" data-toggle="collapse" href="#booksRecipes" aria-expanded="true" aria-controls="booksRecipes" class="trigger" ng-click="getRecipes(books.id)">{{books.name}}</button>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="recipesInBooks">
+                </div>
+                <div id="booksRecipes" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="recipesInBooks">
+                    <div ui-sortable="sortableOptions" class="apps-container source" ng-model="recipes">
+                        <div class="app" ng-repeat="recipe in recipes">
+                            <img ng-src="{{recipe.profile_pic_thumbnail}}">
+                            <p>{{recipe.name}}</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

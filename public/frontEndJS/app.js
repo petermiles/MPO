@@ -1,4 +1,4 @@
-angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($stateProvider, $urlRouterProvider, $provide) {
+angular.module('MPOApp', ['ui.router', 'ui.sortable', 'ngMaterial', 'ngMessages', 'material.svgAssetsCache']).config(function($stateProvider, $urlRouterProvider, $provide) {
 
     $urlRouterProvider.otherwise("/");
 
@@ -48,7 +48,7 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
         .state('mealPrepCalendar', {
             url: "/Your/MealPreps/:id",
             templateUrl: "views/mealPrepComplex.html",
-            controller: 'mealPrepCtrl',
+            controller: 'mealPrepComplexCtrl',
             resolve: {
                 mealPlans(mealPrepServ, $stateParams) {
                     return mealPrepServ.getMealPrepData($stateParams.id)

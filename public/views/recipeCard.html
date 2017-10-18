@@ -21,10 +21,13 @@
                         <button class="btn btn-primary" ng-click="saveRecipeToBook(recipeData.title, recipeData.id, recipeData.image, books.id, recipeData.pricePerServing, recipeData)" data-dismiss="modal">{{books.name}}</button>
                     </div>
                     <div ng-hide="booksExist">
-                        <h1 class="text-center">You haven't created a recipe book yet!</h1>
+                        <h1 class="text-center">You haven't created a Recipe Book yet!</h1>
                         <br>
-                        <input ng-model="recipeBookName">
-                        <button class="btn" ng-click="createRecipeBook(recipeBookName)"> Add Recipe Book </button>
+                        <form class="md-form center">
+                            <input class="form-control" ng-model="recipeBookName" id="recipeBookName">
+                            <label for="recipeBookName">Name your Recipe Book</label>
+                            <button class="btn" ng-click="createRecipeBook(recipeBookName)"> Create Recipe Book</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -43,6 +46,15 @@
                     <div ng-repeat="list in groceryLists">
                         <button class="btn btn-primary" ng-click="saveToGroceryList(list.id, recipeIngredients)" data-dismiss="modal">{{list.name}}</button>
                     </div>
+                </div>
+                <div ng-show="groceryListExist">
+                    <h1 class="text-center">You haven't created a Grocery List yet!</h1>
+                    <br>
+                    <form class="md-form">
+                        <input class="form-control" ng-model="groceryListName" id="groceryListName">
+                        <label for="groceryListName">Name Your Grocery List</label>
+                        <button class="btn center" ng-click="createGroceryList(groceryListName)"> Create Grocery List</button>
+                    </form>
                 </div>
             </div>
         </div>

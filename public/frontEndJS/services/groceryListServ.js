@@ -51,21 +51,12 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
             })
 
             let finalList = [listId, JSON.stringify(moddedList)]
-            // return finalList
             return $http.post('/users/updateGroceryList', [finalList[0], finalList[1]]).then(result => {
-                // console.log(result)
                 let dataResults = [result.data[0].id, JSON.parse(result.data[0].items)]
                 return dataResults
             })
 
         })
-      //   .then(result => {
-      //     let dataPassed = [result[0], result[1]]
-      //     return $http.post('/users/updateGroceryList', dataPassed).then(result => {
-      //       console.log(result.data[0])
-      //         return result.data[0]
-      //     })
-      // })
     }
 
     this.groceryListDataManipulation = (id, data) => {

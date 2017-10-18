@@ -2,11 +2,20 @@
 <div class="container" ng-init="getMealPlans()">
     <div class="row center">
         <form class="md-form">
-            <input type="text" id="mealPrepName" class="form-control validate" ng-model="name">
-            <label for="mealPrepName">Name Your Meal Plan</label>
-            <input type="text" id="mealPrepNotes" ng-model="notes" placeholder="Notes">
-            <button class="btn btn-primary" ng-click="createMealPlan(name, notes)">Create Meal Plan</button>
-            <button class="btn btn-primary" ng-click="getMealPlans()">Get Meal Plans</button>
+            <div class="row">
+                <div class="col-9">
+                    <input type="text" id="mealPrepName" class="form-control validate" ng-model="name">
+                    <label for="mealPrepName">Name Your Meal Plan</label>
+                </div>
+                <div class="col-3 center">
+                    <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Starting Date"></md-datepicker>
+                </div>
+            </div>
+            <div class="text-center">
+                <input type="text" id="mealPrepNotes" ng-model="notes" placeholder="Notes">
+                <button class="btn btn-primary" ng-click="createMealPlan(name, notes, myDate)">Create Meal Plan</button>
+                <button class="btn btn-primary" ng-click="getMealPlans()">Get Meal Plans</button>
+            </div>
         </form>
     </div>
     <div class="row">

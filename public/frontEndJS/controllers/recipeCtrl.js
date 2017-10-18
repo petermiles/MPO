@@ -1,5 +1,6 @@
 angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $stateParams, userServ, recipeServ, groceryListServ) {
 
+    $scope.groceryListExist = true;
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             this.user = user
@@ -9,12 +10,22 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
 
     $scope.getGroceryLists = () => {
         groceryListServ.getGroceryLists().then(result => {
+            if (!result.data.length) {
+                $scope.groceryListExist = true;
+            }
             return $scope.groceryLists = result.data
         })
     }
 
     $scope.saveToGroceryList = (id, data) => {
         groceryListServ.groceryListDataManipulation(id, data)
+    }
+
+    $scope.createGroceryList = (name) => {
+        groceryListServ.createGroceryList(name).then(result => {
+            $scope.groceryListExist = false;
+            $scope.groceryLists = result.data
+        })
     }
 
     dataServ.getRecipeInfo($stateParams.id).then((result) => {
@@ -32,19 +43,12 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
         return $scope.recipeData = result.data
     })
 
-    $scope.createGroceryList = () => {
-        groceryListServ.createGroceryList.then(result => {
-            console.log(result)
-            $scope.booksExist = true
-        })
-    }
-
     $scope.saveRecipeToBook = (title, recipeId, image, id, pricePerServing, data) => {
         let ingredients = $scope.recipeData.extendedIngredients
         dataServ.parseIngredients(ingredients).then(result => {
             userServ.saveRecipeToBook(title, recipeId, image, id, pricePerServing, result, data)
         })
-        
+
     }
 
 
