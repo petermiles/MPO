@@ -14,7 +14,14 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
 
     $scope.userInfo = userServ.userInfo
     $scope.createUser = userServ.createUser
-    $scope.signIn = userServ.signIn
+    $scope.signIn = (email, password) => {
+        userServ.signIn(email, password)
+            .then(result => {
+                console.log(result)
+            }).catch(error => {
+                console.log(error)
+            })
+    }
     $scope.signOut = userServ.signOut
 
     $scope.loginWithPhoneNumber = userServ.loginInWithPhoneNumber

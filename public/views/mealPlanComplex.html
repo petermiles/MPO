@@ -10,7 +10,7 @@
                             <td colspan="7" id="calendarHead" class="today">
                                 <div class="posRel-wid100">
                                     <span class="prevWeek" title="previousWeek" ng-click="previousWeek()"></span>
-                                    <div id="currentWeek" class="text-center">Current Week: October 9th - October 15h</div>
+                                    <div id="currentWeek" class="text-center"><b>{{dateHeaderBegin}}</b> <b>-</b> <b>{{dateHeaderEnd}}</b></div>
                                 </div>
                             </td>
                             <td id="backButton" style="width:25px ">Next</td>
@@ -19,13 +19,9 @@
                     <tbody>
                         <tr>
                             <td>&nbsp;</td>
-                            <td>Monday</td>
-                            <td>Tuesday</td>
-                            <td>Wednesday</td>
-                            <td>Thursday</td>
-                            <td>Friday</td>
-                            <td>Saturday</td>
-                            <td>Sunday</td>
+                            <!-- <div ng-repeat="date in dates"> -->
+                            <td class="text-center" ng-repeat="date in dates"> {{date}} </td>
+                            <!-- </div> -->
                         </tr>
                         <tr>
                             <td>Morning</td>

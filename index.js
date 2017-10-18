@@ -47,6 +47,7 @@ app.post('/users/getMealPlans', userCtrl.getMealPlans)
 app.post('/users/deleteMealPlan', userCtrl.deleteMealPlan)
 app.post('/users/insertMealPlanData', userCtrl.insertMealPlanData)
 app.post('/users/updateMealPlanData', userCtrl.updateMealPlanData)
+app.post('/users/createEmptyMealPlan', userCtrl.createEmptyMealPlan)
 
 app.post(`/users/deleteBook`, userCtrl.deleteBook)
 

@@ -79,6 +79,15 @@ const createMealPlan = (req, res) => {
         })
 }
 
+const createEmptyMealPlan = (req,res) => {
+    req.app
+    .get('db')
+    .create_empty_meal_plan(req.body)
+    .then(result => {
+        return res.json(result)
+    })
+}
+
 const getMealPlans = (req, res) => {
     req.app
         .get('db')
@@ -191,6 +200,7 @@ module.exports = {
     getRecipesFromBooks,
     deleteRecipeFromBook,
     createMealPlan,
+    createEmptyMealPlan,
     getMealPlans,
     deleteMealPlan,
     insertMealPlanData,

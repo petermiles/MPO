@@ -1,4 +1,8 @@
-angular.module('MPOApp', ['ui.router', 'ui.sortable', 'ngMaterial', 'ngMessages', 'material.svgAssetsCache']).config(function($stateProvider, $urlRouterProvider, $provide) {
+angular.module('MPOApp', ['ui.router', 'ui.sortable', 'ngMaterial', 'ngMessages', 'material.svgAssetsCache']).config(function($stateProvider, $urlRouterProvider, $provide, $mdDateLocaleProvider) {
+
+    $mdDateLocaleProvider.formatDate = function(date) {
+        return moment(date).format('MM-DD-YYYY');
+    };
 
     $urlRouterProvider.otherwise("/");
 
@@ -40,14 +44,14 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable', 'ngMaterial', 'ngMessages'
             }
 
         })
-        .state("mealPreps", {
-            url: "/MealPreps",
-            templateUrl: "views/mealPreps.html",
-            controller: "userCtrl"
+        .state("mealPlans", {
+            url: "/MealPlans",
+            templateUrl: "views/mealPlans.html",
+            controller: "mealPrepCtrl"
         })
-        .state('mealPrepCalendar', {
-            url: "/Your/MealPreps/:id",
-            templateUrl: "views/mealPrepComplex.html",
+        .state('mealPlanCalendar', {
+            url: "/Your/MealPlans/:id",
+            templateUrl: "views/mealPlanComplex.html",
             controller: 'mealPrepComplexCtrl',
             resolve: {
                 mealPlans(mealPrepServ, $stateParams) {

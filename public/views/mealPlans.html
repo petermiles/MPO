@@ -8,7 +8,7 @@
                     <label for="mealPrepName">Name Your Meal Plan</label>
                 </div>
                 <div class="col-3 center">
-                    <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Starting Date"></md-datepicker>
+                    <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Starting Date" ng-required="true"></md-datepicker>
                 </div>
             </div>
             <div class="text-center">
@@ -20,7 +20,7 @@
     </div>
     <div class="row">
         <div class="col-4" ng-repeat="mealPlan in mealPlans">
-            <a ui-sref="mealPrepCalendar({id:mealPlan.id})">
+            <a ui-sref="mealPlanCalendar({id:mealPlan.id})">
                 <div class="card">
                     <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
             </a>

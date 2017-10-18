@@ -6,8 +6,8 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
         };
     })
 
-    this.createMealPlan = (name, notes) => {
-        let mealPrepInfo = [name, notes, this.user.uid]
+    this.createMealPlan = (name, notes, date) => {
+        let mealPrepInfo = [name, notes, this.user.uid, date.toISOString()]
         return $http.post('/users/createMealPlan', mealPrepInfo)
             .then(result => {
                 return result
@@ -21,13 +21,18 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
                 return result
             })
     }
-    //figure out constant and then use resolve
+
     this.getMealPlans = (id) => {
         let userId = [this.user.uid]
         return $http.post('/users/getMealPlans', userId)
             .then(result => {
                 return result
             })
+    }
+
+    this.createEmptyMealPlan = (name, date, id) => {
+        let mealPrepInfo = [name, id, date.toISOString()]
+        return $http.post('/users/createEmptyMealPlan', mealPrepInfo)
     }
 
 
@@ -45,7 +50,8 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
         let mealPrepData = [JSON.stringify(data), $stateParams.id]
         return $http.post('/users/updateMealPlanData', mealPrepData).then(
             result => {
-                return result
+                console.log(result.data)
+                return JSON.parse(result.data[0].recipes)[0]
             }
         )
 
@@ -54,153 +60,35 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
     this.getMealPrepData = (id) => {
         var pageId = $stateParams.id
         return $http.get(`/users/getMealPlanData/${id}`).then(result => {
+            let dates = [];
+            var date = moment(result.data[0].start_date);
+            let begin = moment(date).isoWeekday(1);
+
+            begin.startOf("week");
+
+            for (var i = 0; i < 7; i++) {
+                const result = begin.add(1, "d").format("ddd MMM Do ");
+                dates.push(result);
+            }
+            
+            dates.map(x => {
+                console.log(x)
+            })
+
+            let dateHeader = []
+            let dateHeaderBegin = begin.add(1, "d").format("MMMM D YYYY");
+            dateHeader.push(dateHeaderBegin)
+
+            let dateHeaderEnd = begin.add(6, "d").format("MMMM D YYYY");
+            dateHeader.push(dateHeaderEnd)
+
             if (result.data.length) {
-                return JSON.parse(result.data[0].recipes)
+                let data = [JSON.parse(result.data[0].recipes), dates, dateHeader[0], dateHeader[1]]
+                return data
             } else if (!result.data.length) {
-                return result
+                let data = [JSON.parse(result.data[0].recipes), dates, dateHeader[0], dateHeader[1]]
+                return data
             }
         })
-    }
-
-    this.createCalendar = () => {
-        var d = new Date();
-        var month_name = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-        var month = d.getMonth(); //0-11
-        var year = d.getFullYear(); //2014
-        var first_date = month_name[month] + " " + 1 + " " + year;
-        //September 1 2014
-        var tmp = new Date(first_date).toDateString();
-        //Mon Sep 01 2014 ...
-        var first_day = tmp.substring(0, 3); //Mon
-        var day_name = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-        var day_no = day_name.indexOf(first_day); //1
-        var days = new Date(year, month + 1, 0).getDate(); //30
-        //Tue Sep 30 2014 ...
-        var calendar = this.get_calendar(day_no, days);
-        document.getElementById("calendar-month-year").innerHTML = month_name[month] + " " + year;
-        document.getElementById("calendar-dates").appendChild(calendar);
-    }
-
-    this.get_calendar = function(day_no, days) {
-        var table = document.createElement('table')
-        table.className = "table";
-        var tr = document.createElement('tr');
-
-        //row for the day letters
-        for (var c = 0; c <= 7; c++) {
-            var td = document.createElement('td');
-            td.innerHTML = ["&nbsp;", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"][c];
-            tr.appendChild(td);
-        }
-        table.appendChild(tr);
-
-        //creates morning row
-        tr = document.createElement('tr');
-        var c;
-        for (c = 0; c <= 7; c++) {
-            if (c == day_no) {
-                break;
-            }
-            var td = document.createElement('td');
-            td.innerHTML = "nope";
-            tr.appendChild(td);
-        }
-        for (var c = 1; c <= 8; c++) {
-            if (c === 1) {
-                var td = document.createElement('td');
-                td.innerHTML = "Morning";
-                tr.appendChild(td);
-            } else if (c !== 1) {
-                var td = document.createElement('td');
-                let div = document.createElement('div');
-                div.className = "app";
-                div.setAttribute("ng-repeat", `m${c} in calendarData.morning${c} track by $index`);
-                td.appendChild(div);
-                let img = document.createElement('img')
-                img.setAttribute("ng-src", `{{m${c}.profile_pic_thumbnail`)
-                div.appendChild(img)
-                let text = document.createElement('p')
-                text.innerHTML = `{{m${c}.name}}`
-                div.appendChild(text)
-                td.className = "apps-container";
-                td.setAttribute("ui-sortable", "sortableOptions");
-                td.setAttribute("ng-model", `calendarData.morning${c}`)
-                tr.appendChild(td);
-            }
-        }
-        table.appendChild(tr);
-
-        //create noon row
-        tr = document.createElement('tr');
-        var c;
-        for (c = 0; c <= 7; c++) {
-            if (c == day_no) {
-                break;
-            }
-            var td = document.createElement('td');
-            td.innerHTML = "nope";
-            tr.appendChild(td);
-        }
-        for (var c = 1; c <= 8; c++) {
-            if (c === 1) {
-                var td = document.createElement('td');
-                td.innerHTML = "Noon";
-                tr.appendChild(td);
-            } else if (c !== 1) {
-                var td = document.createElement('td');
-                let div = document.createElement('div');
-                div.className = "app";
-                div.setAttribute("ng-repeat", `n${c} in calendarData.noon${c} track by $index`);
-                td.appendChild(div);
-                let img = document.createElement('img')
-                img.setAttribute("ng-src", `{{n${c}.profile_pic_thumbnail`)
-                div.appendChild(img)
-                let text = document.createElement('p')
-                text.innerHTML = `{{n${c}.name}}`
-                div.appendChild(text)
-                td.className = "apps-container";
-                td.setAttribute("ui-sortable", "sortableOptions");
-                td.setAttribute("ng-model", `calendarData.noon${c}`)
-                tr.appendChild(td);
-            }
-        }
-        table.appendChild(tr);
-
-        //create evening row
-        tr = document.createElement('tr');
-        var c;
-        for (c = 0; c <= 7; c++) {
-            if (c == day_no) {
-                break;
-            }
-            var td = document.createElement('td');
-            td.innerHTML = "nope";
-            tr.appendChild(td);
-        }
-        for (var c = 1; c <= 8; c++) {
-            if (c === 1) {
-                var td = document.createElement('td');
-                td.innerHTML = "Evening";
-                tr.appendChild(td);
-            } else if (c !== 1) {
-                var td = document.createElement('td');
-                let div = document.createElement('div');
-                div.className = "app";
-                div.setAttribute("ng-repeat", `e${c} in calendarData.evening${c} track by $index`);
-                td.appendChild(div);
-                let img = document.createElement('img')
-                img.setAttribute("ng-src", `{{e${c}.profile_pic_thumbnail`)
-                div.appendChild(img)
-                let text = document.createElement('p')
-                text.innerHTML = `{{e${c}.name}}`
-                div.appendChild(text)
-                td.className = "apps-container";
-                td.setAttribute("ui-sortable", "sortableOptions");
-                td.setAttribute("ng-model", `calendarData.morning${c}`)
-                tr.appendChild(td);
-            }
-        }
-        table.appendChild(tr);
-        return table
     }
 })

@@ -19,7 +19,7 @@ angular.module("MPOApp").service("userServ", function($http) {
 
     this.signIn = (email, password) => {
         firebase.auth().signInWithEmailAndPassword(email, password)
-            .then(() => { console.log("logged in") })
+            .then((result) => { console.log("logged in") })
     }
 
     this.signOut = () => {

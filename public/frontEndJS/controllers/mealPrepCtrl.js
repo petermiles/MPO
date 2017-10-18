@@ -3,6 +3,34 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
 
     this.myDate = new Date();
     this.isOpen = false;
+
+
+
+
+
+
+    $scope.createMealPlan = (name, notes, date) => {
+        mealPrepServ.createMealPlan(name, notes, date).then(result => {
+            $scope.mealPlans = result.data
+            return result
+        }).then(result => {
+            // length = result.data.length-1
+            // console.log(result.data[length].id)
+             mealPrepServ.createEmptyMealPlan(name, date, result.data[result.data.length-1].id) 
+        })
+    }
+
+    $scope.deleteMealPlan = (planId) => {
+        mealPrepServ.deleteMealPlan(planId).then(result => {
+            $scope.mealPlans = result.data
+        })
+    }
+
+    $scope.getMealPlans = () => {
+        mealPrepServ.getMealPlans().then(result => {
+            $scope.mealPlans = result.data
+        })
+    }
     // const pageId = $stateParams.id
     // $scope.pageTitle = $stateParams.id
 
