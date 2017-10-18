@@ -19,7 +19,7 @@ angular.module("MPOApp").service("dataServ", function($http) {
         })
     }
 
-    this.searchRecipeBasic = (humanQuery, diet, badIng, reqInstr, intol, recType, limit) => {
+    this.searchRecipeBasic = (humanQuery, offset) => {
         let params = ['?'];
 
         // if (diet) {
@@ -37,6 +37,7 @@ angular.module("MPOApp").service("dataServ", function($http) {
         // if (humanQuery) {
             params.push(`query=${humanQuery}`)
             params.push(`&instructionsRequired=true`)
+            params.push(`&offset=${offset}`)
         // }
         // if (limit) {
             params.push(`&number=12`)
@@ -49,6 +50,7 @@ angular.module("MPOApp").service("dataServ", function($http) {
         console.log(searchQueries)
         return $http.put(`/search/recipeBasic/`, { searchQueries })
             .then(response => {
+                console.log(response)
                 return response
             })
     }

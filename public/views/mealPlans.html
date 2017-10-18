@@ -27,8 +27,32 @@
             <div class="card-body">
                 <h4 class="card-title">{{mealPlan.name}}</h4>
                 <p class="card-text">{{mealPlan.notes}}</p>
-                <button class="btn btn-danger" ng-click="deleteMealPlan(mealPlan.id)">Delete</button>
+                <button class="btn btn-danger text-center" data-toggle="modal" data-target="#confirmDeleteModal">Delete</button>
             </div>
+            </div>
+            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-danger" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="heading lead">Just to make sure...</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true" class="white-text">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <h4 class="text-center"><b>Are you sure you want to delete the</b></h4>
+                                <br>
+                                <h2><b>{{mealPlan.name}}</b></h2>
+                                <br>
+                                <h4><b>Meal Plan?</b></h4>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <a type="button" class="btn btn-danger btn-large" data-dismiss="modal" ng-click="deleteMealPlan(mealPlan.id)" " aria-label="Close ">Delete</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

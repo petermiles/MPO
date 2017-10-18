@@ -10,22 +10,26 @@ angular.module("MPOApp").service("userServ", function($http) {
 
 
     this.createUser = (firstName, lastName, email, password) => {
+        console.log(firstName, lastName, email, password)
         firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
             let userInfo = [user.uid, user.email, firstName, lastName]
-            console.log(userInfo)
+            console.log(user)
             return $http.post('/users/createUser', userInfo)
+        }).catch(err => {
+            console.log(err.message)
         })
     }
 
-    this.signIn = (email, password) => {
-        firebase.auth().signInWithEmailAndPassword(email, password)
-            .then((result) => { console.log("logged in") })
+     this.signIn = (email, password2) => {
+        console.log(email,password2)
+        firebase.auth().signInWithEmailAndPassword(email, password2)
+            .then((result) => { console.log("logged in") }).catch(error => {
+                console.log(error.code)
+            })
     }
 
     this.signOut = () => {
-        firebase.auth().signOut().then(() => {
-            console.log(uid, 'Signed Out');
-        })
+        firebase.auth().signOut().then(() => {})
     }
 
     this.createRecipeBook = (name) => {
@@ -42,7 +46,6 @@ angular.module("MPOApp").service("userServ", function($http) {
 
     this.deleteBook = (bookId) => {
         let books = [bookId, this.user.uid]
-        console.log(books)
         return $http.post(`/users/deleteBook`, books)
             .then((result) => { return result })
     }
@@ -126,10 +129,8 @@ angular.module("MPOApp").service("userServ", function($http) {
                         let amount = (x.amount / servings)
                         let podn = (x.percentOfDailyNeeds * 10)
                         let recipeNutrition = [recipeId, x.title, amount, x.unit, x.percentOfDailyNeeds]
-                        console.log()
                         return $http.post('/users/saveRecipeNutrition', recipeNutrition).then(result => {
                             let existingNutritionObj = { title: recipe[0], recipeId: recipe[1], image: recipe[2], thumbnail: recipe[3], pricePerServing: recipe[4], nutrition: result.data }
-                            console.log(existingNutritionObj)
                             return existingNutritionObj
                         })
                     })

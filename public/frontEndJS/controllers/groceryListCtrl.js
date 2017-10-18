@@ -10,6 +10,7 @@ angular.module('MPOApp').controller('groceryListCtrl', function($scope, userServ
     }
 
     $scope.getGroceryLists = () => {
+        console.log("test")
         groceryListServ.getGroceryLists().then(result => {
             $scope.groceryLists = result.data
         })

@@ -16,12 +16,13 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
         }).then(result => {
             // length = result.data.length-1
             // console.log(result.data[length].id)
-             mealPrepServ.createEmptyMealPlan(name, date, result.data[result.data.length-1].id) 
+            mealPrepServ.createEmptyMealPlan(name, date, result.data[result.data.length - 1].id)
         })
     }
 
     $scope.deleteMealPlan = (planId) => {
         mealPrepServ.deleteMealPlan(planId).then(result => {
+            $(".modal-backdrop").hide();
             $scope.mealPlans = result.data
         })
     }

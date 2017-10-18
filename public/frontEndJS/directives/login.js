@@ -1,27 +1,17 @@
-// angular.module("MPOApp").directive("login", function() {
-//   // return {
-//   //   restrict: "E",
-//   //   templateUrl: "./views/directives/login.html",
-//   //   controller: function($scope, $location) {
-//   //     var uiConfig = {
-//   //       signInSuccessUrl: '<url-to-redirect-to-on-success>',
-//   //       signInOptions: [
-//   //         // Leave the lines as is for the providers you want to offer your users.
-//   //         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-//   //         firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-//   //         firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-//   //         firebase.auth.GithubAuthProvider.PROVIDER_ID,
-//   //         firebase.auth.EmailAuthProvider.PROVIDER_ID,
-//   //         firebase.auth.PhoneAuthProvider.PROVIDER_ID
-//   //       ],
-//   //       // Terms of service url.
-//   //       tosUrl: '<your-tos-url>'
-//   //     };
+"use strict";
+angular.module("MPOApp").directive("login", function() {
+    return {
+        restrict: "E",
+        templateUrl: "views/directives/login.html",
+        controller: function($scope, userServ) {
+            $scope.userInfo = userServ.userInfo
+            $scope.createUser = userServ.createUser;
+            $scope.signIn = (email, password) => {
+                console.log(email, password)
+                userServ.signIn(email, password)
+            }
+            $scope.signOut = userServ.signOut
+        }
 
-//   //     // Initialize the FirebaseUI Widget using Firebase.
-//   //     var ui = new firebaseui.auth.AuthUI(firebase.auth());
-//   //     // The start method will wait until the DOM is loaded.
-//   //     ui.start('#firebaseui-auth-container', uiConfig);
-//   //   }
-//   // };
-// });
+    }
+});

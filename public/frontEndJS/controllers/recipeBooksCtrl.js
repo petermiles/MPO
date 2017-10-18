@@ -1,5 +1,4 @@
 angular.module('MPOApp').controller('recipeBooksCtrl', function($scope, userServ, $stateParams, recipes) {
-    console.log(recipes)
 
     if (!recipes.data.length) {
         $scope.noBooks = true

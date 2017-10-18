@@ -50,7 +50,6 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
         let mealPrepData = [JSON.stringify(data), $stateParams.id]
         return $http.post('/users/updateMealPlanData', mealPrepData).then(
             result => {
-                console.log(result.data)
                 return JSON.parse(result.data[0].recipes)[0]
             }
         )
@@ -70,10 +69,6 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
                 const result = begin.add(1, "d").format("ddd MMM Do ");
                 dates.push(result);
             }
-            
-            dates.map(x => {
-                console.log(x)
-            })
 
             let dateHeader = []
             let dateHeaderBegin = begin.add(1, "d").format("MMMM D YYYY");

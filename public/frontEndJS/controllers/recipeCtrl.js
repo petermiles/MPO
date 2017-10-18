@@ -36,10 +36,6 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
         $scope.pricePerServing = (result.data.pricePerServing / 100).toFixed(2)
         $scope.recipeIngredients = result.data.extendedIngredients
         $scope.recipeInstructions = result.data.analyzedInstructions[0].steps
-        /////////////////////
-
-
-
         return $scope.recipeData = result.data
     })
 

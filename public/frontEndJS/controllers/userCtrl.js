@@ -13,14 +13,11 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
 
 
     $scope.userInfo = userServ.userInfo
-    $scope.createUser = userServ.createUser
-    $scope.signIn = (email, password) => {
+    $scope.createUser = userServ.createUser;
+    $scope.signIn = (email) => {
+        let password = $scope.passwordSignIn
+        console.log(email, password)
         userServ.signIn(email, password)
-            .then(result => {
-                console.log(result)
-            }).catch(error => {
-                console.log(error)
-            })
     }
     $scope.signOut = userServ.signOut
 
@@ -28,9 +25,9 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
 
     $scope.createRecipeBook = (name) => {
         userServ.createRecipeBook(name)
-            .then((result => {
+            .then(result => {
                 return $scope.userBooks = result.data
-            }))
+            })
     }
     $scope.getRecipeBooks = () => {
         userServ.getRecipeBooks()
@@ -46,24 +43,6 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
                 $(".modal-backdrop").hide();
                 return $scope.userBooks = result.data
             })
-    }
-
-    $scope.createMealPlan = (name, notes) => {
-        mealPrepServ.createMealPlan(name, notes).then(result => {
-            $scope.mealPlans = result.data
-        })
-    }
-
-    $scope.deleteMealPlan = (planId) => {
-        mealPrepServ.deleteMealPlan(planId).then(result => {
-            $scope.mealPlans = result.data
-        })
-    }
-
-    $scope.getMealPlans = () => {
-        mealPrepServ.getMealPlans().then(result => {
-            $scope.mealPlans = result.data
-        })
     }
 
 })

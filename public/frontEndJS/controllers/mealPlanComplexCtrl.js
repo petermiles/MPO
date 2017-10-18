@@ -63,7 +63,6 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
     $scope.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7) => {
         mealPrepServ.getMealPrepData(pageId).then(result => {
             mealPrepServ.updateMealPlanData(morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7).then(result => {
-            	console.log(result)
                 if (result) {
                     return result
                 } 
