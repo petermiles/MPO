@@ -129,7 +129,19 @@ angular.module("MPOApp").service("dataServ", function($http) {
         let recipeId = { id }
         return $http.put(`/search/getRecipeInfo/`, recipeId)
             .then(response => {
-                return response
+                let steps = response.data.analyzedInstructions[0].steps
+                let fixedSteps = []
+
+                _.map(steps, x => {
+                    if (x.step.length > 1){
+                        fixedSteps.push(x)
+                    }
+                })
+                for( var i = 0; i < fixedSteps.length; i++) {
+                    fixedSteps[i].number = i+1
+                }
+                let responseData = [response, fixedSteps]
+                return responseData
             })
     }
 })

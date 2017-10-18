@@ -29,14 +29,14 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
     }
 
     dataServ.getRecipeInfo($stateParams.id).then((result) => {
-        console.log(result.data)
-        $scope.diets = result.data.diets.join(', ').replace(/,(?!.*,)/gmi, ' and');
-        $scope.stepsLength = result.data.analyzedInstructions[0].steps.length
-        $scope.ingredientLength = result.data.extendedIngredients.length
-        $scope.pricePerServing = (result.data.pricePerServing / 100).toFixed(2)
-        $scope.recipeIngredients = result.data.extendedIngredients
-        $scope.recipeInstructions = result.data.analyzedInstructions[0].steps
-        return $scope.recipeData = result.data
+        console.log(result)
+        $scope.diets = result[0].data.diets.join(', ').replace(/,(?!.*,)/gmi, ' and');
+        $scope.stepsLength = result[0].data.analyzedInstructions[0].steps.length
+        $scope.ingredientLength = result[1].length
+        $scope.pricePerServing = (result[0].data.pricePerServing / 100).toFixed(2)
+        $scope.recipeIngredients = result[0].data.extendedIngredients
+        $scope.recipeInstructions = result[1]
+        return $scope.recipeData = result[0].data
     })
 
     $scope.saveRecipeToBook = (title, recipeId, image, id, pricePerServing, data) => {

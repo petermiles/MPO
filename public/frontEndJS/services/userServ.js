@@ -4,7 +4,7 @@ angular.module("MPOApp").service("userServ", function($http) {
         if (user) {
             this.user = user
             return user
-        };
+        } 
     })
 
 
@@ -20,12 +20,21 @@ angular.module("MPOApp").service("userServ", function($http) {
         })
     }
 
-     this.signIn = (email, password2) => {
-        console.log(email,password2)
+    this.signIn = (email, password) => {
         firebase.auth().signInWithEmailAndPassword(email, password2)
             .then((result) => { console.log("logged in") }).catch(error => {
                 console.log(error.code)
             })
+    }
+
+    this.signInAsGuest = () => {
+        firebase.auth().signInAnonymously().then(user => {
+                console.log(user)
+            })
+            .catch(function(error) {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+            });
     }
 
     this.signOut = () => {

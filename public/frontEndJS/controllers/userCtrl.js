@@ -21,6 +21,8 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
     }
     $scope.signOut = userServ.signOut
 
+    $scope.signInAsGuest = userServ.signInAsGuest
+
     $scope.loginWithPhoneNumber = userServ.loginInWithPhoneNumber
 
     $scope.createRecipeBook = (name) => {
@@ -32,6 +34,7 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
     $scope.getRecipeBooks = () => {
         userServ.getRecipeBooks()
             .then(result => {
+                console.log(result)
                 return $scope.userBooks = result.data
             })
     }
