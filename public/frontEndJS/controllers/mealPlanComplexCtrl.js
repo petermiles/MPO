@@ -1,7 +1,4 @@
 angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $rootScope, mealPrepServ, $stateParams, userServ, mealPlans) {
-    console.log(mealPlans)
-    console.log(mealPlans[0])
-
     $scope.dates = mealPlans[1]
     $scope.dateHeaderBegin = mealPlans[2]
     $scope.dateHeaderEnd = mealPlans[3]
@@ -35,26 +32,29 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
     }
 
     $scope.sortableOptions = {
+        tolerance: "pointer",
         connectWith: ".apps-container",
         start: function(e, ui) {
             $scope.sourceModelClone = ui.item.sortable.sourceModel.slice();
+            ui.item.show().addClass('original-placeholder');
         },
         stop: function(e, ui) {
+            console.log(ui)
             if (
                 $(e.target).hasClass("source") &&
                 ui.item.sortable.droptarget &&
                 e.target != ui.item.sortable.droptarget[0]
             ) {
                 ui.item.sortable.sourceModel.length = 0;
-                // clone the original model to restore the removed item
                 Array.prototype.push.apply(
                     ui.item.sortable.sourceModel,
                     $scope.sourceModelClone
                 );
                 $scope.sourceModelClone = null;
-            }
+            } 
         },
-        'ui-floating': true
+
+        'ui-floating': false
     };
 
 
@@ -65,7 +65,7 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
             mealPrepServ.updateMealPlanData(morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7).then(result => {
                 if (result) {
                     return result
-                } 
+                }
             })
             // } 
             // else if (!result.data[0].recipes) {

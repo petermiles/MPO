@@ -165,7 +165,6 @@ const saveItemsToGroceryList = (req, res) => {
         .get('db')
         .add_items_to_grocery_list(req.body)
         .then(result => {
-            console.log(result)
             return res.json(result)
         })
 }

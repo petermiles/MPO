@@ -9,8 +9,6 @@ const generateMealPlan = (req, res) => {
 }
 
 const searchRecipeBasic = (req, res) => {
-    console.log(req.body)
-
     axios.get(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/search/${req.body.searchQueries}`)
         .then((result) => {
             res.json(result.data.results)

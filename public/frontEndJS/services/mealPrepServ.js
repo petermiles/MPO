@@ -60,8 +60,6 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
         var pageId = $stateParams.id
         return $http.get(`/users/getMealPlanData/${id}`).then(result => {
             let dates = [];
-            // let dateSubstring = 
-            console.log(result.data[0].start_date)
             var date = moment(result.data[0].start_date);
             let begin = moment(date).isoWeekday(0);
 
@@ -70,8 +68,6 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
             for (var i = 0; i < 7; i++) {
                 const result = begin.add(1, "d").format("ddd MMM Do ");
                 dates.push(result);
-
-                console.log(result)
             }
 
 
