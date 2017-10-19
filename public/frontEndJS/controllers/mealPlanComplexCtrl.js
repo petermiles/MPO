@@ -4,10 +4,10 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
     $scope.dateHeaderEnd = mealPlans[3]
 
 
-    this.myDate = new Date();
+    // this.myDate = new Date();
     this.isOpen = false;
     const pageId = $stateParams.id
-    $scope.pageTitle = mealPlans.name
+    $scope.pageTitle = mealPlans[4]
 
     $scope.getRecipeBooks = () => {
         userServ.getRecipeBooks().then(result => {
@@ -31,34 +31,7 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
             })
     }
 
-    $scope.sortableOptions = {
-        tolerance: "pointer",
-        connectWith: ".apps-container",
-        start: function(e, ui) {
-            $scope.sourceModelClone = ui.item.sortable.sourceModel.slice();
-            ui.item.show().addClass('original-placeholder');
-        },
-        stop: function(e, ui) {
-            console.log(ui)
-            if (
-                $(e.target).hasClass("source") &&
-                ui.item.sortable.droptarget &&
-                e.target != ui.item.sortable.droptarget[0]
-            ) {
-                ui.item.sortable.sourceModel.length = 0;
-                Array.prototype.push.apply(
-                    ui.item.sortable.sourceModel,
-                    $scope.sourceModelClone
-                );
-                $scope.sourceModelClone = null;
-            } 
-        },
-
-        'ui-floating': false
-    };
-
-
-
+    $scope.deletedItems = []
 
     $scope.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7) => {
         mealPrepServ.getMealPrepData(pageId).then(result => {
@@ -76,6 +49,7 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
         })
     }
 
+
     var calendarCells = {}
     for (var i = 0; i < 7; i++) {
         calendarCells['morning' + (i + 1)] = []
@@ -88,5 +62,36 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
         $scope.calendarData = mealPlans[0][0]
     }
 
+    $scope.sortableOptions = {
+        tolerance: 'pointer',
+        containment: "body",
+        helper: 'sortable-placeholder',
+        'ui-floating': true,
+        connectWith: ".apps-container",
+        start: function(e, ui) {
+            $scope.sourceModelClone = ui.item.sortable.sourceModel.slice();
+            ui.item.show().addClass('original-placeholder');
+        },
+        stop: function(e, ui) {
+            if (
+                $(e.target).hasClass('source') &&
+                ui.item.sortable.droptarget &&
+                e.target != ui.item.sortable.droptarget[0]
+            ) {
+                ui.item.sortable.sourceModel.length = 0;
+                Array.prototype.push.apply(
+                    ui.item.sortable.sourceModel,
+                    $scope.sourceModelClone
+                );
+                $scope.sourceModelClone = null;
+            } else if (
+                $(e.target).hasClass('delete') &&
+                ui.item.sortable.droptarget &&
+                e.target != ui.item.sortable.droptarget[0]
+            ) {
 
+            }
+            $scope.saveMealPlanData($scope.calendarData.morning1, $scope.calendarData.morning2, $scope.calendarData.morning3,$scope.calendarData.morning4, $scope.calendarData.morning5, $scope.calendarData.morning6, $scope.calendarData.morning7, $scope.calendarData.noon1, $scope.calendarData.noon2, $scope.calendarData.noon3, $scope.calendarData.noon4, $scope.calendarData.noon5, $scope.calendarData.noon6, $scope.calendarData.noon7, $scope.calendarData.evening1, $scope.calendarData.evening2, $scope.calendarData.evening3, $scope.calendarData.evening4, $scope.calendarData.evening5, $scope.calendarData.evening6, $scope.calendarData.evening7)
+        }
+    };
 })

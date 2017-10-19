@@ -79,10 +79,10 @@ angular.module('MPOApp').service('mealPrepServ', function($http, $stateParams, $
             dateHeader.push(dateHeaderEnd)
 
             if (result.data.length) {
-                let data = [JSON.parse(result.data[0].recipes), dates, dateHeader[0], dateHeader[1]]
+                let data = [JSON.parse(result.data[0].recipes), dates, dateHeader[0], dateHeader[1], result.data[0].name]
                 return data
             } else if (!result.data.length) {
-                let data = [JSON.parse(result.data[0].recipes), dates, dateHeader[0], dateHeader[1]]
+                let data = [JSON.parse(result.data[0].recipes), dates, dateHeader[0], dateHeader[1], result.data[0]]
                 return data
             }
         })

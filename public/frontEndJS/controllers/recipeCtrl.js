@@ -1,5 +1,6 @@
 angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $stateParams, userServ, recipeServ, groceryListServ) {
-
+    $scope.recipeResultsShow = false;
+    $scope.loadingIconShow = false;
     $scope.groceryListExist = true;
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -29,7 +30,8 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
     }
 
     dataServ.getRecipeInfo($stateParams.id).then((result) => {
-        console.log(result)
+        $scope.loadingIconShow = true;
+        $scope.recipeResultsShow = true;
         $scope.diets = result[0].data.diets.join(', ').replace(/,(?!.*,)/gmi, ' and');
         $scope.stepsLength = result[0].data.analyzedInstructions[0].steps.length
         $scope.ingredientLength = result[1].length
@@ -46,6 +48,9 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
         })
 
     }
+
+
+
 
 
     $scope.booksExist = true;

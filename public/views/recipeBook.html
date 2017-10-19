@@ -1,9 +1,9 @@
 <div class="container" ng-init="getRecipeBooks()">
     <h1 class="text-center display-1">My Recipe Books</h1>
     <!-- Add "users" Recipe Books -->
-    <form>
+    <form class="md-form">
         <div class="md-form">
-            <textarea type="text" id="form7" class="md-textarea" ng-model="name"></textarea>
+            <input type="text" id="form7" class="form-control" ng-model="name"></input>
             <label for="form7">Book Name</label>
         </div>
         <div class="text-center">
@@ -19,7 +19,6 @@
                     <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
                     <div class="card-body center">
                         <h1 class="card-title"><b>{{books.name}}</b></h1>
-                        <p class="card-text"></p>
                         <a class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
                     </div>
                 </div>

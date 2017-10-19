@@ -1,27 +1,38 @@
 <div class="container-fluid">
     <h1 class="text-center">{{pageTitle}}</h1>
     <div class="row">
-        <div class="col-12">
-            <div id="calendar">
-                <table class="table">
+        <div id="recipeBoxSideBar" class="displayNone sideBarTransition table">
+            <div class="card">
+                <button ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source">
+                    <div ng-repeat="recipe in recipes">
+                        <img class="img-fluid" ng-src="{{recipe.profile_pic_thumbnail}}">
+                        <p>{{recipe.name}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12" id="calendar">
+            <div>
+                <table>
                     <thead id="calendarHeader">
                         <tr id="calendar-week">
-                            <td align="center" id="backButton" style="width:25px">Back</td>
+                            <td align="center" class="green" id="openRecipeBox" style="width:25px" recipe-list-box ng-click="getRecipeBooks()">
+                                <span class="addButtonCalendar"> 
+                                    +
+                                </span>
+                            </td>
                             <td colspan="7" id="calendarHead" class="today">
                                 <div class="posRel-wid100">
-                                    <span class="prevWeek" title="previousWeek" ng-click="previousWeek()"></span>
                                     <div id="currentWeek" class="text-center"><b>{{dateHeaderBegin}}</b> <b>-</b> <b>{{dateHeaderEnd}}</b></div>
                                 </div>
                             </td>
-                            
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="table">
                         <tr>
                             <td>&nbsp;</td>
-                            <!-- <div ng-repeat="date in dates"> -->
                             <td class="text-center" ng-repeat="date in dates"> {{date}} </td>
-                            <!-- </div> -->
                         </tr>
                         <tr>
                             <td class="dayPeriod">Morning</td>
@@ -160,77 +171,9 @@
                         </tr>
                     </tbody>
                 </table>
-                <button class="btn" ng-click="saveMealPlanData(calendarData.morning1,calendarData.morning2,calendarData.morning3,calendarData.morning4,calendarData.morning5,calendarData.morning6,calendarData.morning7,calendarData.noon1,calendarData.noon2,calendarData.noon3,calendarData.noon4,calendarData.noon5,calendarData.noon6,calendarData.noon7,calendarData.evening1,calendarData.evening2,calendarData.evening3,calendarData.evening4,calendarData.evening5,calendarData.evening6,calendarData.evening7)"> Save Meal Prep </button>
-                <button class="btn btn-primary" ng-click="getMealPrepData()">
-                    Get Data
-                </button>
-                <div class="btn btn-danger delete float-right" style="width:500px; height:500px"> Delete From Meal Plan</div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="row calendarPadding">
-            <div class="col-12">
-                <!--           <div class="servingSetUp testBg sideBarPadding">
-                <div class="panel-heading" role="tab" id="servingsInfo">
-                    <h4 class="panel-title text-center">
-        <button class="btn" data-target="#servingsCollapse" data-toggle="collapse"  aria-expanded="true" aria-controls="servingsCollapse" class="trigger collapsed">
-          Servings
-        </button>
-      </h4>
-                </div>
-                <div id="servingsCollapse" class="panel-collapse collapse" role="tabpanel" aria-labelledby="servingsInfo">
-                    <div class="panel-body">
-                        <input type="text" placeholder="How many are you serving?">
-                    </div>
-                </div>
-            </div> -->
-                <!-- <div class="recipeSetup testBg sideBarPadding sticky-bottom">
-                    <div class="panel-heading" role="tab" id="headingTwo">
-                        <h4 class="text-center">
-        <button class="btn" role="button" data-target="#recipeBookNames" data-toggle="collapse" aria-expanded="true" aria-controls="recipeBookNames" class="trigger collapsed" ng-click="getRecipeBooks()">
-          Recipes
-        </button>
-      </h4> -->
-                <!-- </div> -->
-                <!-- <div id="recipeBookNames" class="panel-collapse collapse zindex1" role="tabpanel" aria-labelledby="headingTwo" z-index="">
-                        <div class="panel-body">
-                            <input type="text" name="searchRecipes" placeholder="Search Your Recipe Boxes">
-                            <button ng-repeat="books in recipeBooks" class="btn" data-toggle="collapse" href="#booksRecipes" aria-expanded="true" aria-controls="booksRecipes" class="trigger" ng-click="getRecipes(books.id)">{{books.name}}</button>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading" role="tab" id="recipesInBooks">
-                            </div>
-                            <div id="booksRecipes" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="recipesInBooks">
-                                <div ui-sortable="sortableOptions" class="apps-container source" ng-model="recipes">
-                                    <div class="app" ng-repeat="recipe in recipes">
-                                        <img ng-src="{{recipe.profile_pic_thumbnail}}">
-                                        <p>{{recipe.name}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-            </div>
-        </div>
-    </div>
-    <div id="mybutton">
-        <button class="btn btn-primary" data-target="#recipeBookNames" data-toggle="collapse" ng-click="getRecipeBooks()">Add Recipes</button>
-        <div id="recipeBookNames" class="panel-collapse collapse salmonBg" role="tabpanel" aria-labelledby="headingTwo" z-index="">
-            <div class="panel-body">
-                <!-- <input type="text" name="searchRecipes" placeholder="Search Your Recipe Boxes"> -->
-                <button ng-repeat="books in recipeBooks" class="btn" data-toggle="collapse" href="#booksRecipes" aria-expanded="true" aria-controls="booksRecipes" class="trigger" ng-click="getRecipes(books.id)">{{books.name}}</button>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading" role="tab" id="recipesInBooks">
-                </div>
-                <div id="booksRecipes" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="recipesInBooks">
-                    <div ui-sortable="sortableOptions" class="apps-container source" ng-model="recipes">
-                        <div class="app" ng-repeat="recipe in recipes">
-                            <img ng-src="{{recipe.profile_pic_thumbnail}}">
-                            <p>{{recipe.name}}</p>
-                        </div>
-                    </div>
+                <button class="btn" ng-click="saveMealPlanData(calendarData.morning1,calendarData.morning2,calendarData.morning3,calendarData.morning4,calendarData.morning5,calendarData.morning6,calendarData.morning7,calendarData.noon1,calendarData.noon2,calendarData.noon3,calendarData.noon4,calendarData.noon5,calendarData.noon6,calendarData.noon7,calendarData.evening1,calendarData.evening2,calendarData.evening3,calendarData.evening4,calendarData.evening5,calendarData.evening6,calendarData.evening7)"> Save Meal Plan </button>
+                <div ui-sortable='sortableOptions' class="btn btn-danger float-right apps-container center" ng-model="deletedItems">
+                    <div>Delete From Meal Plan</div>
                 </div>
             </div>
         </div>

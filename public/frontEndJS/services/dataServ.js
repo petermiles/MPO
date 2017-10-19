@@ -14,43 +14,20 @@ angular.module("MPOApp").service("dataServ", function($http) {
 
     this.parseGroceryListSearch = (text) => {
         return $http.post('/search/parseGroceryListSearch', [text])
-        .then(result => {
-            return result
-        })
+            .then(result => {
+                return result
+            })
     }
 
     this.searchRecipeBasic = (humanQuery, offset) => {
         let params = ['?'];
-
-        // if (diet) {
-        //     params.push(`&diet=${diet}`)
-        // }
-        // if (badIng) {
-        //     params.push(`&excludeIngredients=${badIng}`)
-        // }
-        // if (reqInstr) {
-        //     params.push(`&instructionsRequired=true`)
-        // }
-        // // if (intol) {
-        // //     params.push(`&intolerances=${intol}`)
-        // // }
-        // if (humanQuery) {
-            params.push(`query=${humanQuery}`)
-            params.push(`&instructionsRequired=true`)
-            params.push(`&offset=${offset}`)
-        // }
-        // if (limit) {
-            params.push(`&number=12`)
-        // }
-        // if (recType) {
-        //     params.push(`&type=${recType}`)
-        // }
+        params.push(`query=${humanQuery}`)
+        params.push(`&instructionsRequired=true`)
+        params.push(`&offset=${offset}`)
+        params.push(`&number=12`)
         let searchQueries = params.join('')
-
-        console.log(searchQueries)
         return $http.put(`/search/recipeBasic/`, { searchQueries })
             .then(response => {
-                console.log(response)
                 return response
             })
     }
@@ -87,7 +64,7 @@ angular.module("MPOApp").service("dataServ", function($http) {
                     // console.log(result.data)
                     return result.data
                 })
-                } else if (x.unit == "") {
+            } else if (x.unit == "") {
                 // console.log(x, "has no unit")
                 let params = ['?', `amount=${x.amount}`]
                 return $http.put('/search/getRecipeNutrition', { "id": x.id, "searchQueries": params.join('') }).then(result => {
@@ -112,7 +89,6 @@ angular.module("MPOApp").service("dataServ", function($http) {
                 }
             }
             let middleData = [mergedNutrients, servings]
-            console.log(middleData)
             return middleData
         }).then(result => {
             let data = result[0]
@@ -133,12 +109,12 @@ angular.module("MPOApp").service("dataServ", function($http) {
                 let fixedSteps = []
 
                 _.map(steps, x => {
-                    if (x.step.length > 1){
+                    if (x.step.length > 1) {
                         fixedSteps.push(x)
                     }
                 })
-                for( var i = 0; i < fixedSteps.length; i++) {
-                    fixedSteps[i].number = i+1
+                for (var i = 0; i < fixedSteps.length; i++) {
+                    fixedSteps[i].number = i + 1
                 }
                 let responseData = [response, fixedSteps]
                 return responseData

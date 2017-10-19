@@ -1,4 +1,7 @@
-<div class="container paddingTop">
+<div ng-hide="loadingIconShow" class="vertCenter">
+    <h1> loading</h1>
+</div>
+<div ng-show="recipeResultsShow" class="container paddingTop">
     <div class="row">
         <div class="col-8">
             <h1 class="text-center h1-responsive display-2"><b>{{recipeData.title}}</b></h1>
@@ -61,7 +64,7 @@
     </div>
     <div class="row">
         <div class="col-4"><img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipeData.id}}-556x370.jpg" alt="{{recipeData.title}}"></div>
-        <div class="col-8 center">
+        <div class="col-8">
             <div class="row">
                 <div class="col-12">
                     <h3 class="text-center h3-responsive">
@@ -87,15 +90,25 @@
         </div>
     </div>
     <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
-    <h1 class="h1-responsive borderBot1px">Instructions</h1>
-    <div class="row instructionsBreak" ng-repeat="instruction in recipeInstructions">
-        <div class="col-1 center">
-            <h1>{{instruction.number}}</h1>
-        </div>
-        <hr>
-        <div class="col-11 center">
-            <p class="text-center">{{instruction.step}} </p>
+    <div class="container-fluid">
+        <h1 class="h1-responsive text-center">Instructions</h1>
+    </div>
+    <div class="container-fluid ">
+        <div class="row " ng-repeat="instruction in recipeInstructions ">
+            <!-- <div class="col-1 center ">
+            <h1 class="instructionNumber ">{{instruction.number}}</h1>
+        </div> -->
+            <div class="col-12 card growInstructions hoverable instructionSpacing instructionStyles ">
+                <div class="row ">
+                    <div class="col-1 center ">
+                        <!-- <div class="card-body "> -->
+                        <h1 class="instructionNumber display-3 ">{{instruction.number}}</h1>
+                        <!-- </div> -->
+                    </div>
+                    <div class="col-11 ">
+                        <h5 class="instructionStyles text-center "><b>{{instruction.step}}</b> </h5>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-{{recipeNutrition}}

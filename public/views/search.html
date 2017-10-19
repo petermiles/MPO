@@ -1,76 +1,33 @@
-<!-- <section id="mealPlan">
-<form> 
-    <h1>Generate Meal Plan</h1>
-    <input type="text" ng-model="calories" placeholder="Calories">
-    <input type="text" ng-model="timeframe" placeholder="Time Frame">
-    <button type="submit" name="button" ng-click="generateMealPlan(calories,timeframe)">Submit</button>
-</form>
-
-<div ng-repeat="meal in mealPlans">
-    {{meal}} <br>
-    <hr>
-</div>
-</section> -->
-<div class="container">
-    <div class="row searchHero">
-        <div class="md-form col-10">
-            <input type="text" ng-model="humanQuery" placeholder="What Do You Want To Cook?" ng-submit="searchRecipeBasic(humanQuery)">
-        </div>
-        <div class="col-2">
-            <button class="btn btn-primary btn-sm" type="submit" name="button" ng-click="searchRecipeBasic(humanQuery)">Submit</button>
-            <button class="btn btn-primary btn-large" type="submit" name="button" ng-click="nextPage(humanQuery)">Next</button>
+<div class="container-fluid searchPagePadding">
+    <div class="container">
+        <div class="row searchHero">
+            <form class="md-form col-12" ng-submit="searchRecipeBasic(humanQuery)">
+                <input type="text" ng-model="humanQuery" placeholder="What Do You Want To Cook?" ng-submit="searchRecipeBasic(humanQuery)">
+                <input class="displayNone" type="submit" id="submit" value="Submit" />
+            </form>
         </div>
     </div>
-</div>
-<div ng-show="resultsShown">
-    <div class="row recipeResults">
-        <div class="col-4" ng-repeat="recipe in recipeResults">
-            <a ng-click="getRecipeInfo(recipe.id)" ui-sref="recipeCard({id:recipe.id})">
-                <div class="card hoverable">
-                    <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="{{recipe.title}}">
-                    <div class="card-body">
-                        <h4 class="card-title text-center">{{recipe.title}}</h4>
+    <div ng-show="resultsShown">
+        <div class="row recipeResults">
+            <div class="col-4 recipeCard" ng-repeat="recipe in recipeResults">
+                <a ng-click="getRecipeInfo(recipe.id)" ui-sref="recipeCard({id:recipe.id})">
+                    <div class="card hoverable">
+                        <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="{{recipe.title}}">
+                        <div class="recipeTitleOverlay">
+                            <h2 class="h2-responsive">{{recipe.title}}</h2>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
-<div ng-show="noResults" class="center">
-    <h1 class="text-center">we couldn't find results that match {{humanQuery}}</h1>
-</div>
-<!-- <div class="row">
-<div class="modal fade" id="basicExample" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                </a>
             </div>
         </div>
     </div>
+    <div ng-show="noResults" class="center">
+        <h1 class="text-center">we couldn't find results that match {{humanQuery}}</h1>
+    </div>
+    <div ng-show="resultsShown" class="center paginationPadding">
+        <ul class="pagination">
+            <button class="btn btn-large btn-primary" ng-click="decrementOffset()" ng-show="showPreviousButton">Go Back A Page</button>
+            <button class="btn btn-large btn-primary" ng-click="incrementOffset()" ng-show="showNextButton">Show More Results</button>
+        </ul>
+    </div>
 </div>
-</div>
-<section id ="searchRecipeBasic">
-<form>
-    
-    <h1>Search Recipes Basic</h1>
-
-    <input type="text" ng-model="humanQuery" placeholder="What Do You Want To Cook?">
-    <input type="text" ng-model= "diet" placeholder="Are you following a diet? Vegan, Vegetarian, Ovo Lacto, etc.">
-    <input type="text" ng-model="badIng" placeholder="What Ingredients don't you like?">
-    <input type="text" ng-model="reqInstr" placeholder="Want to Show Instructions?">
-    <input type="text" ng-model="intol" placeholder="Have any intolerances? ">
-    <input type="text" ng-model="recType" placeholder="Main Course, Side Dish, Dessert, Drink, etc.">
-    <input type="text" ng-model="limit" placeholder="Recipes Shown">
-    <button type="submit" name="button" ng-click="searchRecipeBasic(humanQuery, diet, badIng, reqInstr, intol, recType, limit)">Submit</button>
-</form> -->
-<!-- </section>
