@@ -60,7 +60,7 @@ angular.module('MPOApp').controller('dataCtrl', function($scope, dataServ) {
         $scope.offset -= 12
         dataServ.searchRecipeBasic($scope.humanQuery, $scope.offset).then((result) => {
             if (result.data[0].id === $scope.firstResult) {
-                $scope.showPreviousButton = true;
+                $scope.showPreviousButton = false;
             }
             if (!result.data.length) {
                 $scope.resultsShown = false;
