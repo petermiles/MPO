@@ -1,7 +1,7 @@
 <div ng-hide="loadingIconShow" class="vertCenter">
     <h1> loading</h1>
 </div>
-<div ng-show="recipeResultsShow" class="container-fluid paddingTop">
+<div ng-show="recipeResultsShow" class="container paddingTop">
     <div class="row">
         <div class="col-8">
             <h1 class="text-center h1-responsive display-2"><b>{{recipeData.title}}</b></h1>
@@ -90,8 +90,8 @@
     <div class="row">
         <div class="col-3" ng-repeat="ingredient in recipeIngredients" ng-model="recipeIngredients">
             <div class="center">
-                <img class="img-fluid ingredient-image" ng-src='{{ingredient.image}}' alt="{{ingredient.title}}">
-            </div>
+            <img class="img-fluid ingredient-image" ng-src='{{ingredient.image}}' alt="{{ingredient.title}}">
+        </div>
             <h4 class="card-title text-center"><b>{{ingredient.amount}} {{ingredient.unit}}</b> {{ingredient.name}}</h4>
         </div>
     </div>
