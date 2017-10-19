@@ -13,7 +13,7 @@
                                     <div id="currentWeek" class="text-center"><b>{{dateHeaderBegin}}</b> <b>-</b> <b>{{dateHeaderEnd}}</b></div>
                                 </div>
                             </td>
-                            <td id="backButton" style="width:25px ">Next</td>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -24,7 +24,7 @@
                             <!-- </div> -->
                         </tr>
                         <tr>
-                            <td>Morning</td>
+                            <td class="dayPeriod">Morning</td>
                             <td align="center" id="sortableLists" ui-sortable="sortableOptions" class="apps-container" ng-model="calendarData.morning1">
                                 <div class="app text-center" ng-repeat="m1 in calendarData.morning1 track by $index">
                                     <img class="img-fluid" ng-src="{{m1.profile_pic_thumbnail}}">
@@ -69,7 +69,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="center">Noon</td>
+                            <td class="dayPeriod">Noon</td>
                             <td align="center" id="sortableLists" ui-sortable="sortableOptions" class="apps-container screen floatleft" ng-model="calendarData.noon1">
                                 <div class="app text-center" ng-repeat="n1 in calendarData.noon1 track by $index">
                                     <img class="img-fluid" ng-src="{{n1.profile_pic_thumbnail}}">
@@ -114,7 +114,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td align="center">Evening</td>
+                            <td class="dayPeriod">Evening</td>
                             <td align="center" id="sortableLists" ui-sortable="sortableOptions" class="apps-container screen floatleft" ng-model="calendarData.evening1">
                                 <div class="app text-center" ng-repeat="e1 in calendarData.evening1 track by $index">
                                     <img class="img-fluid" ng-src="{{e1.profile_pic_thumbnail}}">

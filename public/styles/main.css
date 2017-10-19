@@ -198,9 +198,12 @@ li {
     width: parent;
 }
 
+.dayPeriod {
+
+}
+
 .flexCalendar {
-    display: flex;
-    flex-direction: row;
+    vertical-align: center;
 }
 
 .toolBarWidth {
