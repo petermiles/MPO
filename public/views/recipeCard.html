@@ -1,15 +1,7 @@
 <div ng-hide="loadingIconShow" class="vertCenter">
     <h1> loading</h1>
 </div>
-<div ng-show="recipeResultsShow" class="container paddingTop">
-    <div class="row">
-        <div class="col-8">
-            <h1 class="text-center h1-responsive display-2"><b>{{recipeData.title}}</b></h1>
-        </div>
-        <div class="col-4">
-            <button class="btn btn-secondary" ng-click="getRecipeBooksModal()" data-toggle="modal" data-target="#recipeBooks"> Save to Books </button>
-        </div>
-    </div>
+<div ng-show="recipeResultsShow" class="container-fluid">
     <div class="modal fade" id="recipeBooks" tabindex="-1" role="dialog" aria-labelledby="recipeBooksModal" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -66,42 +58,40 @@
         <div class="col-4">
             <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipeData.id}}-556x370.jpg" alt="{{recipeData.title}}">
         </div>
-        <div class="col-8 center">
-            <div class="row">
-                <div class="col-12">
-                    <h3 class="text-center h3-responsive">
-                            <!-- This recipe is <b>{{diets}}</b>. -->
-                             This recipe serves <b>{{recipeData.servings}}</b> and costs <b>${{pricePerServing}}</b> per serving.
-                            <br>
-                              It uses <b>{{ingredientLength}} ingredients </b> and can be completed in <b>{{stepsLength}} steps</b>. 
-                             <br>
-                             This recipe is ready to eat in <b>{{recipeData.readyInMinutes}} minutes</b>.
-                            </h3>
-                </div>
+        <div class="col-8">
+            <div class="center">
+                <h1 class="text-center h1-responsive display-2"><b>{{recipeData.title}}</b></h1>
+            </div>
+            <!-- </div> -->
+            <div class="center">
+                <h3 class="text-center h3-responsive">
+                This recipe serves <b>{{recipeData.servings}}</b> and costs <b>${{pricePerServing}}</b> per serving.
+                <br>
+                It uses <b>{{ingredientLength}} ingredients </b> and can be completed in <b>{{stepsLength}} steps</b>. 
+                <br>
+                This recipe is ready to eat in <b>{{recipeData.readyInMinutes}} minutes</b>.
+                </h3>
             </div>
         </div>
     </div>
-    <hr>
-    <div class="container-fluid">
-        <div class="row">
-            <h1 class="h1-responsive borderBot1px">Ingredients</h1>
-        </div>
+    <div class="center">
+        <span class="h1-responsive text-center ingredientTitle">Ingredients</span>
     </div>
     <div class="row">
         <div class="col-3" ng-repeat="ingredient in recipeIngredients" ng-model="recipeIngredients">
             <div class="center">
-            <img class="img-fluid ingredient-image" ng-src='{{ingredient.image}}' alt="{{ingredient.title}}">
-        </div>
+                <img class="img-fluid ingredient-image" ng-src='{{ingredient.image}}' alt="{{ingredient.title}}">
+            </div>
             <h4 class="card-title text-center"><b>{{ingredient.amount}} {{ingredient.unit}}</b> {{ingredient.name}}</h4>
         </div>
     </div>
-    <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
+<!--     <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button> -->
     <div class="container-fluid">
         <h1 class="h1-responsive text-center">Instructions</h1>
     </div>
-    <div class="container-fluid ">
-        <div class="row" ng-repeat="instruction in recipeInstructions ">
-            <div class="col-12 card growInstructions hoverable instructionSpacing">
+    <div class="container-fluid">
+        <div class="row">
+            <div ng-repeat="instruction in recipeInstructions" class="col-12 card growInstructions hoverable instructionSpacing">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-1 center ">
@@ -117,4 +107,8 @@
             </div>
         </div>
     </div>
+</div>
+<div id="floatingActionButton" class="center">
+    <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
+    <button class="btn btn-secondary" ng-click="getRecipeBooksModal()" data-toggle="modal" data-target="#recipeBooks"> Save to Recipe Book </button>
 </div>

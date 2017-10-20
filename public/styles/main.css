@@ -10,8 +10,12 @@ nav {
 
 /* Utilities */
 
-.width100 {
-    max-width: 100%;
+.width90 {
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .height90vh {
@@ -69,8 +73,9 @@ nav {
     padding-top: 2vh;
 }
 
-.borderBot1px {
+.ingredientTitle {
     border-bottom: 1px solid black;
+    margin-bottom: 3vh;
 }
 
 .form-control {
@@ -174,6 +179,10 @@ a:visited {
     box-shadow: 1px 1px 1px salmon;
 }
 
+.ingredientSection {
+
+}
+
 .ingredient-image {
     display: flex;
     flex-direction: row;
@@ -183,11 +192,11 @@ a:visited {
 }
 
 .instructionSpacing {
-    margin: 2vh 2vw;
+    margin: 2vh 0;
 }
 
 .instructionStyles {
-    padding: 3vh 3vw;
+    padding: 3vh 0;
     line-height: 140%;
 }
 
@@ -200,7 +209,7 @@ a:visited {
 
 .growInstructions:hover {
     transition: all .3s ease-in-out;
-    transform: scale(1.05);
+    transform: scale(1.01);
     z-index: 100;
 }
 
@@ -317,10 +326,11 @@ li {
     border-color: #46b8da;
 }
 
-#mybutton {
+#floatingActionButton {
     position: fixed;
-    top: 10vh;
-    left: 5vh;
+    bottom: 5vh;
+    right: 5vh;
+    z-index: 150;
 }
 
 .recipePanelBg {

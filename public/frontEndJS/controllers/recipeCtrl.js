@@ -1,7 +1,7 @@
 angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $stateParams, userServ, recipeServ, groceryListServ) {
     $scope.recipeResultsShow = false;
     $scope.loadingIconShow = false;
-    $scope.groceryListExist = true;
+    $scope.groceryListExist = false;
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             this.user = user
