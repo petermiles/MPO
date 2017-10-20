@@ -9,6 +9,11 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
         }
     })
 
+    userServ.userInfo().then(result => {
+       $scope.userName = result
+    })
+
+
     $scope.getGroceryLists = () => {
         groceryListServ.getGroceryLists().then(result => {
             if (!result.data.length) {

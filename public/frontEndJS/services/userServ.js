@@ -1,28 +1,38 @@
-angular.module("MPOApp").service("userServ", function($http) {
+angular.module("MPOApp").service("userServ", function($http, $state) {
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             this.user = user
             return user
-        } 
+        }
     })
-
-
 
     this.createUser = (firstName, lastName, email, password) => {
         console.log(firstName, lastName, email, password)
         firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
-            let userInfo = [user.uid, user.email, firstName, lastName]
-            console.log(user)
+            let userInfo = [this.user.uid, this.user.email, firstName, lastName]
             return $http.post('/users/createUser', userInfo)
         }).catch(err => {
             console.log(err.message)
         })
     }
 
+    this.userInfo = () => {
+        let userId = this.user.uid;
+        return $http.get(`/users/getUserInfo/${userId}`).then(result => {
+            let name = result.data[0].first_name
+            var firstLetter = name.substr(0, 1);
+            let fixedName = firstLetter.toUpperCase() + name.substr(1);
+            return fixedName
+        })
+    }
+
     this.signIn = (email, password) => {
-        firebase.auth().signInWithEmailAndPassword(email, password2)
-            .then((result) => { console.log("logged in") }).catch(error => {
+        console.log(email, password)
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then((result) => {
+                $state.go('search')
+            }).catch(error => {
                 console.log(error.code)
             })
     }
@@ -38,7 +48,7 @@ angular.module("MPOApp").service("userServ", function($http) {
     }
 
     this.signOut = () => {
-        firebase.auth().signOut().then(() => {})
+        firebase.auth().signOut()
     }
 
     this.createRecipeBook = (name) => {

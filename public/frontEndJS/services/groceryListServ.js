@@ -5,6 +5,7 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
             this.user = user
             return user
         };
+
     })
 
     this.saveItemsToGroceryList = (id, data) => {
@@ -15,14 +16,32 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
     this.createGroceryList = (name) => {
         var id = [name, this.user.uid]
         return $http.post('/users/createGroceryList', id)
-            .then(result => { return result })
+
+            .then(result => {
+                console.log(this.user.uid)
+                return result
+            })
     }
 
     this.getGroceryLists = () => {
-        let id = this.user.uid;
+
+        firebase.auth().onAuthStateChanged(user => {
+            if (user) {
+                this.user = user
+            };
+
+        })
+        var id = this.user.uid;
         return $http.get(`/users/getGroceryLists/${id}`)
             .then((result) => { return result })
     }
+
+
+    // this.getRecipeBooks = () => {
+    //     var id = this.user.uid;
+    //     return $http.get(`/users/getRecipeBooks/${id}`)
+    //         .then((result) => { return result })
+    // }
 
 
     this.getItemsInList = (id) => {
@@ -35,6 +54,7 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
     this.deleteGroceryList = (id) => {
         let deleteParams = [id, this.user.uid]
         return $http.post(`/users/deleteGroceryList`, deleteParams)
+            // $('modal-background').hide()
             .then(result => {
                 return result
             })

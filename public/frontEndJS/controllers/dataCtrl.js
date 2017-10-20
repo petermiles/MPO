@@ -1,9 +1,22 @@
-angular.module('MPOApp').controller('dataCtrl', function($scope, dataServ) {
+angular.module('MPOApp').controller('dataCtrl', function($scope, $state, dataServ) {
 
     $scope.offset = 0
     $scope.resultsShown = false;
     $scope.showPreviousButton = false;
     $scope.showNextButton = false;
+
+    $scope.homePageSearch = (searchValue) => {
+        $scope.homeSearchValue = searchValue;
+        $state.go("search", $scope.homeSearchValue).then(result => {
+            $scope.humanQuery = $scope.homeSearchValue
+        })
+    }
+
+    $scope.texttyping = ["Gluten Free Chicken",
+        "Curry With No Onions",
+        "Low Fat Steak",
+        "Banana Deserts"
+    ]
 
 
     dataServ.persistResults ? $scope.recipeResults = dataServ.persistResults : null
@@ -16,8 +29,8 @@ angular.module('MPOApp').controller('dataCtrl', function($scope, dataServ) {
     }
 
     $scope.searchRecipeBasic = function(humanQuery) {
-        $scope.humanQuery = humanQuery
         dataServ.searchRecipeBasic(humanQuery, $scope.offset).then((result) => {
+            $scope.humanQuery = humanQuery
             console.log(result)
             $scope.firstRecipe = result.data[0].id
             if (result.data.length <= 12) {
@@ -35,6 +48,7 @@ angular.module('MPOApp').controller('dataCtrl', function($scope, dataServ) {
                 return $scope.recipeResults = result.data
             }
         })
+
     }
 
     $scope.incrementOffset = () => {

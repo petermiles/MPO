@@ -4,7 +4,9 @@ angular.module('MPOApp').controller('mealPrepCtrl', function($scope, $rootScope,
     this.myDate = new Date();
     this.isOpen = false;
 
-
+    userServ.userInfo().then(result => {
+       $scope.userName = result
+    })
 
 
 

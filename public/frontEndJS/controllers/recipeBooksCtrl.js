@@ -1,27 +1,31 @@
-angular.module('MPOApp').controller('recipeBooksCtrl', function($scope, userServ, $stateParams, recipes) {
-    if (!recipes.data.length) {
-        $scope.noBooks = true
-    } else if (recipes.data.length) {
-        $scope.recipes = recipes.data
-    }
+angular.module('MPOApp').controller('recipeBooksCtrl', function($scope, userServ, $stateParams) {
 
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            this.user = user
-            return user
-        };
+
+
+    userServ.userInfo().then(result => {
+        $scope.userName = result
     })
 
-
-    $scope.deleteRecipeFromBook = (id, fkey) => {
-        userServ.deleteRecipeFromBook(id, fkey)
+    $scope.createRecipeBook = (name) => {
+        userServ.createRecipeBook(name)
             .then(result => {
-                if (!result.data.length) {
-                    $scope.noBooks = true
-                } else if (result.data.length) {
-                    $scope.recipes = recipes.data
-                }
-                return $scope.recipes = result.data
+                return $scope.userBooks = result.data
             })
     }
+    $scope.getRecipeBooks = () => {
+        userServ.getRecipeBooks()
+            .then(result => {
+                return $scope.userBooks = result.data
+            })
+    }
+
+    $scope.deleteBook = (bookId) => {
+
+        userServ.deleteBook(bookId)
+            .then((result) => {
+                $(".modal-backdrop").hide();
+                return $scope.userBooks = result.data
+            })
+    }
+
 })

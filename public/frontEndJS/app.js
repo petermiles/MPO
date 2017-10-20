@@ -31,12 +31,12 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable', 'ngMaterial', 'ngMessages'
         .state("recipeBook", {
             url: "/Books",
             templateUrl: "views/recipeBook.html",
-            controller: "userCtrl"
+            controller: "recipeBooksCtrl"
         })
         .state("books", {
             url: "/Your/Books/:id",
             templateUrl: "views/recipeBookComplex.html",
-            controller: "recipeBooksCtrl",
+            controller: "recipeBooksComplexCtrl",
             resolve: {
                 recipes(userServ, $stateParams) {
                     return userServ.getRecipesFromBooks($stateParams.id)

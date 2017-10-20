@@ -1,14 +1,14 @@
-<!-- <div class="container">
+<div class="container">
     <div class="mainHero">
+        <div class="center">
             <h1 class="text-center"> Get to Searching </h1>
-            <input type='text' id="typed5" name="word" placeholder="search">
-    </div>
-</div> -->
- <div class="testBg center">
-    <h1>Placeholder text with<br/> typing effect</h1>
-    <div class="wrapper">
-        <input class="search" type="text" id="search" />
-        <input class="submit" type="submit" value=" " />
+        </div>
+        <!-- <input type='text' placeholder="" typed-input> -->
+        <form class=" heroPageSearch" ng-submit="homePageSearch(searchValue)">
+            <input class="input-control" id="typed-output" placeholder="" typed-input strings=texttyping ng-model="searchValue">
+            <input class="displayNone" type="submit" id="submit" value="Submit">
+        </form>
+        <!--   <typed-input strings=texttyping class="form-control"></typed-input>
+        </form> -->
     </div>
 </div>
-<h2>Click search to reset</h2>

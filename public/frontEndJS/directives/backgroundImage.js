@@ -6,6 +6,8 @@ angular.module("MPOApp").directive("backgroundImage", function() {
         var myImage = new Image();
         myImage.src = attrs.backgroundImage;
 
+
+
         console.log(myImage)
 
         attrs.$observe('backgroundImage', function(value) {
@@ -21,13 +23,24 @@ angular.module("MPOApp").directive("backgroundImage", function() {
                 'z-index': '-10'
             });
         });
-        console.log(attrs.backgroundImage)
         var pic = new Image();
         pic.crossOrigin = 'anonymous';
         pic.src = attrs.backgroundImage;
 
+        pic.crossOrigin = 'Anonymous';
+
         let rgbValues = {}
-        pic.onload =  function getAverageRGB() { 
+
+        pic.onload = function() {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            localStorage.setItem("savedImageData", canvas.toDataURL("image/png"));
+        }
+        
+        pic.onload = function getAverageRGB() {
+
+            localStorage.setItem("savedImageData", canvas.toDataURL("image/png"));
 
 
 

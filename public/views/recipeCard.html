@@ -56,29 +56,29 @@
                 </div>
             </div>
         </div>
-            <div class="row">
-                <div class="col-4">
-                    <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipeData.id}}-556x370.jpg" alt="{{recipeData.title}}">
+        <div class="row">
+            <div class="col-4">
+                <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipeData.id}}-556x370.jpg" alt="{{recipeData.title}}">
+            </div>
+            <div class="col-8 center">
+                <div class="center">
+                    <h1 class="text-center text-shadow" id="recipeTitle"><b>{{recipeData.title}}</b></h1>
                 </div>
-                <div class="col-8 center">
-                    <div class="center">
-                        <h1 class="text-center h1-responsive display-1"><b>{{recipeData.title}}</b></h1>
-                    </div>
-                    <!-- </div> -->
-                    <div class="center">
-                        <h3 class="text-center h3-responsive">
-                This recipe serves <b>{{recipeData.servings}}</b> and costs <b>${{pricePerServing}}</b> per serving.
+                <!-- </div> -->
+                <div class="center">
+                    <h2 class="text-center text-shadow h3-reponsive" id="recipeSummary"><strong>
+                This recipe serves {{recipeData.servings}} and costs <span class="emphasizeText">${{pricePerServing}} per serving</span>.
                 <br>
-                It uses <b>{{ingredientLength}} ingredients </b> and can be completed in <b>{{stepsLength}} steps</b>. 
+                It uses {{ingredientLength}} ingredients and can be completed in {{stepsLength}} steps.
                 <br>
-                This recipe is ready to eat in <b>{{recipeData.readyInMinutes}} minutes</b>.
-                </h3>
-                    </div>
+                This recipe is ready to eat in {{recipeData.readyInMinutes}} minutes.</strong>
+                </h2>
                 </div>
             </div>
+        </div>
         <section id="ingredientSection" class="hoverable">
             <div class="center">
-                <span class="h1-responsive text-center ingredientTitle">Ingredients</span>
+                <h1 class="h1-responsive text-center ingredientTitle">Ingredients</h1>
             </div>
             <div class="container-fluid">
                 <div class="row">
@@ -93,7 +93,7 @@
         </section>
         <section id="instructionsList">
             <div class="center instructionHeader">
-                <h1 class="h1-responsive text-center">Instructions</h1>
+                <h1 class="h1-responsive text-center text-shadow display-1"><b>Instructions</b></h1>
             </div>
             <div class="container-fluid">
                 <div class="row">
@@ -113,9 +113,9 @@
                     </div>
                 </div>
             </div>
-        <div id="floatingActionButton" class="center">
-            <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
-            <button class="btn btn-secondary" ng-click="getRecipeBooksModal()" data-toggle="modal" data-target="#recipeBooks"> Save to Recipe Book </button>
-        </div>
+            <div id="floatingActionButton" class="center">
+                <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
+                <button class="btn btn-secondary" ng-click="getRecipeBooksModal()" data-toggle="modal" data-target="#recipeBooks"> Save to Recipe Book </button>
+            </div>
     </div>
 </div>

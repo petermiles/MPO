@@ -4,6 +4,13 @@ const createUser = (req, res) => {
         .create_user(req.body)
 }
 
+const getUserInfo = (req,res) => {
+    req.app
+    .get('db')
+    .get_user_info(req.params.id)
+    .then(result => res.json(result))
+}
+
 const createRecipeBook = (req, res) => {
     req.app
         .get('db')
@@ -190,6 +197,7 @@ const getItemsInGroceryList = (req, res) => {
 
 module.exports = {
     createUser,
+    getUserInfo,
     createRecipeBook,
     getRecipeBooks,
     deleteBook,

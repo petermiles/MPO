@@ -3,10 +3,8 @@ const { json } = require('body-parser');
 const massive = require('massive');
 const cors = require('cors');
 const axios = require('axios');
-const _ = require('underscore-node')
 
-const { secret, dbUser, database } = require('./serverStack/config.js')
-const connectionString = `postgres://${dbUser}@localhost/${database}`;
+const {connectionString} = require('./serverStack/config.js')
 
 massive(connectionString).then(db => {
     app.set('db', db)
@@ -37,6 +35,7 @@ app.post('/users/getRecipeNutrition', userCtrl.getRecipeNutrition)
 
 app.post('/users/createUser', userCtrl.createUser)
 app.post('/users/saveRecipe', userCtrl.saveRecipe)
+app.get('/users/getUserInfo/:id', userCtrl.getUserInfo)
 
 app.get('/users/GetGroceryLists/:id', userCtrl.getGroceryLists)
 app.post('/users/saveItemsToGroceryList', userCtrl.saveItemsToGroceryList)
