@@ -8,6 +8,7 @@ nav {
 
 
 
+
 /* Utilities */
 
 .width90 {
@@ -109,6 +110,7 @@ a:visited {
 
 
 
+
 /* Search Heros */
 
 .searchHero {
@@ -123,6 +125,7 @@ a:visited {
     justify-content: center;
     position: sticky;*/
 }
+
 
 
 
@@ -150,7 +153,7 @@ a:visited {
     bottom: 0px;
     left: 0px;
     width: 100%;
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0, 0, 0, .6);
     color: white;
     font-weight: 700;
 }
@@ -175,12 +178,18 @@ a:visited {
     padding: 2vh 0;
 }
 
+.recipePagePaddingBottom {
+    padding-bottom: 3vh;
+    opacity: 1;
+}
+
+
 .instructionsBreak {
     box-shadow: 1px 1px 1px salmon;
 }
 
-.ingredientSection {
-
+#ingredientSection {
+    margin-top: 2vh;
 }
 
 .ingredient-image {
@@ -189,10 +198,31 @@ a:visited {
     justify-content: center;
     width: 100px;
     height: 100px;
+    border-radius: 50%;
+}
+
+/*#instructionsList {
+    width: 100% !important;
+    background-color: black;
+    color: white;
+}*/
+
+#ingredientSection {
+    background-color: rgba(255,255,255, .5);
+    color: black;
+}
+
+#instructionsList .card {
+    opacity: .9;
+}
+
+.instructionHeader {
+    font-weight: 700;
+    padding: 1vh 0;
 }
 
 .instructionSpacing {
-    margin: 2vh 0;
+    margin: 0 0 2vh 0;
 }
 
 .instructionStyles {
@@ -202,16 +232,19 @@ a:visited {
 
 .growInstructions {
     transition: all .3s ease-in-out;
-    transform: scale(1);
+    transform: scale(.95);
     z-index: 100;
 }
 
 
 .growInstructions:hover {
     transition: all .3s ease-in-out;
-    transform: scale(1.01);
+    transform: scale(1.0);
     z-index: 100;
 }
+
+
+
 
 
 
@@ -328,8 +361,8 @@ li {
 
 #floatingActionButton {
     position: fixed;
-    bottom: 5vh;
-    right: 5vh;
+    bottom: 2vh;
+    right: 2vw;
     z-index: 150;
 }
 
@@ -385,6 +418,7 @@ li {
 .displayFixed {
     display: block;
 }
+
 
 
 

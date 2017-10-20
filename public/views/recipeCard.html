@@ -1,114 +1,121 @@
-<div ng-hide="loadingIconShow" class="vertCenter">
-    <h1> loading</h1>
-</div>
-<div ng-show="recipeResultsShow" class="container-fluid">
-    <div class="modal fade" id="recipeBooks" tabindex="-1" role="dialog" aria-labelledby="recipeBooksModal" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title w-100" id="recipeBooksModal">Which Recipe Book?</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div ng-repeat="books in userBooksModal">
-                        <button class="btn btn-primary" ng-click="saveRecipeToBook(recipeData.title, recipeData.id, recipeData.image, books.id, recipeData.pricePerServing, recipeData)" data-dismiss="modal">{{books.name}}</button>
+<div id='body'>
+    <div ng-hide="loadingIconShow" class="vertCenter">
+        <h1> loading</h1>
+    </div>
+    <div ng-show="recipeResultsShow" background-image="https://spoonacular.com/recipeImages/{{recipeData.id}}-556x370.jpg"></div>
+    <div ng-show="recipeResultsShow" class="recipePagePaddingBottom container-fluid">
+        <div class="modal fade" id="recipeBooks" tabindex="-1" role="dialog" aria-labelledby="recipeBooksModal" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title w-100" id="recipeBooksModal">Which Recipe Book?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
-                    <div ng-hide="booksExist">
-                        <h1 class="text-center">You haven't created a Recipe Book yet!</h1>
+                    <div class="modal-body">
+                        <div ng-repeat="books in userBooksModal">
+                            <button class="btn btn-primary" ng-click="saveRecipeToBook(recipeData.title, recipeData.id, recipeData.image, books.id, recipeData.pricePerServing, recipeData)" data-dismiss="modal">{{books.name}}</button>
+                        </div>
+                        <div ng-hide="booksExist">
+                            <h1 class="text-center">You haven't created a Recipe Book yet!</h1>
+                            <br>
+                            <form class="md-form center">
+                                <input class="form-control" ng-model="recipeBookName" id="recipeBookName">
+                                <label for="recipeBookName">Name your Recipe Book</label>
+                                <button class="btn" ng-click="createRecipeBook(recipeBookName)"> Create Recipe Book</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="groceryLists" tabindex="-1" role="dialog" aria-labelledby="groceryListsModal" aria-hidden="true">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title w-100" id="groceryListsModal">Which Grocery List?</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div ng-repeat="list in groceryLists">
+                            <button class="btn btn-primary" ng-click="saveToGroceryList(list.id, recipeIngredients)" data-dismiss="modal">{{list.name}}</button>
+                        </div>
+                    </div>
+                    <div ng-show="groceryListExist">
+                        <h1 class="text-center">You haven't created a Grocery List yet!</h1>
                         <br>
-                        <form class="md-form center">
-                            <input class="form-control" ng-model="recipeBookName" id="recipeBookName">
-                            <label for="recipeBookName">Name your Recipe Book</label>
-                            <button class="btn" ng-click="createRecipeBook(recipeBookName)"> Create Recipe Book</button>
+                        <form class="md-form">
+                            <input class="form-control" ng-model="groceryListName" id="groceryListName">
+                            <label for="groceryListName">Name Your Grocery List</label>
+                            <button class="btn center" ng-click="createGroceryList(groceryListName)"> Create Grocery List</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="modal fade" id="groceryLists" tabindex="-1" role="dialog" aria-labelledby="groceryListsModal" aria-hidden="true">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title w-100" id="groceryListsModal">Which Grocery List?</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+            <div class="row">
+                <div class="col-4">
+                    <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipeData.id}}-556x370.jpg" alt="{{recipeData.title}}">
                 </div>
-                <div class="modal-body">
-                    <div ng-repeat="list in groceryLists">
-                        <button class="btn btn-primary" ng-click="saveToGroceryList(list.id, recipeIngredients)" data-dismiss="modal">{{list.name}}</button>
+                <div class="col-8 center">
+                    <div class="center">
+                        <h1 class="text-center h1-responsive display-1"><b>{{recipeData.title}}</b></h1>
                     </div>
-                </div>
-                <div ng-show="groceryListExist">
-                    <h1 class="text-center">You haven't created a Grocery List yet!</h1>
-                    <br>
-                    <form class="md-form">
-                        <input class="form-control" ng-model="groceryListName" id="groceryListName">
-                        <label for="groceryListName">Name Your Grocery List</label>
-                        <button class="btn center" ng-click="createGroceryList(groceryListName)"> Create Grocery List</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-4">
-            <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipeData.id}}-556x370.jpg" alt="{{recipeData.title}}">
-        </div>
-        <div class="col-8">
-            <div class="center">
-                <h1 class="text-center h1-responsive display-2"><b>{{recipeData.title}}</b></h1>
-            </div>
-            <!-- </div> -->
-            <div class="center">
-                <h3 class="text-center h3-responsive">
+                    <!-- </div> -->
+                    <div class="center">
+                        <h3 class="text-center h3-responsive">
                 This recipe serves <b>{{recipeData.servings}}</b> and costs <b>${{pricePerServing}}</b> per serving.
                 <br>
                 It uses <b>{{ingredientLength}} ingredients </b> and can be completed in <b>{{stepsLength}} steps</b>. 
                 <br>
                 This recipe is ready to eat in <b>{{recipeData.readyInMinutes}} minutes</b>.
                 </h3>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-    <div class="center">
-        <span class="h1-responsive text-center ingredientTitle">Ingredients</span>
-    </div>
-    <div class="row">
-        <div class="col-3" ng-repeat="ingredient in recipeIngredients" ng-model="recipeIngredients">
+        <section id="ingredientSection" class="hoverable">
             <div class="center">
-                <img class="img-fluid ingredient-image" ng-src='{{ingredient.image}}' alt="{{ingredient.title}}">
+                <span class="h1-responsive text-center ingredientTitle">Ingredients</span>
             </div>
-            <h4 class="card-title text-center"><b>{{ingredient.amount}} {{ingredient.unit}}</b> {{ingredient.name}}</h4>
-        </div>
-    </div>
-<!--     <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button> -->
-    <div class="container-fluid">
-        <h1 class="h1-responsive text-center">Instructions</h1>
-    </div>
-    <div class="container-fluid">
-        <div class="row">
-            <div ng-repeat="instruction in recipeInstructions" class="col-12 card growInstructions hoverable instructionSpacing">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-1 center ">
-                            <!-- <div class="card-body "> -->
-                            <h1 class="instructionNumber display-3 ">{{instruction.number}}</h1>
-                            <!-- </div> -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-3" ng-repeat="ingredient in recipeIngredients" ng-model="recipeIngredients">
+                        <div class="center">
+                            <img class="img-fluid ingredient-image" ng-src='{{ingredient.image}}' alt="{{ingredient.title}}">
                         </div>
-                        <div class="col-10">
-                            <h5 class="instructionStyles text-center "><b>{{instruction.step}}</b> </h5>
+                        <h4 class="card-title text-center"><b>{{ingredient.amount}} {{ingredient.unit}}</b> {{ingredient.name}}</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="instructionsList">
+            <div class="center instructionHeader">
+                <h1 class="h1-responsive text-center">Instructions</h1>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div ng-repeat="instruction in recipeInstructions" class="col-12 card growInstructions hoverable instructionSpacing">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-1 center ">
+                                    <!-- <div class="card-body "> -->
+                                    <h1 class="instructionNumber display-3 ">{{instruction.number}}</h1>
+                                    <!-- </div> -->
+                                </div>
+                                <div class="col-10">
+                                    <h5 class="instructionStyles text-center "><b>{{instruction.step}}</b> </h5>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        <div id="floatingActionButton" class="center">
+            <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
+            <button class="btn btn-secondary" ng-click="getRecipeBooksModal()" data-toggle="modal" data-target="#recipeBooks"> Save to Recipe Book </button>
         </div>
     </div>
-</div>
-<div id="floatingActionButton" class="center">
-    <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
-    <button class="btn btn-secondary" ng-click="getRecipeBooksModal()" data-toggle="modal" data-target="#recipeBooks"> Save to Recipe Book </button>
 </div>
