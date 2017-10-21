@@ -15,7 +15,8 @@ angular.module("MPOApp").directive('typedInput', function() {
         contentType: "html",
         showCursor: true,
         cursorChar: "_",
-        attr: 'placeholder'
+        attr: 'placeholder',
+        loop: true
       };
 
       $(function() {

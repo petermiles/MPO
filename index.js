@@ -4,7 +4,9 @@ const massive = require('massive');
 const cors = require('cors');
 const axios = require('axios');
 
-const {connectionString} = require('./serverStack/config.js')
+
+const {dbUser, database, dbpass} = require('./serverStack/config.js');
+const connectionString = `postgres://${dbUser}:${dbpass}@localhost/${database}`
 
 massive(connectionString).then(db => {
     app.set('db', db)
@@ -28,6 +30,7 @@ app.use(function(req, res, next) {
 const userCtrl = require('./serverStack/controllers/userCtrl')
 app.get('/users/getRecipeBooks/:id', userCtrl.getRecipeBooks)
 app.get('/users/getRecipesFromBooks/:id', userCtrl.getRecipesFromBooks)
+app.post('/users/saveRecipePicsFromRecipeBook/:id', userCtrl.saveRecipePicsFromRecipeBook)
 app.post('/users/createRecipeBook', userCtrl.createRecipeBook)
 app.post('/users/deleteRecipeFromBook', userCtrl.deleteRecipeFromBook)
 app.post('/users/saveRecipeNutrition', userCtrl.saveRecipeNutrition)

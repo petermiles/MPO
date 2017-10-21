@@ -8,40 +8,34 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
 
     })
 
+
     this.saveItemsToGroceryList = (id, data) => {
         let items = [id, JSON.stringify(data)]
         return $http.post('/users/saveItemsToGroceryList', items)
     }
 
+
     this.createGroceryList = (name) => {
         var id = [name, this.user.uid]
         return $http.post('/users/createGroceryList', id)
-
-            .then(result => {
-                console.log(this.user.uid)
+        .then(result => {
                 return result
             })
     }
 
+
     this.getGroceryLists = () => {
-
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                this.user = user
-            };
-
-        })
         var id = this.user.uid;
         return $http.get(`/users/getGroceryLists/${id}`)
             .then((result) => { return result })
     }
 
 
-    // this.getRecipeBooks = () => {
-    //     var id = this.user.uid;
-    //     return $http.get(`/users/getRecipeBooks/${id}`)
-    //         .then((result) => { return result })
-    // }
+    this.getRecipeBooks = () => {
+        var id = this.user.uid;
+        return $http.get(`/users/getRecipeBooks/${id}`)
+            .then((result) => { return result })
+    }
 
 
     this.getItemsInList = (id) => {

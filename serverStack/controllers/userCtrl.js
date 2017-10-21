@@ -4,11 +4,11 @@ const createUser = (req, res) => {
         .create_user(req.body)
 }
 
-const getUserInfo = (req,res) => {
+const getUserInfo = (req, res) => {
     req.app
-    .get('db')
-    .get_user_info(req.params.id)
-    .then(result => res.json(result))
+        .get('db')
+        .get_user_info(req.params.id)
+        .then(result => res.json(result))
 }
 
 const createRecipeBook = (req, res) => {
@@ -22,7 +22,15 @@ const getRecipeBooks = (req, res) => {
     req.app
         .get('db')
         .get_books(req.params.id)
-        .then((result) => res.json(result))
+        .then((result) => { return res.json(result) })
+}
+
+const saveRecipePicsFromRecipeBook = (req, res) => {
+    console.log(req.body)
+    req.app
+        .get('db')
+        .save_pictures_to_book(req.body)
+        .then(result => { return res.json(result) })
 }
 
 const deleteBook = (req, res) => {
@@ -86,13 +94,13 @@ const createMealPlan = (req, res) => {
         })
 }
 
-const createEmptyMealPlan = (req,res) => {
+const createEmptyMealPlan = (req, res) => {
     req.app
-    .get('db')
-    .create_empty_meal_plan(req.body)
-    .then(result => {
-        return res.json(result)
-    })
+        .get('db')
+        .create_empty_meal_plan(req.body)
+        .then(result => {
+            return res.json(result)
+        })
 }
 
 const getMealPlans = (req, res) => {
@@ -200,6 +208,7 @@ module.exports = {
     getUserInfo,
     createRecipeBook,
     getRecipeBooks,
+    saveRecipePicsFromRecipeBook,
     deleteBook,
     saveRecipe,
     saveRecipeNutrition,

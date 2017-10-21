@@ -9,7 +9,7 @@
     </div>
     <div ng-show="resultsShown">
         <div class="row recipeResults">
-            <div class="col-4 recipeCard" ng-repeat="recipe in recipeResults">
+            <div class="col-lg-4 col-xs-12 recipeCard" ng-repeat="recipe in recipeResults">
                 <a ng-click="getRecipeInfo(recipe.id)" ui-sref="recipeCard({id:recipe.id})">
                     <div class="card hoverable">
                         <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="{{recipe.title}}">

@@ -1,0 +1,1 @@
+SELECT profile_pic FROM user_recipes WHERE fkey = $1;

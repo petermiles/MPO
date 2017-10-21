@@ -13,9 +13,11 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
        $scope.userName = result
     })
 
+    $
 
     $scope.getGroceryLists = () => {
         groceryListServ.getGroceryLists().then(result => {
+            console.log("test")
             if (!result.data.length) {
                 $scope.groceryListExist = true;
             }
@@ -54,10 +56,6 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
 
     }
 
-
-
-
-
     $scope.booksExist = true;
     $scope.createRecipeBook = (name) => {
         userServ.createRecipeBook(name).then(result => {
@@ -67,10 +65,12 @@ angular.module('MPOApp').controller('recipeCtrl', function($scope, dataServ, $st
     }
     $scope.getRecipeBooksModal = (user) => {
         userServ.getRecipeBooks(user).then(result => {
-            if (!result.data.length) {
-                $scope.booksExist = false
+            if (!result[0].length) {
+                $scope.booksExist = false;
+            } else if (result[0].length){
+                $scope.booksExist = true;
             }
-            return $scope.userBooksModal = result.data
+            return $scope.userBooksModal = result[0]
         })
     }
 })

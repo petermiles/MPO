@@ -1,6 +1,11 @@
+body {
+    -webkit-font-smoothing: ;
+}
+
 nav {
     position: fixed;
 }
+
 
 
 
@@ -152,11 +157,12 @@ input[type="date"]:valid:before {
 
 
 
+
 /* Search Heros */
 
 .searchHero {
 
-    padding-top: 5vh;
+    /*  padding-top: 5vh;*/
     display: flex;
     justify-content: center;
     /*background-color: aliceblue;
@@ -174,15 +180,25 @@ input[type="date"]:valid:before {
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-image: none;
-    background-clip: padding-box;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid black;
+}
+
+#typed-output .form-control {
+    color: white;
+
 }
 
 
 
+
 /* Recipe Search & Results */
+
+#navbarSearch { 
+    color: white;
+ }
 
 .paginationPadding {
     margin-top: 5vh;
@@ -251,6 +267,7 @@ input[type="date"]:valid:before {
 
 
 
+
 /*#instructionsList {
     width: 100% !important;
     background-color: black;
@@ -292,6 +309,7 @@ input[type="date"]:valid:before {
     transform: scale(1.0);
     z-index: 100;
 }
+
 
 
 /*
@@ -464,6 +482,7 @@ li {
 .displayFixed {
     display: block;
 }
+
 
 
 
