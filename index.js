@@ -5,8 +5,8 @@ const cors = require('cors');
 const axios = require('axios');
 
 
-const {dbUser, database, dbpass} = require('./serverStack/config.js');
-const connectionString = `postgres://${dbUser}:${dbpass}@localhost/${database}`
+const {dbUser, database, dbpass, herokuDb} = require('./serverStack/config.js');
+const connectionString = herokuDb
 
 massive(connectionString).then(db => {
     app.set('db', db)
