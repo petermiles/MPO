@@ -10,14 +10,14 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
     this.createUser = (firstName, email, password) => {
         console.log(firstName, email, password)
         firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
-            console.log('logged in' ,user)
+            console.log('logged in', user)
             let userInfo = [user.uid, user.email, firstName]
             return $http.post('/users/createUser', userInfo)
         }).catch(error => {
             console.log(error)
-            if(error.code === 'auth/argument-error'){
+            if (error.code === 'auth/argument-error') {
                 alert("Either password or email is messed up")
-            } else if (error.code === 'auth/weak-password'){
+            } else if (error.code === 'auth/weak-password') {
                 alert("password must be 6 characters")
             }
         })
@@ -38,16 +38,17 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then((result) => {
                 $('#loginModal').modal('toggle')
+                $state.reload()
                 return result
                 // $state.go('search')
             }).catch(error => {
                 console.log(error)
-                if(error.code === "auth/invalid-email"){
+                if (error.code === "auth/invalid-email") {
                     alert("Bad Email")
                 } else if (error.code === "auth/user-not-found") {
-                alert('Email does not exist')
+                    alert('Email does not exist')
 
-                } else if (error.code === "auth/wrong-password"){
+                } else if (error.code === "auth/wrong-password") {
                     alert('wrong password')
                 }
             })
@@ -64,7 +65,9 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
     }
 
     this.signOut = () => {
-        firebase.auth().signOut()
+        firebase.auth().signOut().then(result => {
+            $state.go('home')
+        })
     }
 
     this.createRecipeBook = (name) => {
@@ -87,40 +90,67 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
                 return resultData
             })
 
-            // .then(recipes => {
-                // // let recipesObj = {}
-                // // _.map(recipes[1], (x, y) => {
+            .then(recipes => {
+                let recipesArr = []
+                let picObj = {}
+                for (var i = 0; i < recipes[1].length; i++) {
+                    let bookId = recipes[1][i]
+                    $http.get(`/users/getRecipesFromBooks/${bookId}`).then(result => {
+                        _.map(result.data, x => {
+                            let id = x.fkey
+                            if (!picObj[id]) {
+                                picObj[id] = [x.profile_pic];
+                            } else if (picObj[id]) {
+                                picObj[id].push(x.profile_pic)
+                            }
+                        })
 
-                // //     recipesObj[x] = x
-                // // })  
-                // let recipesArr = []
-                // for (var i = 0; i < recipes[1].length; i++) {
-                //     let bookId = recipes[1][i]
-                //     $http.get(`/users/getRecipesFromBooks/${bookId}`).then(result => {
-                //         if(result.data.length){
-                //             $http.post('/users/savePicsFromRecipeBook', userPics)
-                //         }
-                //         // let length = result.data.length
-                //         // let index = i
-                //         // console.log(index)
-                //         // console.log(recipes[0])
-                //         // if (!result.data.length) {
-                //         //     recipesArr.push({id : recipes[1][index]})
-                //         // } else if (result.data.length > 0) {
-                //         //     let y = Math.ceil(Math.random() * length)
-                //         //     _.map(result.data, x, y=> {
-                //         //         if (!result.data.length) {
-                //         //             recipesArr.push({ id: x.fkey, pic: 'http://bigapplecurry.files.wordpress.com/2012/11/istock_000019639558_medium.jpg'})
-                //         //         } else if(result.data.length){
-                //         //             recipesArr.push({ id: x.fkey, pic: x.profile_pic })
-                //         //         }
-                //         //     })
-                //         // }
-                //     })
-                // }
-                // // console.log(recipesArr)
-                // return recipes
-            // })
+                        // if(result.data.length){
+                        //     $http.post('/users/savePicsFromRecipeBook', bookId)
+                        // }
+                        // let length = result.data.length
+                        // let index = i
+                        // console.log(index)
+                        // console.log(recipes[0])
+                        // if (!result.data.length) {
+                        //     recipesArr.push({id : recipes[1][index]})
+                        // } else if (result.data.length > 0) {
+                        //     let y = Math.ceil(Math.random() * length)
+                        //     _.map(result.data, x, y=> {
+                        //         if (!result.data.length) {
+                        //             recipesArr.push({ id: x.fkey, pic: 'http://bigapplecurry.files.wordpress.com/2012/11/istock_000019639558_medium.jpg'})
+                        //         } else if(result.data.length){
+                        //             recipesArr.push({ id: x.fkey, pic: x.profile_pic })
+                        //         }
+                        //     })
+                        // }
+                    })
+
+
+
+                }
+
+                for (var i = 0; i < recipes[1].length; i++) {
+                    let currId = recipes[1][i]
+                    console.log(currId)
+                    console.log(recipes[1])
+                    console.log(picObj[recipes[1][i]])
+
+                }
+
+                // _.map(recipes[1], x => {
+                //     console.log(x)
+                //     let recipeId = x
+                //     console.log(picObj[x])
+                //     if(picObj[recipeId] === x){
+                //         console.log('same')
+                //     }
+                // })
+
+                console.log(recipes[1], "id's")
+                console.log(picObj, "pictures")
+                return recipes
+            })
 
     }
 
@@ -148,7 +178,7 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
         }).then(result => {
             console.log(result, id)
             let userId = this.user.uid
-            let recipePic = [result[0].fkey,result[0].profile_pic]
+            let recipePic = [result[0].fkey, result[0].profile_pic]
             return $http.get(`/users/getRecipeBooks/${userId}`).then(response => {
                 console.log(response)
                 // let existingPics = result.data.recipe_

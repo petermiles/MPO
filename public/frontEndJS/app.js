@@ -4,7 +4,7 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable', 'ngMaterial', 'ngMessages'
         return moment(date).format('MM-DD-YYYY');
     };
 
-    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.otherwise("/home");
 
 
     $stateProvider
@@ -34,7 +34,7 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable', 'ngMaterial', 'ngMessages'
             controller: "recipeBooksCtrl"
         })
         .state("books", {
-            url: "/Your/Books/:id",
+            url: "/Your/Books/:id/:title",
             templateUrl: "views/recipeBookComplex.html",
             controller: "recipeBooksComplexCtrl",
             resolve: {

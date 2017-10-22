@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row searchBar">
             <form class="md-form col-12" ng-submit="searchRecipeBasic(humanQuery)">
-                <input class="form-control" type="text" ng-model="humanQuery" placeholder="What Do You Want To Cook?" ng-submit="searchRecipeBasic(humanQuery)">
+                <input class="form-control" type="text" ng-model="humanQuery" id="typed-output" placeholder="X" typed-input strings=texttyping  ng-submit="searchRecipeBasic(humanQuery)" required>
                 <input class="displayNone" type="submit" id="submit" value="Submit" />
             </form>
         </div>

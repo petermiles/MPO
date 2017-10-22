@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="display-3 text-center">Recipe Book ID {{pageTitle}}</h1>
+<!--     <h1 class="display-3 text-center titlePositioning">Recipe Book ID {{pageTitle}}</h1> -->
     <div class="row">
         <div class="col-6" ng-repeat="recipe in recipes">
             <div class="card">
@@ -15,10 +15,13 @@
         </div>
     </div>
 </div>
-<div ng-show="noBooks" class="container">
-    <h1 class="text-center"> Looks like you haven't added any recipes to your books. </h1>
-    <h3 class="text-center">
-            You can add recipes straight to your recipe book from the <button class ="btn btn-success" ui-sref="search"><b>search</b> </button>page.
+<div ng-show="noBooks" class="center noBooks">
+    <h1 class="text-center h1-responsive"><b> Looks like you haven't added any recipes to your book.</b> </h1>
+    <br>
+    <h3 class="text-center lineHeight h2-responsive">
+            You can add recipes to your recipe book
+            <br>
+            from the <button class ="btn btn-success" ui-sref="search"><b>   search</b> </button>page.
         </h3>
 </div>
 </div>

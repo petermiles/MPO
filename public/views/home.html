@@ -1,7 +1,7 @@
 <div class="row width100">
     <div class="col-12  searchHeroTop">
         <!-- <div class="mainHero"> -->
-        <h1 class="text-center" style="margin-top:15vh"> What's coookin? </h1>
+        <h1 class="text-center" style="margin-top:15vh"> What's cookin? </h1>
         <form class="md-form" ng-submit="homePageSearch" class="center" style="margin: 8vh 15vw">
             <input class="input-control" id="typed-output" placeholder="X" typed-input strings=texttyping ng-model="homeSearchValue">
             <input class="displayNone" type="submit" id="submit" value="Submit">
@@ -9,62 +9,17 @@
         <!-- </div> -->
     </div>
 </div>
-<div class="row width100">
-    <div class="col-lg-4 col-xs-12 red">
-        <div class="randomRecipeHeight">
-        </div>
-    </div>
-    <div class="col-lg-4 col-xs-12 blue ">
-        <div class="randomRecipeHeight">
-        </div>
-    </div>
-    <div class="col-lg-4 col-xs-12 red">
-        <div class="randomRecipeHeight">
-        </div>
-    </div>
-    <div class="col-lg-4 col-xs-12 blue ">
-        <div class="randomRecipeHeight">
-        </div>
-    </div>
-    <div class="col-lg-4 col-xs-12 red">
-        <div class="randomRecipeHeight">
-        </div>
-    </div>
-    <div class="col-lg-4 col-xs-12 blue ">
-        <div class="randomRecipeHeight">
-        </div>
-    </div>
-    <div class="col-lg-4 col-xs-12 red">
-        <div class="randomRecipeHeight">
-        </div>
-    </div>
-    <div class="col-lg-4 col-xs-12 blue ">
-        <div class="randomRecipeHeight">
-        </div>
-    </div>
-    <div class="col-lg-4 col-xs-12 red ">
-        <div class="randomRecipeHeight">
+<div class="loadingIconHomePage" ng-show="loadingIcon">
+</div>
+<div class="row width100" ng-show="showRandomRecipes">
+    <div class="col-lg-4 col-xs-12 recipeCard" ng-repeat="recipe in randomRecipes">
+        <div class="view overlay hm-zoom">
+            <div class="card">
+                <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="{{recipe.title}}">
+                <div class="recipeTitleOverlay">
+                    <h2 class="h2-responsive text-center">{{recipe.title}}</h2>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<!-- </div> -->
-<!-- <div class="col-lg-3 col-sm-3" class="randomRecipeHeight background-color:green; z-index:30">
-            <div>
-            </div> -->
-<!-- </div>
-        <div class="col-lg-3 col-sm-3" style="height:25vh; background-color:white; z-index:30">
-            <div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-3" style="height:25vh; background-color:salmon; z-index:30">
-            <div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-3" style="height:25vh; background-color:black; z-index:30">
-            <div>
-            </div>
-        </div>
-        <div class="col-lg-3 col-sm-3" style="height:25vh; background-color:violet; z-index:30">
-            <div>
-            </div>
-        </div> -->

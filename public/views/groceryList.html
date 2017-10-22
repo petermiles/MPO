@@ -1,10 +1,10 @@
 <div class="container">
-    <h1 class="text-center display-1">My Grocery Lists</h1>
+    <h1 class="text-center h1-responsive titlePositoning">My Grocery Lists</h1>
     <!-- Add "users" Recipe Books -->
     <form>
         <div class="md-form">
             <input type="text" id="groceryListName" ng-model="name"></input>
-            <label for="groceryListName">Grocery List Name</label>
+            <label for="groceryListName"><b>Grocery List Name</b></label>
         </div>
         <div class="center">
             <button class="btn btn-primary text-center" ng-click="createGroceryList(name)">Create Grocery List</button>
@@ -12,15 +12,17 @@
         </div>
     </form>
     <div class="row">
-        <div class="col-6" ng-repeat="list in groceryLists">
+        <div class="col-lg-4 recipeCard" ng-repeat="list in groceryLists">
             <a ui-sref="groceryListsComplex({id:list.id})" ng-click="getGroceryLists(list.id)">
                 <!-- Change ui-sref to books.name -->
                 <div class="card">
                     <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
                     <div class="card-body">
-                        <h4 class="card-title">{{list.name}}</h4>
+                        <h2 class="card-title h2-responsive text-center">{{list.name}}</h2>
                         <p class="card-text"></p>
-                        <a class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
+                        <div class="center">
+                            <a class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
+                        </div>
                     </div>
                 </div>
             </a>
@@ -40,7 +42,7 @@
                             </div>
                         </div>
                         <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-danger btn-large" data-dismiss="modal" data-target="confirmDeleteModal" ng-click="deleteGroceryList(list.id)" aria-label="Close">Delete</buttona>
+                            <button type="button" class="btn deleteButtonColor btn-large" data-dismiss="modal" data-target="confirmDeleteModal" ng-click="deleteGroceryList(list.id)">Delete</buttona>
                         </div>
                     </div>
                 </div>

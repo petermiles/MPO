@@ -48,7 +48,6 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
     this.deleteGroceryList = (id) => {
         let deleteParams = [id, this.user.uid]
         return $http.post(`/users/deleteGroceryList`, deleteParams)
-            // $('modal-background').hide()
             .then(result => {
                 return result
             })

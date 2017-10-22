@@ -14,7 +14,7 @@ angular.module('MPOApp').controller('recipeBooksCtrl', function($scope, userServ
     }
 
     // $scope.getRecipeBooks = () => {
-        userServ.getRecipeBooks()
+    userServ.getRecipeBooks()
             .then(result => {
                 console.log(result)
                 return $scope.userBooks = result[0]

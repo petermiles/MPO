@@ -1,58 +1,38 @@
-<h1 class="text-center"> <b>{{userName}}'s Meal Plans.</b> </h1>
-<div class="container" ng-init="getMealPlans()">
-    <div class="row">
-        <div class="col-7">
-            <form class="md-form">
-                <input type="text" id="mealPrepName" class="form-control validate" ng-model="name">
-                <label for="mealPrepName">Name Your Meal Plan</label>
-            </form>
-        </div>
-        <div class="col-5">
-            <div class="md-form">
+<div class="createMealPlanSection">
+    <h1 class="text-center title-positioning"> <b>{{userName}}'s Meal Plans.</b> </h1>
+    <div class="container-fluid" ng-init="getMealPlans()">
+        <div class="row createForm">
+            <div class="col-lg-6">
+                <form class="md-form">
+                    <input type="text" id="mealPrepName" class="form-control validate" ng-model="name">
+                    <label for="mealPrepName">Name Your Meal Plan</label>
+                </form>
+            </div>
+            <div class="col-lg-6">
                 <input class="form-control" id="startDate" type="date" ng-model="myDate" placeholder="Choose a Start Date">
                 <!-- <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Starting Date" ng-required="true"></md-datepicker> -->
             </div>
         </div>
-    </div>
-    <div class="text-center">
-        <input type="text" id="mealPrepNotes" ng-model="notes" placeholder="Notes">
-        <button class="btn btn-primary" ng-click="createMealPlan(name, notes, myDate)">Create Meal Plan</button>
+        <div class="text-center">
+            <form class="md-form">
+                <input type="text" id="mealPrepNotes" class="form-control" ng-model="notes">
+                <label for="mealPrepnNotes">Add some notes</label>
+                <button class="btn btn-primary" ng-click="createMealPlan(name, notes, myDate)">Create Meal Plan</button>
+            </form>
+        </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-4" ng-repeat="mealPlan in mealPlans">
-        <a ui-sref="mealPlanCalendar({id:mealPlan.id})">
-            <div class="card">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
-        </a>
-        <div class="card-body">
-            <h4 class="card-title">{{mealPlan.name}}</h4>
-            <p class="card-text">{{mealPlan.notes}}</p>
-            <button class="btn btn-danger text-center" data-toggle="modal" data-target="#confirmDeleteModal">Delete</button>
-        </div>
-        </div>
-        <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal" aria-hidden="true">
-            <div class="modal-dialog modal-notify modal-danger" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <p class="heading lead">Just to make sure...</p>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" class="white-text">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="text-center">
-                            <h4 class="text-center"><b>Are you sure you want to delete the</b></h4>
-                            <br>
-                            <h2><b>{{mealPlan.name}}</b></h2>
-                            <br>
-                            <h4><b>Meal Plan?</b></h4>
-                        </div>
-                    </div>
-                    <div class="modal-footer justify-content-center">
-                        <a type="button" class="btn btn-danger btn-large" data-dismiss="modal" ng-click="deleteMealPlan(mealPlan.id)" " aria-label="Close ">Delete</a>
-                        </div>
-                    </div>
+<div class="row width100">
+    <div class="col-lg-4 col-xs-6 recipeCard" ng-repeat="mealPlan in mealPlans">
+        <div class="card">
+            <a ui-sref="mealPlanCalendar({id:mealPlan.id})">
+                <img class="img-fluid" src="http://via.placeholder.com/710x500" alt="Card image cap" style="width:100%">
+             </a>
+            <div class="card-body mealPlanCard">
+                <h2 class="card-title text-center h2-reponsive">{{mealPlan.name}}</h2>
+                <p class="card-text">{{mealPlan.notes}}</p>
+                <div class="center">
+                    <button class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal">Delete</button>
                 </div>
             </div>
         </div>

@@ -1,13 +1,17 @@
 angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealPrepServ, dataServ, $stateParams, $state) {
+    $scope.showRandomRecipes = false;
     $scope.misMatchingPasswords = false;
     $scope.showSignOut = true;
+    $scope.showMyItems = true;
     firebase.auth().onAuthStateChanged(user => {
         console.log(user)
         if (!user) {
             $scope.showSignOut = false
             $scope.showSignIn = true;
+            $scope.showMyItems = false;
         }
         else if (user) {
+            $scope.showMyItems = true;
             $scope.showSignOut = true;
             $scope.showSignUp = false;
             $scope.showSignIn = false;
@@ -16,6 +20,7 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
     })
 
     dataServ.getRandomRecipes().then(result => {
+        $scope.showRandomRecipes = true;
         $scope.randomRecipes = result
     })
 
@@ -34,8 +39,10 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
         let password = $scope.loginPassword
         console.log(email, password)
         userServ.signIn(email, password).then(result => {
-            $('#loginModal').modal('toggle')
-            $state.go('search')
+            // $('#loginModal').modal('toggle')
+            $route.reload()
+            // $location.path('/reload')
+            $scope.showMyItems = true;
             $scope.showSignIn = true;
             $scope.showSignOut = false;
            
@@ -47,6 +54,7 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
         userServ.signOut().then(result => {
             $scope.signOut = false;
             $scope.signIn = true;
+            // $location.path('/reload')
             $route.reload()
         })
     }

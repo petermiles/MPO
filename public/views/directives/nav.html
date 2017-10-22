@@ -9,13 +9,13 @@
             <li class="nav-item">
                 <a class="nav-link" ui-sref="search">Search</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" ng-show="showMyItems">
                 <a class="nav-link" ui-sref="recipeBook">My Recipes</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" ng-show="showMyItems">
                 <a class="nav-link" ui-sref="mealPlans">My Meal Plans</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item" ng-show="showMyItems">
                 <a class="nav-link" ui-sref="groceryLists">My Grocery Lists</a>
             </li>
             <li class="nav-item" ng-show="showSignIn">
@@ -42,7 +42,7 @@
                                 <div class="modal-body mb-1">
                                     <div class="md-form form-sm">
                                         <i class="fa fa-envelope prefix"></i>
-                                        <input ng-model="loginEmail" type="text" id="loginEmail" class="form-control">
+                                        <input ng-model="loginEmail" type="email" id="loginEmail" class="form-control">
                                         <label for="loginEmail">Your email</label>
                                     </div>
                                     <div class="md-form form-sm">
@@ -65,17 +65,17 @@
                                 <div class="modal-body">
                                     <div class="md-form form-sm">
                                         <i class="fa fa-envelope prefix"></i>
-                                        <input type="text" id="signUpName" ng-model="signUpName" class="form-control">
+                                        <input type="text" id="signUpName" ng-model="signUpName" class="form-control" ng-required>
                                         <label for="signUpName">Your name</label>
                                     </div>
                                     <div class="md-form form-sm">
                                         <i class="fa fa-envelope prefix"></i>
-                                        <input type="text" id="signUpEmail" ng-model="signUpEmail" class="form-control">
+                                        <input type="email" id="signUpEmail" ng-model="signUpEmail" class="form-control" ng-required>
                                         <label for="signUpEmail">Your email</label>
                                     </div>
                                     <div class="md-form form-sm">
                                         <i class="fa fa-lock prefix"></i>
-                                        <input type="password" id="initialPassword" class="form-control" ng-model="initialPassword">
+                                        <input type="password" id="initialPassword" class="form-control" ng-model="initialPassword" ng-required>
                                         <label for="initialPassword">Your password</label>
                                     </div>
                                     <div class="md-form form-sm">

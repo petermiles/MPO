@@ -5,35 +5,36 @@
     <div ng-show="recipeResultsShow" background-image="https://spoonacular.com/recipeImages/{{recipeData.id}}-556x370.jpg"></div>
     <div class="blackOverlay">
         <div ng-show="recipeResultsShow" class="recipePagePaddingBottom container-fluid">
-            <div class="modal fade" id="recipeBooks" tabindex="-1" role="dialog" aria-labelledby="recipeBooksModal" aria-hidden="true">
-                <div class="modal-dialog" role="document">
+            <div class="modal fade right" id="recipeBooks" tabindex="-1" role="dialog" aria-labelledby="recipeBooksModal" aria-hidden="true">
+                <div class="modal-dialog modal-side modal-bottom-right" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title w-100" id="recipeBooksModal">Which Recipe Book?</h4>
+                            <h4 class="modal-title " id="recipeBooksModal">Which Recipe Book?</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body" id="booksModalContent">
                             <div ng-repeat="books in userBooksModal">
-                                {{}}
-                                <button class="btn btn-primary" ng-click="saveRecipeToBook(recipeData.title, recipeData.id, recipeData.image, books.id, recipeData.pricePerServing, recipeData)" data-dismiss="modal">{{books.name}}</button>
+                                <button class="btn light-blue lighten-2 modalRecipeBooks" ng-click="saveRecipeToBook(recipeData.title, recipeData.id, recipeData.image, books.id, recipeData.pricePerServing, recipeData)" data-dismiss="modal">{{books.name}}</button>
                             </div>
                             <div ng-hide="booksExist">
                                 <h1 class="text-center">You haven't created a Recipe Book yet!</h1>
                                 <br>
                                 <form class="md-form center">
-                                    <input class="form-control" ng-model="recipeBookName" id="recipeBookName">
+                                    <input type="text" class="form-control" ng-model="recipeBookName" id="recipeBookName">
                                     <label for="recipeBookName">Name your Recipe Book</label>
-                                    <button class="btn" ng-click="createRecipeBook(recipeBookName)"> Create Recipe Book</button>
+                                    <div class="center">
+                                        <button class="btn light-blue lighten-2 createButton btn-lg" ng-click="createRecipeBook(recipeBookName)"> Create Recipe Book</button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="groceryLists" tabindex="-1" role="dialog" aria-labelledby="groceryListsModal" aria-hidden="true">
-                <div class="modal-dialog modal-sm" role="document">
+            <div class="modal fade right" id="groceryLists" tabindex="-1" role="dialog" aria-labelledby="groceryListsModal" aria-hidden="true">
+                <div class="modal-dialog modal-side modal-bottom-right" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title w-100" id="groceryListsModal">Which Grocery List?</h4>
@@ -41,19 +42,23 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            <div ng-repeat="list in groceryLists">
-                                <button class="btn btn-primary" ng-click="saveToGroceryList(list.id, recipeIngredients)" data-dismiss="modal">{{list.name}}</button>
+                        <div class="modal-body searchBar">
+                            <div class="container">
+                                <div ng-repeat="list in groceryLists">
+                                    <button class="modalRecipeBooks btn light-blue lighten-2" ng-click="saveToGroceryList(list.id, recipeIngredients)" data-dismiss="modal">{{list.name}}</button>
+                                </div>
                             </div>
-                        </div>
-                        <div ng-show="groceryListExist">
-                            <h1 class="text-center">You haven't created a Grocery List yet!</h1>
-                            <br>
-                            <form class="md-form">
-                                <input class="form-control" ng-model="groceryListName" id="groceryListName">
-                                <label for="groceryListName">Name Your Grocery List</label>
-                                <button class="btn center" ng-click="createGroceryList(groceryListName)"> Create Grocery List</button>
-                            </form>
+                            <div ng-show="groceryListExist">
+                                <h1 class="text-center">You haven't created a Grocery List yet!</h1>
+                                <br>
+                                <form class="md-form">
+                                    <input type="text" class="form-control" ng-model="groceryListName" id="groceryListName">
+                                    <label for="groceryListName">Name Your Grocery List</label>
+                                    <div class="center">
+                                        <button class="btn light-blue lighten-2 center btn-lg" ng-click="createGroceryList(groceryListName)"> Create Grocery List</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,9 +120,9 @@
                         </div>
                     </div>
                 </div>
-                <div id="floatingActionButton" class="center">
-                    <button class="btn btn-secondary" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
-                    <button class="btn btn-secondary" ng-click="getRecipeBooksModal()" data-toggle="modal" data-target="#recipeBooks"> Save to Recipe Book </button>
+                <div id="floatingActionButton" class="center" ng-show="saveButtons">
+                    <button class="btn light-blue lighten-2" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
+                    <button class="btn light-blue lighten-2" ng-click="getRecipeBooksModal()" data-toggle="modal" data-target="#recipeBooks"> Save to Recipe Book </button>
                 </div>
         </div>
         </section>

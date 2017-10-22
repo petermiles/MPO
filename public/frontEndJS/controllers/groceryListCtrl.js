@@ -22,7 +22,9 @@ angular.module('MPOApp').controller('groceryListCtrl', function($scope, userServ
 
     $scope.deleteGroceryList = (listId) => {
         groceryListServ.deleteGroceryList(listId).then(result => {
-            $scope.groceryLists = result.data
+            $('#confirmDeleteModal').modal('toggle');
+            $state.go($state.current, {}, {reload: true})
+            return $scope.groceryLists = result.data
         })
     }
 

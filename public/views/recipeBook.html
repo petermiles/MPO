@@ -1,25 +1,26 @@
-<div class="container" ng-init="getRecipeBooks()">
-    <h1 class="text-center h1-responsive"><b>{{userName}}'s Recipe Books</b></h1>
-    <!-- Add "users" Recipe Books -->
-    <form class="md-form">
-        <div class="md-form">
-            <input type="text" id="form7" class="form-control" ng-model="name"></input>
-            <label for="form7">Book Name</label>
-        </div>
-        <div class="text-center">
-            <button class="btn btn-primary text-center" ng-click="createRecipeBook(name)">Create Recipe Book</button>
-            <!-- <button class="btn btn-primary text-center" ng-click="getRecipeBooks()">Get Recipe Books</button> -->
-        </div>
-    </form>
+<div class="height100">
+    <div class="container-fluid" ng-init="getRecipeBooks()">
+        <h1 class="text-center recipeBookTitle"><b>{{userName}}'s Recipe Books</b></h1>
+        <form class="md-form createForm">
+            <div class="md-form createForm">
+                <input type="text" id="form7" class="form-control" ng-model="name"></input>
+                <label for="form7">Book Name</label>
+            </div>
+            <div class="text-center">
+                <button class="btn light-blue lighten-2 text-center" ng-click="createRecipeBook(name)">Create Recipe Book</button>
+            </div>
+        </form>
+    </div>
+<div class="center">
     <div class="row">
-        <div class="col-6" ng-repeat="books in userBooks">
+        <div class="col-lg-4 col-xs-6 recipeCard" ng-repeat="books in userBooks">
             <a ui-sref="books({id:books.id})" ng-click="getRecipesFromBooks(books.id)">
                 <!-- Change ui-sref to books.name -->
-                <div class="card">
+                <div class="">
                     <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
                     <div class="card-body center">
                         <h1 class="card-title"><b>{{books.name}}</b></h1>
-                        <a class="btn btn-danger" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
+                        <a class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
                     </div>
                 </div>
             </a>
@@ -35,13 +36,14 @@
                         <div class="modal-body">
                             <div class="text-center">
                                 <h4 class="text-center"><b>Are you sure you want to delete the</b></h4>
-                                <br> <h2><b>{{books.name}}</b></h2>
+                                <br>
+                                <h2><b>{{books.name}}</b></h2>
                                 <br>
                                 <h4><b>Recipe Book?</b></h4>
                             </div>
                         </div>
                         <div class="modal-footer justify-content-center">
-                            <a type="button" class="btn btn-danger btn-large" data-dismiss="modal" ng-click="deleteBook(books.id)" aria-label="Close">Delete</a>
+                            <button type="button" class="btn btn-primary-modal" data-dismiss="modal" ng-click="deleteBook(books.id)" aria-label="Close">Delete</button>
                         </div>
                     </div>
                 </div>
