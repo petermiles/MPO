@@ -15,6 +15,7 @@ angular.module("MPOApp").directive("backgroundImage", function() {
                 'background-image': 'url(' + value + ')',
                 'display': 'block',
                 'background-size': 'cover',
+                'background-repeat': 'none',
                 'filter': 'blur(15px)',
                 'height': height,
                 'position': 'fixed',
@@ -22,6 +23,17 @@ angular.module("MPOApp").directive("backgroundImage", function() {
                 'right': '0',
                 'z-index': '-10'
             });
+            // element.append('<div class="blackOverlay></>').css(
+            //     'height': height
+            //     'display': 'block',
+            //     'background-color': 'black',
+            //     'opacity': '.3px',
+            //     'position': 'fixed',
+            //     'left': '0',
+            //     'right': '0',
+            //     'z-index': '-9'
+            // )
+
         });
         var pic = new Image();
         pic.crossOrigin = 'anonymous';
@@ -37,7 +49,7 @@ angular.module("MPOApp").directive("backgroundImage", function() {
             ctx.drawImage(img, 0, 0);
             localStorage.setItem("savedImageData", canvas.toDataURL("image/png"));
         }
-        
+
         pic.onload = function getAverageRGB() {
 
             localStorage.setItem("savedImageData", canvas.toDataURL("image/png"));

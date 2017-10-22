@@ -1,0 +1,355 @@
+nav {
+  position: fixed; }
+
+/* Utilities */
+.noSidePadding {
+  padding-left: 0;
+  padding-right: 0; }
+
+.width100 {
+  max-width: 100vw;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0; }
+
+.height90vh {
+  height: 90vh; }
+
+.posRel-wid100 {
+  position: relative;
+  width: 100%; }
+
+.paddingRight0 {
+  padding-right: 0; }
+
+.testBg {
+  background-color: aliceblue;
+  width: 100%; }
+
+.salmonBg {
+  background-color: rgba(250, 128, 114, 0.5);
+  border-radius: 5px; }
+
+.horizontalCenter {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center; }
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.form-control {
+  color: black !important; }
+
+a:link, a:visited {
+  text-decoration: inherit;
+  color: inherit;
+  cursor: auto; }
+
+.sticky {
+  position: fixed; }
+
+.displayNone {
+  display: none; }
+
+.displayShow {
+  display: absolute; }
+
+#recipeTitle {
+  color: white; }
+
+#recipeSummary {
+  letter-spacing: 1px; }
+
+.emphasizeText {
+  color: black;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  letter-spacing: 1px;
+  font-weight: 700; }
+
+input[type="date"]:before {
+  content: attr(placeholder) !important;
+  color: #aaa;
+  margin-right: 0.5em; }
+input[type="date"]:focus:before, input[type="date"]:valid:before {
+  content: ""; }
+
+/* Nav */
+.loginModalTabs {
+  width: 50%; }
+
+.modal-c-tabs {
+  color: white; }
+
+.centerButtonContent {
+  text-align: center;
+  margin: auto; }
+
+/* Home Page */
+.randomRecipeHeight {
+  height: 25vh; }
+
+.searchHeroTop {
+  height: 50vh;
+  margin: auto; }
+
+.input-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black; }
+
+#typed-output .form-control, #navbarSearch {
+  color: white; }
+
+/* Recipe Search & Results */
+.searchSection {
+  height: 20vh;
+  margin-top: 8vh; }
+
+.searchBar input {
+  font-size: 1.4em !important; }
+  .searchBar input[type=text] {
+    font-size: 2em; }
+
+.recipeResults {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.recipeTitleOverlay {
+  padding-left: 5px;
+  padding-top: 5px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-weight: 700; }
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-content: center; }
+
+.paginationButton {
+  margin: 3vh 1vw; }
+
+/* Recipe Card */
+.recipeCard {
+  margin: 0 0;
+  padding: 0 0; }
+
+.recipeTitle {
+  margin: 5vh auto;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px; }
+
+.recipeSummary {
+  font-weight: 700;
+  color: white;
+  letter-spacing: 1px; }
+
+.ingredientTitle {
+  border-bottom: 1px solid black;
+  margin-bottom: 3vh; }
+
+.recipePagePaddingBottom {
+  padding-bottom: 3vh; }
+
+.instructionsBreak {
+  box-shadow: 1px 1px 1px salmon; }
+
+#ingredientSection {
+  margin-top: 2vh; }
+
+.ingredient-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%; }
+
+.blackOverlay {
+  background-color: black;
+  opacity: 0.8;
+  height: 100%;
+  z-index: -9; }
+
+#ingredientSection {
+  background-color: rgba(255, 255, 255, 0.5);
+  color: black; }
+
+#instructionsList .card {
+  opacity: 0.9; }
+
+.instructionHeader {
+  font-weight: 700;
+  padding: 1vh 0; }
+
+.instructionSpacing {
+  margin: 0 0 2vh 0; }
+
+.instructionStyles {
+  padding: 3vh 0;
+  line-height: 140%; }
+
+.growInstructions {
+  transition: all 0.3s ease-in-out;
+  transform: scale(0.95);
+  z-index: 100; }
+  .growInstructions:hover {
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+    z-index: 100; }
+
+/* Calendar Styles */
+.addButtonCalendar {
+  font-size: 20px;
+  color: white;
+  font-weight: 400;
+  width: 25px; }
+
+.table {
+  width: 100%; }
+
+table, thead, td, tr, tbody, th {
+  border: 1px solid black; }
+
+td {
+  margin: auto; }
+
+.app {
+  width: 100%;
+  padding: 0;
+  margin: 0; }
+
+li {
+  width: parent; }
+
+.flexCalendar {
+  vertical-align: center; }
+
+.toolBarWidth {
+  width: 30vw; }
+
+.calendarWidth {
+  width: 70vw; }
+
+.timeName {
+  transform: rotate(-90deg);
+  left: -40px; }
+
+.calendarSlot {
+  border: 1px solid black; }
+
+.calendarPadding {
+  padding-top: 2vh; }
+
+.servingSetUp {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.recipeSetup {
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.sideBarPadding {
+  margin: 1vh 0; }
+
+.sideBarRecipeSize {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; }
+
+.feedback {
+  background-color: #31B0D5;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border-color: #46b8da; }
+
+#floatingActionButton {
+  position: fixed;
+  bottom: 2vh;
+  right: 2vw;
+  z-index: 150; }
+
+.recipePanelBg {
+  background-color: rgba(0, 0, 0, 0.2); }
+
+#sortableLists {
+  width: 200px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+  padding-top: 5px;
+  background-color: aliceblue; }
+
+.noListStyle {
+  list-style-type: none; }
+
+.recipeListBox {
+  width: 0;
+  height: 0;
+  background-color: salmon;
+  opacity: 0;
+  transition-duration: 0.5s; }
+
+.paddingBarely {
+  margin-right: 20px;
+  margin-left: 20px; }
+
+.recipeButtons {
+  opacity: 1 !important; }
+
+.recipeBoxContent {
+  height: 15vh;
+  width: 15vh; }
+
+.noImgTouch {
+  height: 10vh;
+  margin: 1vh 2vh; }
+
+.sideBarTransition {
+  transition: all 1s; }
+
+.displayFixed {
+  display: block; }
+
+/* Loading Icon */
+/* Floating Action Buttons */
+/* Bootstrap Additions */
+.col-2, .col-12 {
+  flex-grow: 1;
+  transition: all 0.1s; }
+
+.col-10 {
+  flex-shrink: 1;
+  transition: all 0.1s; }
+  .col-10 .paginationButton {
+    width: 40vw;
+    height: 15vh;
+    font-size: 2em; }
+
+/*# sourceMappingURL=main.sass.map */

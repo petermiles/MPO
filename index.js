@@ -63,6 +63,7 @@ const retrieveCtrl = require('./serverStack/controllers/retrieveCtrl')
 
 app.get('/search/mealplan', retrieveCtrl.generateMealPlan)
 
+app.get('/search/getRandomRecipes', retrieveCtrl.getRandomRecipes)
 app.put('/search/recipeBasic', retrieveCtrl.searchRecipeBasic)
 app.put('/search/getRecipeInfo', retrieveCtrl.getRecipeInfo)
 app.put('/search/getRecipeNutrition', retrieveCtrl.getRecipeNutrition)

@@ -1,20 +1,22 @@
-<div class="container-fluid searchPagePadding">
+<div class="width100 searchSection">
     <div class="container">
-        <div class="row searchHero">
+        <div class="row searchBar">
             <form class="md-form col-12" ng-submit="searchRecipeBasic(humanQuery)">
-                <input type="text" ng-model="humanQuery" placeholder="What Do You Want To Cook?" ng-submit="searchRecipeBasic(humanQuery)">
+                <input class="form-control" type="text" ng-model="humanQuery" placeholder="What Do You Want To Cook?" ng-submit="searchRecipeBasic(humanQuery)">
                 <input class="displayNone" type="submit" id="submit" value="Submit" />
             </form>
         </div>
     </div>
-    <div ng-show="resultsShown">
-        <div class="row recipeResults">
+    <div ng-show="resultsShown" class="center">
+        <div class="row width100">
             <div class="col-lg-4 col-xs-12 recipeCard" ng-repeat="recipe in recipeResults">
                 <a ng-click="getRecipeInfo(recipe.id)" ui-sref="recipeCard({id:recipe.id})">
-                    <div class="card hoverable">
-                        <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="{{recipe.title}}">
-                        <div class="recipeTitleOverlay">
-                            <h2 class="h2-responsive">{{recipe.title}}</h2>
+                    <div class="view overlay hm-zoom">
+                        <div class="card">
+                            <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="{{recipe.title}}">
+                            <div class="recipeTitleOverlay">
+                                <h2 class="h2-responsive">{{recipe.title}}</h2>
+                            </div>
                         </div>
                     </div>
                 </a>
@@ -24,10 +26,10 @@
     <div ng-show="noResults" class="center">
         <h1 class="text-center">we couldn't find results that match {{humanQuery}}</h1>
     </div>
-    <div ng-show="resultsShown" class="center paginationPadding">
-        <ul class="pagination">
-            <button class="btn btn-large btn-primary" ng-click="decrementOffset()" ng-show="showPreviousButton">Go Back A Page</button>
-            <button class="btn btn-large btn-primary" ng-click="incrementOffset()" ng-show="showNextButton">Show More Results</button>
-        </ul>
+    <div ng-show="resultsShown" class="center">
+        <div class="pagination">
+            <button class="btn btn-large unique-color-dark paginationButton" ng-click="decrementOffset()" ng-show="showPreviousButton">Go Back A Page</button>
+            <button class="btn btn-large unique-color-dark paginationButton" ng-click="incrementOffset()" ng-show="showNextButton">Next Page</button>
+        </div>
     </div>
 </div>

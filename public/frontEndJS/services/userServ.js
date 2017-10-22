@@ -7,13 +7,19 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
         }
     })
 
-    this.createUser = (firstName, lastName, email, password) => {
-        console.log(firstName, lastName, email, password)
+    this.createUser = (firstName, email, password) => {
+        console.log(firstName, email, password)
         firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
-            let userInfo = [this.user.uid, this.user.email, firstName, lastName]
+            console.log('logged in' ,user)
+            let userInfo = [user.uid, user.email, firstName]
             return $http.post('/users/createUser', userInfo)
-        }).catch(err => {
-            console.log(err.message)
+        }).catch(error => {
+            console.log(error)
+            if(error.code === 'auth/argument-error'){
+                alert("Either password or email is messed up")
+            } else if (error.code === 'auth/weak-password'){
+                alert("password must be 6 characters")
+            }
         })
     }
 
@@ -31,9 +37,19 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
         console.log(email, password)
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then((result) => {
-                $state.go('search')
+                $('#loginModal').modal('toggle')
+                return result
+                // $state.go('search')
             }).catch(error => {
-                console.log(error.code)
+                console.log(error)
+                if(error.code === "auth/invalid-email"){
+                    alert("Bad Email")
+                } else if (error.code === "auth/user-not-found") {
+                alert('Email does not exist')
+
+                } else if (error.code === "auth/wrong-password"){
+                    alert('wrong password')
+                }
             })
     }
 
@@ -69,7 +85,9 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
                     []
                 ]
                 return resultData
-            }).then(recipes => {
+            })
+
+            // .then(recipes => {
                 // // let recipesObj = {}
                 // // _.map(recipes[1], (x, y) => {
 
@@ -101,8 +119,8 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
                 //     })
                 // }
                 // // console.log(recipesArr)
-                return recipes
-            })
+                // return recipes
+            // })
 
     }
 

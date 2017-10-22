@@ -12,6 +12,12 @@ angular.module("MPOApp").service("dataServ", function($http) {
         })
     }
 
+    this.getRandomRecipes = () => {
+        return $http.get('/search/getRandomRecipes').then(result => {
+            return result.data
+        })
+    }
+
     this.parseGroceryListSearch = (text) => {
         return $http.post('/search/parseGroceryListSearch', [text])
             .then(result => {

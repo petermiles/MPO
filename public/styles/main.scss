@@ -1,52 +1,414 @@
-/*
-Error: Invalid CSS after "fixed": expected expression (e.g. 1px, bold), was ";"
-        on line 5 of main.css
+$color_1: black;
+$color_2: inherit;
+$color_3: white;
+$color_4: #aaa;
+$background_color_1: aliceblue;
+$background_color_2: rgba(250, 128, 114, .5);
+$background_color_3: rgba(0, 0, 0, .6);
+$background_color_4: black;
+$background_color_5: rgba(255, 255, 255, .5);
+$background_color_6: #31B0D5;
+$background_color_7: rgba(0, 0, 0, 0.2);
+$background_color_8: salmon;
+$border_color_1: #46b8da;
 
-1: 
-2: 
-3: 
-4: nav {
-5:     position: fixed;
-6: }
-7: 
-8: 
-9: 
-10: 
-
-Backtrace:
-main.css:5
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/scss/parser.rb:1278:in `expected'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/script/lexer.rb:231:in `expected!'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/script/parser.rb:761:in `assert_done'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/script/parser.rb:69:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/script/parser.rb:228:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/script.rb:27:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:1177:in `parse_script'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:749:in `parse_property'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:708:in `parse_property_or_rule'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:667:in `parse_line'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:540:in `build_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:559:in `block in append_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:558:in `each'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:558:in `append_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:549:in `block in build_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:542:in `each'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:542:in `build_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:559:in `block in append_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:558:in `each'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:558:in `append_children'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:417:in `_to_tree'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:389:in `_render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/engine.rb:307:in `render_with_sourcemap'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:391:in `run'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/exec/sass_scss.rb:63:in `process_result'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/exec/base.rb:52:in `parse'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/lib/sass/exec/base.rb:19:in `parse!'
-/Library/Ruby/Gems/2.0.0/gems/sass-3.5.2/bin/sass:13:in `<top (required)>'
-/usr/local/bin/sass:23:in `load'
-/usr/local/bin/sass:23:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"fixed\": expected expression (e.g. 1px, bold), was \";\"\A         on line 5 of main.css\A \A 1: \A 2: \A 3: \A 4: nav {\A 5:     position: fixed;\A 6: }\A 7: \A 8: \A 9: \A 10: "; }
+/* Utilities */
+/* Nav */
+/* Home Page */
+/* Recipe Search & Results */
+/* Recipe Card */
+/* Calendar Styles */
+/* Loading Icon */
+/* Floating Action Buttons */
+/* Bootstrap Additions */
+nav {
+  position: fixed;
+}
+.noSidePadding {
+  padding-left: 0;
+  padding-right: 0;
+}
+.width100 {
+  max-width: 100vw;
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+.height90vh {
+  height: 90vh;
+}
+.posRel-wid100 {
+  position: relative;
+  width: 100%;
+}
+.paddingRight0 {
+  padding-right: 0;
+}
+.testBg {
+  background-color: $background_color_1;
+  width: 100%;
+}
+.salmonBg {
+  background-color: $background_color_2;
+  border-radius: 5px;
+}
+.horizontalCenter {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.form-control {
+  color: $color_1 !important;
+}
+a {
+  &:link {
+    text-decoration: inherit;
+    color: $color_2;
+    cursor: auto;
+  }
+  &:visited {
+    text-decoration: inherit;
+    color: $color_2;
+    cursor: auto;
+  }
+}
+.sticky {
+  position: fixed;
+}
+.displayNone {
+  display: none;
+}
+.displayShow {
+  display: absolute;
+}
+#recipeTitle {
+  color: $color_3;
+}
+#recipeSummary {
+  letter-spacing: 1px;
+}
+.emphasizeText {
+  color: $color_1;
+  -webkit-text-fill-color: black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+input[type="date"] {
+  &:before {
+    content: attr(placeholder) !important;
+    color: $color_4;
+    margin-right: 0.5em;
+  }
+  &:focus {
+    &:before {
+      content: "";
+    }
+  }
+  &:valid {
+    &:before {
+      content: "";
+    }
+  }
+}
+.loginModalTabs {
+  width: 50%;
+}
+.modal-c-tabs {
+  color: $color_3;
+}
+.centerButtonContent {
+  text-align: center;
+  margin: auto;
+}
+.randomRecipeHeight {
+  height: 25vh;
+}
+.searchHeroTop {
+  height: 50vh;
+  margin: auto;
+}
+.input-control {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+}
+#typed-output {
+  .form-control {
+    color: $color_3;
+  }
+}
+#navbarSearch {
+  color: $color_3;
+}
+.searchSection {
+  height: 20vh;
+  margin-top: 8vh;
+}
+.searchBar {
+  input[type=text] {
+    font-size: 2em;
+  }
+  input {
+    font-size: 1.4em !important;
+  }
+}
+.recipeResults {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recipeTitleOverlay {
+  padding-left: 5px;
+  padding-top: 5px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  background-color: $background_color_3;
+  color: $color_3;
+  font-weight: 700;
+}
+.pagination {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+.paginationButton {
+  margin: 3vh 1vw;
+}
+.recipeCard {
+  margin: 0 0;
+  padding: 0 0;
+}
+.recipeTitle {
+  margin: 5vh auto;
+  font-weight: 700;
+  color: $color_3;
+  letter-spacing: 1px;
+}
+.recipeSummary {
+  font-weight: 700;
+  color: $color_3;
+  letter-spacing: 1px;
+}
+.ingredientTitle {
+  border-bottom: 1px solid black;
+  margin-bottom: 3vh;
+}
+.recipePagePaddingBottom {
+  padding-bottom: 3vh;
+}
+.instructionsBreak {
+  box-shadow: 1px 1px 1px salmon;
+}
+#ingredientSection {
+  margin-top: 2vh;
+  background-color: $background_color_5;
+  color: $color_1;
+}
+.ingredient-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.blackOverlay {
+  background-color: $background_color_4;
+  opacity: .8;
+  height: 100%;
+  z-index: -9;
+}
+#instructionsList {
+  .card {
+    opacity: .9;
+  }
+}
+.instructionHeader {
+  font-weight: 700;
+  padding: 1vh 0;
+}
+.instructionSpacing {
+  margin: 0 0 2vh 0;
+}
+.instructionStyles {
+  padding: 3vh 0;
+  line-height: 140%;
+}
+.growInstructions {
+  transition: all .3s ease-in-out;
+  transform: scale(.95);
+  z-index: 100;
+  &:hover {
+    transition: all .3s ease-in-out;
+    transform: scale(1.0);
+    z-index: 100;
+  }
+}
+.addButtonCalendar {
+  font-size: 20px;
+  color: $color_3;
+  font-weight: 400;
+  width: 25px;
+}
+.table {
+  width: 100%;
+}
+table {
+  border: 1px solid black;
+}
+thead {
+  border: 1px solid black;
+}
+td {
+  border: 1px solid black;
+  margin: auto;
+}
+tr {
+  border: 1px solid black;
+}
+tbody {
+  border: 1px solid black;
+}
+th {
+  border: 1px solid black;
+}
+.app {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+li {
+  width: parent;
+}
+.flexCalendar {
+  vertical-align: center;
+}
+.toolBarWidth {
+  width: 30vw;
+}
+.calendarWidth {
+  width: 70vw;
+}
+.timeName {
+  transform: rotate(-90deg);
+  left: -40px;
+}
+.calendarSlot {
+  border: 1px solid black;
+}
+.calendarPadding {
+  padding-top: 2vh;
+}
+.servingSetUp {
+  height: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.recipeSetup {
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.sideBarPadding {
+  margin: 1vh 0;
+}
+.sideBarRecipeSize {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.feedback {
+  background-color: $background_color_6;
+  color: $color_3;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border-color: $border_color_1;
+}
+#floatingActionButton {
+  position: fixed;
+  bottom: 2vh;
+  right: 2vw;
+  z-index: 150;
+}
+.recipePanelBg {
+  background-color: $background_color_7;
+}
+#sortableLists {
+  width: 200px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 2px;
+  padding-top: 5px;
+  background-color: $background_color_1;
+}
+.noListStyle {
+  list-style-type: none;
+}
+.recipeListBox {
+  width: 0;
+  height: 0;
+  background-color: $background_color_8;
+  opacity: 0;
+  transition-duration: .5s;
+}
+.paddingBarely {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+.recipeButtons {
+  opacity: 1 !important;
+}
+.recipeBoxContent {
+  height: 15vh;
+  width: 15vh;
+}
+.noImgTouch {
+  height: 10vh;
+  margin: 1vh 2vh;
+}
+.sideBarTransition {
+  transition: all 1s;
+}
+.displayFixed {
+  display: block;
+}
+.col-2 {
+  flex-grow: 1;
+  transition: all .1s;
+}
+.col-12 {
+  flex-grow: 1;
+  transition: all .1s;
+}
+.col-10 {
+  flex-shrink: 1;
+  transition: all .1s;
+}
+@media (min-width: 768px) {
+  .paginationButton {
+    width: 40vw;
+    height: 15vh;
+    font-size: 2em;
+  }
+}

@@ -9,11 +9,12 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
     const pageId = $stateParams.id
     $scope.pageTitle = mealPlans[4]
 
-    $scope.getRecipeBooks = () => {
-        userServ.getRecipeBooks().then(result => {
-            $scope.recipeBooks = result.data
-        })
-    }
+    // $scope.getRecipeBooks = () => {
+    userServ.getRecipeBooks().then(result => {
+        $scope.recipeBooks = result[0]
+        console.log($scope.recipeBooks)
+    })
+    // }
 
     $scope.getRecipes = (id) => {
         userServ.getRecipesFromBooks(id)
@@ -63,16 +64,17 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
     }
 
     $scope.sortableOptions = {
-        tolerance: 'pointer',
-        containment: "body",
-        helper: 'sortable-placeholder',
         'ui-floating': true,
+        tolerance: 'pointer',
+        helper: 'sortable-placeholder',
         connectWith: ".apps-container",
         start: function(e, ui) {
+            $(e.target).data("ui-sortable").floating = true;
             $scope.sourceModelClone = ui.item.sortable.sourceModel.slice();
             ui.item.show().addClass('original-placeholder');
         },
         stop: function(e, ui) {
+            $(e.target).data("ui-sortable").floating = true;
             if (
                 $(e.target).hasClass('source') &&
                 ui.item.sortable.droptarget &&
@@ -91,7 +93,7 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
             ) {
 
             }
-            $scope.saveMealPlanData($scope.calendarData.morning1, $scope.calendarData.morning2, $scope.calendarData.morning3,$scope.calendarData.morning4, $scope.calendarData.morning5, $scope.calendarData.morning6, $scope.calendarData.morning7, $scope.calendarData.noon1, $scope.calendarData.noon2, $scope.calendarData.noon3, $scope.calendarData.noon4, $scope.calendarData.noon5, $scope.calendarData.noon6, $scope.calendarData.noon7, $scope.calendarData.evening1, $scope.calendarData.evening2, $scope.calendarData.evening3, $scope.calendarData.evening4, $scope.calendarData.evening5, $scope.calendarData.evening6, $scope.calendarData.evening7)
+            $scope.saveMealPlanData($scope.calendarData.morning1, $scope.calendarData.morning2, $scope.calendarData.morning3, $scope.calendarData.morning4, $scope.calendarData.morning5, $scope.calendarData.morning6, $scope.calendarData.morning7, $scope.calendarData.noon1, $scope.calendarData.noon2, $scope.calendarData.noon3, $scope.calendarData.noon4, $scope.calendarData.noon5, $scope.calendarData.noon6, $scope.calendarData.noon7, $scope.calendarData.evening1, $scope.calendarData.evening2, $scope.calendarData.evening3, $scope.calendarData.evening4, $scope.calendarData.evening5, $scope.calendarData.evening6, $scope.calendarData.evening7)
         }
     };
 })
