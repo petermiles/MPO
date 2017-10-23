@@ -24,5 +24,7 @@ angular.module('MPOApp').controller('yourGroceryListCtrl', function($scope, user
         dataServ.parseGroceryListSearch(text)
     }
 
+    $scope.pageId = $stateParams.id
+
 
 })

@@ -9,7 +9,7 @@ angular.module('MPOApp').controller('dataCtrl', function($scope, $stateParams, d
         $scope.humanQuery = query
         $stateParams.searchValue = query
 
-        return dataServ.searchRecipeBasic($stateParams.searchValue, $scope.offset)
+        return dataServ.searchRecipeBasic(query, $scope.offset)
             .then(result => {
                 console.log(result)
                 $scope.resultsShown = true;

@@ -1,25 +1,23 @@
 <div class="container createMealPlanSection">
     <h1 class="text-center title-positioning"> <b>{{userName}}'s Meal Plans</b> </h1>
     <div class="container" ng-init="getMealPlans()">
-        <div class="row center">
-            <form class="md-form">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <input type="text" id="mealPrepName" class="form-control validate" ng-model="name">
-                        <label for="mealPrepName">Name Your Meal Plan</label>
-                    </div>
-                    <div class="col-lg-6 center">
-                        <input class="form-control" id="startDate" type="date" ng-model="myDate" placeholder="Start Date">
-                    </div>
+        <form class="md-form">
+            <div class="row">
+                <div class="col-lg-6">
+                    <input type="text" id="mealPrepName" class="form-control validate" ng-model="name">
+                    <label for="mealPrepName">Name Your Meal Plan</label>
                 </div>
-                <div class="text-center">
-                    <form class="md-form">
-                        <input class="form-control" type="text" id="mealPrepNotes" ng-model="notes" placeholder="Notes">
-                        <button class="btn light-blue lighten-2" ng-click="createMealPlan(name, notes, myDate)">Create Meal Plan</button>
-                    </form>
+                <div class="col-lg-6 center">
+                    <input class="form-control" id="startDate" type="date" ng-model="myDate" placeholder="Start Date">
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="text-center">
+                <form class="md-form">
+                    <input class="form-control" type="text" id="mealPrepNotes" ng-model="notes" placeholder="Notes">
+                    <button class="btn light-blue lighten-2" ng-click="createMealPlan(name, notes, myDate)">Create Meal Plan</button>
+                </form>
+            </div>
+        </form>
     </div>
     <div class="row marginAuto">
         <div class="col-lg-4 col-xs-6 recipeCard" ng-repeat="mealPlan in mealPlans">

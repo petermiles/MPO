@@ -22,7 +22,9 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
 
     this.userInfo = () => {
         let userId = this.user.uid;
+        console.log(userId)
         return $http.get(`/users/getUserInfo/${userId}`).then(result => {
+            console.log(result)
             let name = result.data[0].first_name
             var firstLetter = name.substr(0, 1);
             let fixedName = firstLetter.toUpperCase() + name.substr(1);

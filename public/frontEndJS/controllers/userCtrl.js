@@ -9,8 +9,7 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
             $scope.showSignOut = false
             $scope.showSignIn = true;
             $scope.showMyItems = false;
-        }
-        else if (user) {
+        } else if (user) {
             $scope.showMyItems = true;
             $scope.showSignOut = true;
             $scope.showSignUp = false;
@@ -29,8 +28,9 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
         if (initialPassword !== signUpPassword) {
             $scope.misMatchingPasswords = true;
         } else if (initialPassword === signUpPassword) {
+            $('#loginModal').modal('toggle')
             userServ.createUser(signUpName, signUpEmail, signUpPassword).then(result => {
-                console.log(result)
+                return result
             })
         }
     }
@@ -39,13 +39,12 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
         let password = $scope.loginPassword
         console.log(email, password)
         userServ.signIn(email, password).then(result => {
-            // $('#loginModal').modal('toggle')
+            $('#loginModal').modal('toggle')
             $route.reload()
-            // $location.path('/reload')
             $scope.showMyItems = true;
             $scope.showSignIn = true;
             $scope.showSignOut = false;
-           
+
         }).catch(error => {
             console.log(error)
         })
