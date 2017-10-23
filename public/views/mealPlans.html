@@ -19,17 +19,21 @@
             </div>
         </form>
     </div>
-    <div class="row marginAuto">
-        <div class="col-lg-4 col-xs-6 recipeCard" ng-repeat="mealPlan in mealPlans">
-            <div class="card hoverable">
-                <a ui-sref="mealPlanCalendar({id:mealPlan.id})">
+    <div class="container">
+        <div class="center">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6 recipeCard" ng-repeat="mealPlan in mealPlans">
+                    <div class="card hoverable">
+                        <a ui-sref="mealPlanCalendar({id:mealPlan.id})">
                 <img class="img-fluid" src="http://via.placeholder.com/710x500" alt="Card image cap" style="width:100%">
              </a>
-                <div class="card-body dark-card-body mealPlanCard">
-                    <h2 class="card-title text-center h2-reponsive">{{mealPlan.name}}</h2>
-                    <p class="card-text">{{mealPlan.notes}}</p>
-                    <div class="center">
-                        <button class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal" ng-click="deleteMealPlan(mealPlan.id)">Delete</button>
+                        <div class="card-body dark-card-body">
+                            <h2 class="card-title text-center h2-reponsive">{{mealPlan.name}}</h2>
+                            <p class="card-text">{{mealPlan.notes}}</p>
+                            <div class="center">
+                                <button class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal" ng-click="deleteMealPlan(mealPlan.id)">Delete</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -206,6 +206,12 @@ input[type="date"]: valid:before {
     }
 }
 
+.bookMarginTop {
+    margin-top: 0;
+}
+
+
+
 .view {
     display: block !important;
 }
@@ -307,7 +313,7 @@ input[type="date"]: valid:before {
 }
 
 .recipeBookTitle {
-    margin-top: 3vh;
+    margin-top: 5vh;
 }
 
 .deleteButtonColor {
@@ -647,7 +653,6 @@ input[type="date"]: valid:before {
 
     #deleteSection {
         height: 12vh;
-        /*width: 20vw !important;*/
         text-align: center;
     }
 }
@@ -657,6 +662,25 @@ input[type="date"]: valid:before {
 
 /* Recipe Books/ Meal Plans/ Grocery Lists */
 
+.recipeBookLayout {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.groceryListTitlePadding {
+    margin-top: 5vh;
+}
+
+.groceryListName {
+    font-weight: 300;
+}
+
+.createListButton {
+    margin-bottom: 5vh;
+}
 .createForm {
     display: flex;
     flex-direction: column;
@@ -665,6 +689,10 @@ input[type="date"]: valid:before {
 
 .mealPlanCard {
     width: 100%;
+}
+
+.bookMarginTop {
+    margin-top: 3vh;
 }
 
 .createMealPlanSection {
@@ -681,6 +709,10 @@ input[type="date"]: valid:before {
 
 .noBooks {
     margin-top: 30vh;
+}
+
+.recipeBookPics {
+    width: 100% !important; 
 }
 
 .createButton {

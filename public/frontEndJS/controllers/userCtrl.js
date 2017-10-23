@@ -4,7 +4,6 @@ angular.module('MPOApp').controller('userCtrl', function($scope, userServ, mealP
     $scope.showSignOut = true;
     $scope.showMyItems = true;
     firebase.auth().onAuthStateChanged(user => {
-        console.log(user)
         if (!user) {
             $scope.showSignOut = false
             $scope.showSignIn = true;

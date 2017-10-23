@@ -1,17 +1,14 @@
 <div class="container">
-    <h1 class="text-center h1-responsive titlePositoning">My Grocery Lists</h1>
-    <!-- Add "users" Recipe Books -->
+    <h1 class="text-center h1-responsive groceryListTitlePadding"><b>{{userName}}'s Grocery Lists</b></h1>
     <form class="md-form">
         <input type="text" id="groceryListName" ng-model="name"></input>
-        <label for="groceryListName"><b>Grocery List Name</b></label>
+        <label for="groceryListName"  class="groceryListName"><b>Grocery List Name</b></label>
     </form>
     <div class="center">
-        <button class="btn light-blue lighten-2 text-center" ng-click="createGroceryList(name)">Create Grocery List</button>
-        <button class="btn light-blue lighten-2 text-center" ng-click="getGroceryLists()">Get Grocery Lists</button>
+        <button class="btn light-blue lighten-2 text-center createListButton" ng-click="createGroceryList(name)">Create Grocery List</button>
     </div>
     <div class="row">
         <div class="col-lg-6 col-xs-12 recipeCard flexColumn" ng-repeat="list in groceryLists">
-            <!-- Change ui-sref to books.name -->
             <div class="card dark-card-body">
                 <a ui-sref="groceryListsComplex({id:list.id})" ng-click="getGroceryLists(list.id)">
                     <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">

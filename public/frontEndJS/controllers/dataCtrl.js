@@ -28,6 +28,10 @@ angular.module('MPOApp').controller('dataCtrl', function($scope, $stateParams, d
         "Show me Some Good Food"
     ]
 
+    dataServ.getTrivia().then(result => {
+        console.log(result)
+    })
+
 
     dataServ.persistResults ? $scope.recipeResults = dataServ.persistResults : null
 

@@ -18,6 +18,16 @@ angular.module("MPOApp").service("dataServ", function($http) {
         })
     }
 
+    this.getTrivia = () => {
+        return $http.post('/search/getTrivia')
+        .then(result => {
+            console.log(result.text)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
+
     this.parseGroceryListSearch = (text) => {
         return $http.post('/search/parseGroceryListSearch', [text])
             .then(result => {

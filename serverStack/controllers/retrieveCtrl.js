@@ -8,11 +8,19 @@ const generateMealPlan = (req, res) => {
         })
 }
 
-const getRandomRecipes = (req,res ) => {
-    axios.get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=12')
-    .then(result => {
-        return res.json(result.data.recipes)
+const getTrivia = (req, res) => {
+    return axios.get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/food/trivia/random')
+        .then(result => {
+            console.log("endpoint ctrl",result.data)
+        return result.data
     })
+}
+
+const getRandomRecipes = (req, res) => {
+    axios.get('https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=12')
+        .then(result => {
+            return res.json(result.data.recipes)
+        })
 }
 
 const searchRecipeBasic = (req, res) => {
@@ -36,13 +44,14 @@ const getRecipeNutrition = (req, res) => {
     })
 }
 
-const parseGroceryListSearch = (req,res) => {
+const parseGroceryListSearch = (req, res) => {
     axios.post(`https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/parseIngredients?includeNutrition=false`)
 }
 
 
 module.exports = {
     generateMealPlan,
+    getTrivia,
     searchRecipeBasic,
     getRecipeInfo,
     getRecipeNutrition,

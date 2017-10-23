@@ -10,13 +10,10 @@ angular.module('MPOApp').controller('groceryListCtrl', function($scope, userServ
         })
     }
 
-    $scope.getGroceryLists = () => {
-        let id = user.currentUser.uid
-        groceryListServ.getGroceryLists(id).then(result => {
-            $scope.groceryLists = result.data
-        })
-
-    }
+    let id = user.currentUser.uid
+    groceryListServ.getGroceryLists(id).then(result => {
+        $scope.groceryLists = result.data
+    })
 
     $scope.deleteGroceryList = (listId) => {
         groceryListServ.deleteGroceryList(listId).then(result => {

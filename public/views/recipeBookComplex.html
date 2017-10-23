@@ -1,14 +1,12 @@
-<div class="width100">
-    <!--     <h1 class="display-3 text-center titlePositioning">Recipe Book ID {{pageTitle}}</h1> -->
-    <div class="row">
+<div class="container-fluid">
+    <div class="row recipeBookLayout bookMarginTop">
         <div class="col-lg-6 col-xs-12 recipeCard" ng-repeat="recipe in recipes">
             <div class="card">
                 <a ng-click="getRecipeInfo(recipe.id)" ui-sref="recipeCard({id:recipe.recipe_id})">
-                    <img class="img-fluid" ng-src="{{recipe.profile_pic}}" alt="{{recipe.name}}">
-                    </a>
+                    <img class="img-fluid recipeBookPics" ng-src="{{recipe.profile_pic}}" alt="{{recipe.name}}">
+                </a>
                 <div class="card-body dark-card-body">
                     <h4 class="card-title text-center">{{recipe.name}}</h4>
-                    <!--{{recipe.recipe_nutrition.Calories.amount}} {{recipe.recipe_nutrition.Calories.unit}} {{recipe.recipe_nutrition.Calories.title}} -->
                     <div class="center">
                         <a class="btn deleteButtonColor" ng-click="deleteRecipeFromBook(recipe.id, recipe.fkey)">Delete</a>
                     </div>
@@ -26,22 +24,3 @@
         </h3>
     </div>
 </div>
-<!-- <div class="modal fade" id="mealPlans" tabindex="-1" role="dialog" aria-labelledby="mealPlansModal" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title w-100" id="myModalLabel">Which Meal Plan?</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div ng-repeat="books in userBooksModal">
-                            <button class="btn btn-primary" ng-click="saveRecipeToBook(recipeData.title, recipeData.id, recipeData.image, books.id)" data-dismiss="modal">{{books.name}}</button>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-        </div> -->
-<!-- </div> -->
