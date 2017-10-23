@@ -13,13 +13,10 @@ angular.module('MPOApp').controller('recipeBooksCtrl', function($scope, userServ
             })
     }
 
-    // $scope.getRecipeBooks = () => {
     userServ.getRecipeBooks()
-            .then(result => {
-                console.log(result)
-                return $scope.userBooks = result[0]
-            })
-    // }
+        .then(result => {
+            return $scope.userBooks = result[0]
+        })
 
     $scope.deleteBook = (bookId) => {
 

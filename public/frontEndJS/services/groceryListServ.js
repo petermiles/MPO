@@ -24,8 +24,7 @@ angular.module('MPOApp').service('groceryListServ', function($stateParams, $http
     }
 
 
-    this.getGroceryLists = () => {
-        var id = this.user.uid;
+    this.getGroceryLists = (id) => {
         return $http.get(`/users/getGroceryLists/${id}`)
             .then((result) => { return result })
     }

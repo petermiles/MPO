@@ -13,7 +13,7 @@ angular.module('MPOApp').controller('dataCtrl', function($scope, $stateParams, d
             .then(result => {
                 console.log(result)
                 $scope.resultsShown = true;
-                // dataServ.persistResults = result.data
+                dataServ.persistResults = result.data
                 return $rootScope.recipeResults = result.data
             })
     }
@@ -32,11 +32,6 @@ angular.module('MPOApp').controller('dataCtrl', function($scope, $stateParams, d
     dataServ.persistResults ? $scope.recipeResults = dataServ.persistResults : null
 
     //Generative Functions
-    $scope.generateMealPlan = function(cal, time) {
-        dataServ.generateMealPlan(cal, time).then((mealPlan) => {
-            $scope.mealPlans = mealPlan
-        })
-    }
 
     $scope.searchRecipeBasic = function(searchQuery) {
         dataServ.searchRecipeBasic(searchQuery, $scope.offset).then((result) => {

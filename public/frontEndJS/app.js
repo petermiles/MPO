@@ -65,7 +65,10 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($statePro
         .state('groceryLists', {
             url: "/GroceryLists",
             templateUrl: "views/groceryList.html",
-            controller: 'groceryListCtrl'
+            controller: 'groceryListCtrl',
+            resolve: {
+                user: () => { return firebase.auth() }
+            }
 
         })
         .state('groceryListsComplex', {
