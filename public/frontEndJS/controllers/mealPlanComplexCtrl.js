@@ -39,16 +39,10 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
     $scope.saveMealPlanData = (morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7) => {
         mealPrepServ.getMealPrepData(pageId).then(result => {
             mealPrepServ.updateMealPlanData(morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7).then(result => {
-                if (result) {
-                    return result
-                }
+
+                return result
             })
-            // } 
-            // else if (!result.data[0].recipes) {
-            //     mealPrepServ.saveMealPlanData(morning1, morning2, morning3, morning4, morning5, morning6, morning7, noon1, noon2, noon3, noon4, noon5, noon6, noon7, evening1, evening2, evening3, evening4, evening5, evening6, evening7).then(result => {
-            //         return $scope.calendarData = (JSON.parse(result.data[0].recipes))[0]
-            //     })
-            // }
+
         })
     }
 
@@ -89,7 +83,7 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
                 );
                 console.log(ui.item.sortable.sourceModel)
                 $scope.sourceModelClone = null;
-            } 
+            }
             $scope.saveMealPlanData($scope.calendarData.morning1, $scope.calendarData.morning2, $scope.calendarData.morning3, $scope.calendarData.morning4, $scope.calendarData.morning5, $scope.calendarData.morning6, $scope.calendarData.morning7, $scope.calendarData.noon1, $scope.calendarData.noon2, $scope.calendarData.noon3, $scope.calendarData.noon4, $scope.calendarData.noon5, $scope.calendarData.noon6, $scope.calendarData.noon7, $scope.calendarData.evening1, $scope.calendarData.evening2, $scope.calendarData.evening3, $scope.calendarData.evening4, $scope.calendarData.evening5, $scope.calendarData.evening6, $scope.calendarData.evening7)
         }
     };
