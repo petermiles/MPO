@@ -1,38 +1,38 @@
-<div class="createMealPlanSection">
-    <h1 class="text-center title-positioning"> <b>{{userName}}'s Meal Plans.</b> </h1>
-    <div class="container-fluid" ng-init="getMealPlans()">
-        <div class="row createForm">
-            <div class="col-lg-6">
-                <form class="md-form">
-                    <input type="text" id="mealPrepName" class="form-control validate" ng-model="name">
-                    <label for="mealPrepName">Name Your Meal Plan</label>
-                </form>
-            </div>
-            <div class="col-lg-6">
-                <input class="form-control" id="startDate" type="date" ng-model="myDate" placeholder="Choose a Start Date">
-                <!-- <md-datepicker name="dateField" ng-model="myDate" md-placeholder="Starting Date" ng-required="true"></md-datepicker> -->
-            </div>
-        </div>
-        <div class="text-center">
+<div class="container createMealPlanSection">
+    <h1 class="text-center title-positioning"> <b>{{userName}}'s Meal Plans</b> </h1>
+    <div class="container" ng-init="getMealPlans()">
+        <div class="row center">
             <form class="md-form">
-                <input type="text" id="mealPrepNotes" class="form-control" ng-model="notes">
-                <label for="mealPrepnNotes">Add some notes</label>
-                <button class="btn btn-primary" ng-click="createMealPlan(name, notes, myDate)">Create Meal Plan</button>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <input type="text" id="mealPrepName" class="form-control validate" ng-model="name">
+                        <label for="mealPrepName">Name Your Meal Plan</label>
+                    </div>
+                    <div class="col-lg-6 center">
+                        <input class="form-control" id="startDate" type="date" ng-model="myDate" placeholder="Start Date">
+                    </div>
+                </div>
+                <div class="text-center">
+                    <form class="md-form">
+                        <input class="form-control" type="text" id="mealPrepNotes" ng-model="notes" placeholder="Notes">
+                        <button class="btn light-blue lighten-2" ng-click="createMealPlan(name, notes, myDate)">Create Meal Plan</button>
+                    </form>
+                </div>
             </form>
         </div>
     </div>
-</div>
-<div class="row width100">
-    <div class="col-lg-4 col-xs-6 recipeCard" ng-repeat="mealPlan in mealPlans">
-        <div class="card">
-            <a ui-sref="mealPlanCalendar({id:mealPlan.id})">
+    <div class="row marginAuto">
+        <div class="col-lg-4 col-xs-6 recipeCard" ng-repeat="mealPlan in mealPlans">
+            <div class="card hoverable">
+                <a ui-sref="mealPlanCalendar({id:mealPlan.id})">
                 <img class="img-fluid" src="http://via.placeholder.com/710x500" alt="Card image cap" style="width:100%">
              </a>
-            <div class="card-body mealPlanCard">
-                <h2 class="card-title text-center h2-reponsive">{{mealPlan.name}}</h2>
-                <p class="card-text">{{mealPlan.notes}}</p>
-                <div class="center">
-                    <button class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal">Delete</button>
+                <div class="card-body dark-card-body mealPlanCard">
+                    <h2 class="card-title text-center h2-reponsive">{{mealPlan.name}}</h2>
+                    <p class="card-text">{{mealPlan.notes}}</p>
+                    <div class="center">
+                        <button class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal" ng-click="deleteMealPlan(mealPlan.id)">Delete</button>
+                    </div>
                 </div>
             </div>
         </div>

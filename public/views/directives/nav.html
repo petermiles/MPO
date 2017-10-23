@@ -50,8 +50,8 @@
                                         <input type="password" id="loginPassword" class="form-control" ng-model="loginPassword">
                                         <label for="loginPassword">Your password</label>
                                     </div>
-                                    <div class="text-center mt-2">
-                                        <button class="btn success-color-dark centerButtonContent" ng-click="signIn(loginEmail, loginPassword)" id="loginButton">Log in <i class="fa fa-sign-in ml-1"></i></button>
+                                    <div class="center mt-2">
+                                        <button class="btn light-blue lighten-2 center" ng-click="signIn(loginEmail, loginPassword)" id="loginButton">Log in <i class="fa fa-sign-in ml-1"></i></button>
                                     </div>
                                 </div>
                                 <div class="modal-footer display-footer">
@@ -89,10 +89,10 @@
                                         <input type="password" id="signUpPassword" class="form-control" ng-model="signUpPassword">
                                         <label for="signUpPassword">Repeat password</label>
                                     </div>
-                                    <div class="text-center form-sm mt-2">
-                                        <button class="btn success-color-dark centerButtonContent" ng-click="createUser(signUpName, signUpEmail, 
+                                    <div class="center smallButtonPadding mt-2">
+                                        <button class="btn light-blue lighten-2" ng-click="createUser(signUpName, signUpEmail, 
                                         initialPassword,
-                                        signUpPassword)">Sign up <i class="fa fa-sign-in ml-1"></i></button>
+                                        signUpPassword)">Sign up</button>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -108,8 +108,5 @@
                 </div>
             </div>
         </div>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="text" placeholder="You should cook more" id="navBarSearch" aria-label="Search">
-        </form>
     </div>
 </nav>

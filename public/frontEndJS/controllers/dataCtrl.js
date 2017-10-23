@@ -1,21 +1,31 @@
-angular.module('MPOApp').controller('dataCtrl', function($scope, $state, dataServ) {
-
+angular.module('MPOApp').controller('dataCtrl', function($scope, $stateParams, dataServ, $state, $location, $rootScope) {
     $scope.offset = 0
     $scope.resultsShown = false;
     $scope.showPreviousButton = false;
     $scope.showNextButton = false;
 
-    $scope.homePageSearch = (searchValue) => {
-        $scope.homeSearchValue = searchValue;
-        $state.go("search", $scope.homeSearchValue).then(result => {
-            $scope.humanQuery = $scope.homeSearchValue
-        })
+    $scope.homePageSearch = (query) => {
+        $state.go('search', { searchValue: query })
+        $scope.humanQuery = query
+        $stateParams.searchValue = query
+
+        return dataServ.searchRecipeBasic($stateParams.searchValue, $scope.offset)
+            .then(result => {
+                console.log(result)
+                $scope.resultsShown = true;
+                // dataServ.persistResults = result.data
+                return $rootScope.recipeResults = result.data
+            })
     }
 
-    $scope.texttyping = ["Gluten Free Chicken",
-        "Curry With No Onions",
-        "Low Fat Steak",
-        "Banana Deserts"
+    $scope.texttyping = [
+        "Show me Gluten Free Chicken Recipes",
+        "Show me Low Fat Yogurt Recipes",
+        "Show me Deep Fried Butter",
+        "Show me Curry With No Onions",
+        "Show me Low Fat Steak",
+        "Show me Banana Deserts",
+        "Show me Some Good Food"
     ]
 
 
@@ -28,19 +38,19 @@ angular.module('MPOApp').controller('dataCtrl', function($scope, $state, dataSer
         })
     }
 
-    $scope.searchRecipeBasic = function(humanQuery) {
-        dataServ.searchRecipeBasic(humanQuery, $scope.offset).then((result) => {
-            $scope.humanQuery = humanQuery
-            console.log(result)
-            $scope.firstRecipe = result.data[0].id
+    $scope.searchRecipeBasic = function(searchQuery) {
+        dataServ.searchRecipeBasic(searchQuery, $scope.offset).then((result) => {
+
             if (result.data.length <= 12) {
+                $scope.humanQuery = searchQuery
                 $scope.showNextButton = false;
             }
-            if (result.data.length === 12) {
+            if (result.data.length > 12) {
                 $scope.resultsShown = true;
                 $scope.showNextButton = true;
             }
-            if (!result.data.length) {
+            if (result.data.length === 0) {
+                $scope.resultsShown = false;
                 return $scope.noResults = true;
             } else if (result.data.length) {
                 $scope.resultsShown = true;

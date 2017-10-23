@@ -1,53 +1,51 @@
-<div class="height100">
-    <div class="container-fluid" ng-init="getRecipeBooks()">
+<div class="height100" ng-init="getRecipeBooks()">
+    <div class="container center" ng-init="getRecipeBooks()">
         <h1 class="text-center recipeBookTitle"><b>{{userName}}'s Recipe Books</b></h1>
         <form class="md-form createForm">
-            <div class="md-form createForm">
-                <input type="text" id="form7" class="form-control" ng-model="name"></input>
-                <label for="form7">Book Name</label>
-            </div>
-            <div class="text-center">
-                <button class="btn light-blue lighten-2 text-center" ng-click="createRecipeBook(name)">Create Recipe Book</button>
-            </div>
+            <input type="text" id="form7" class="form-control" ng-model="name"></input>
+            <label for="form7">Book Name</label>
+            <button class="btn light-blue lighten-2 text-center" ng-click="createRecipeBook(name)">Create Recipe Book</button>
         </form>
     </div>
-<div class="center">
-    <div class="row">
-        <div class="col-lg-4 col-xs-6 recipeCard" ng-repeat="books in userBooks">
-            <a ui-sref="books({id:books.id})" ng-click="getRecipesFromBooks(books.id)">
-                <!-- Change ui-sref to books.name -->
-                <div class="">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
-                    <div class="card-body center">
-                        <h1 class="card-title"><b>{{books.name}}</b></h1>
-                        <a class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
-                    </div>
-                </div>
-            </a>
-            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal" aria-hidden="true">
-                <div class="modal-dialog modal-notify modal-danger" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <p class="heading lead">Just to make sure...</p>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true" class="white-text">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="text-center">
-                                <h4 class="text-center"><b>Are you sure you want to delete the</b></h4>
-                                <br>
-                                <h2><b>{{books.name}}</b></h2>
-                                <br>
-                                <h4><b>Recipe Book?</b></h4>
+    <div class="container">
+        <div class="center">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6 recipeCard" ng-repeat="books in userBooks">
+                    <a ui-sref="books({id:books.id})" ng-click="getRecipesFromBooks(books.id)">
+                        <!-- Change ui-sref to books.name -->
+                        <div class="card dark-card-body">
+                            <img class="img-fluid width100per" ng-src="{{books.picture}}" alt="{{books.name}}">
+                            <div class="card-body center">
+                                <h1 class="card-title"><b>{{books.name}}</b></h1>
+                                <a class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
                             </div>
                         </div>
-                        <div class="modal-footer justify-content-center">
-                            <button type="button" class="btn btn-primary-modal" data-dismiss="modal" ng-click="deleteBook(books.id)" aria-label="Close">Delete</button>
+                    </a>
+                    <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal" aria-hidden="true">
+                        <div class="modal-dialog modal-notify modal-danger" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <p class="heading lead">Just to make sure...</p>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true" class="white-text">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="text-center">
+                                        <h4 class="text-center"><b>Are you sure you want to delete the</b></h4>
+                                        <br>
+                                        <h2><b>{{books.name}}</b></h2>
+                                        <br>
+                                        <h4><b>Recipe Book?</b></h4>
+                                    </div>
+                                </div>
+                                <div class="modal-footer justify-content-center">
+                                    <button type="button" class="btn btn-primary-modal" data-dismiss="modal" ng-click="deleteBook(books.id)" aria-label="Close">Delete</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>

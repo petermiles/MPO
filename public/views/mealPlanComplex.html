@@ -1,206 +1,494 @@
 <div background-image="https://image.freepik.com/free-photo/food-background-food-concept-with-various-tasty-fresh-ingredients-for-cooking-italian-food-ingredients-view-from-above-with-copy-space_1220-1363.jpg"></div>
-<div class="flex">
-    <!-- <div class="row"> -->
-        <h1 class="text-center display-1 mealPlanPageTextColor">{{pageTitle}}</h1>
-        <div id="recipeBoxSideBar" class="displayNone sideBarTransition table">
-        <!-- </div> -->
-    </div>
-    <div class="sidebar">
-        <div class="card">
-            <button class="borderCalendarCell hoverable" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
-            <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source">
-                <div ng-repeat="recipe in recipes">
-                    <img class="img-fluid" ng-src="{{recipe.profile_pic_thumbnail}}">
-                    <p>{{recipe.name}}</p>
+<div class="width100">
+    <h1 class="text-center display-1 mealPlanPageTextColor">{{pageTitle}}</h1>
+    <div class="flex">
+        <div class="sidebar">
+            <div>
+                <button class="btn sideBarButtons borderCalendarCell hoverable light-blue lighten-2" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sidebarSetup">
+                    <div class="flexImages" ng-repeat="recipe in recipes">
+                        <div class="flexColumn">
+                            <img class="sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                            <div class="center">
+                                <p class="sideBarRecipeTitle text-center">{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="table">
-        <div class="calendarColumn">
-            <h4 class=" text-center mealPlanPageTextColor">October 1</h4>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning1 ">
-                <p class="text-center periodPadding ">Morning</p>
-                <!-- <div class="flex"> -->
-                <div class="app text-center flex" ng-repeat="m1 in calendarData.morning1 track by $index ">
-                    <img class="img-fluid " ng-src="{{m1.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{m1.name}}</p>
+        <div class="table">
+            <div class="calendarColumn">
+                <h4 class=" text-center mealPlanPageTextColor">October 1</h4>
+                <div class="test">
+                    <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning1 ">
+                        <div class="row width100">
+                            <p class="text-center periodPadding ">Morning</p>
+                            <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection1">Add</button>
+                        </div>
+                        <div class="app text-center flex" ng-repeat="m1 in calendarData.morning1 track by $index ">
+                            <img class="img-fluid " ng-src="{{m1.profile_pic_thumbnail}} ">
+                            <p class="calendarRecipeTitle">{{m1.name}}</p>
+                        </div>
+                    </div>
+                    <div class="addSection text-center">
+                        <div class="collapse width100" id="addSection1">
+                            <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                            <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container addContainer">
+                                <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                    <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                    <p>{{recipe.name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <!-- </div> -->
-            </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon1 ">
-                <p class="text-center periodPadding ">Noon</p>
-                <div class="app text-center flex" ng-repeat="n1 in calendarData.noon1 track by $index ">
-                    <img class="img-fluid " ng-src="{{n1.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{n1.name}}</p>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon1 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Noon</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection2">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="n1 in calendarData.noon1 track by $index ">
+                        <img class="img-fluid " ng-src="{{n1.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{n1.name}}</p>
+                    </div>
                 </div>
-            </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening1 ">
-                <p class="text-center periodPadding ">Evening</p>
-                <div class="app text-center flex" ng-repeat="e1 in calendarData.evening1 track by $index ">
-                    <img class="img-fluid " ng-src="{{e1.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{e1.name}}</p>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection2">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <!-- </div> -->
-        <div class="calendarColumn">
-            <h4 class="text-center mealPlanPageTextColor">October 2</h4>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning2 ">
-                <p class="text-center periodPadding ">Morning</p>
-                <div class="app text-center flex" ng-repeat="m2 in calendarData.morning2 track by $index ">
-                    <img class="img-fluid " ng-src="{{m2.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{m2.name}}</p>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening1 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Evening</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection3">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="e1 in calendarData.evening1 track by $index ">
+                        <img class="img-fluid " ng-src="{{e1.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{e1.name}}</p>
+                    </div>
                 </div>
-            </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon2 ">
-                <p class="text-center periodPadding ">Noon</p>
-                <div class="app text-center flex" ng-repeat="n2 in calendarData.noon2 track by $index ">
-                    <img class="img-fluid " ng-src="{{n2.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{n2.name}}</p>
-                </div>
-            </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening2 ">
-                <p class="text-center periodPadding ">Evening</p>
-                <div class="app text-center flex" ng-repeat="e2 in calendarData.evening2 track by $index ">
-                    <img class="img-fluid " ng-src="{{e2.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{e2.name}}</p>
-                </div>
-            </div>
-        </div>
-        <div class="calendarColumn">
-            <h4 class="text-center mealPlanPageTextColor">October 3</h4>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning3 ">
-                <p class="text-center periodPadding "> Morning</p>
-                <div class="app text-center flex" ng-repeat="m3 in calendarData.morning3 track by $index ">
-                    <img class="img-fluid " ng-src="{{m3.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{m3.name}}</p>
-                </div>
-            </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon3 ">
-                <p class="text-center periodPadding ">Noon</p>
-                <div class="app text-center flex" ng-repeat="n3 in calendarData.noon3 track by $index ">
-                    <img class="img-fluid " ng-src="{{n3.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{n3.name}}</p>
-                </div>
-            </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening3 ">
-                <p class="text-center periodPadding ">Evening</p>
-                <div class="app text-center flex" ng-repeat="e3 in calendarData.evening3 track by $index ">
-                    <img class="img-fluid " ng-src="{{e3.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{e3.name}}</p>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection3">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="calendarColumn">
-            <h4 class="text-center mealPlanPageTextColor">October 4</h4>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning4 ">
-                <p class="text-center periodPadding "> Morning</p>
-                <div class="app text-center flex" ng-repeat="m4 in calendarData.morning4 track by $index ">
-                    <img class="img-fluid " ng-src="{{m4.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{m4.name}}</p>
+            <div class="calendarColumn">
+                <h4 class="text-center mealPlanPageTextColor">October 2</h4>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning2 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Morning</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection4">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="m2 in calendarData.morning2 track by $index ">
+                        <img class="img-fluid " ng-src="{{m2.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{m2.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection4">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon2 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Noon</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection5">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="n2 in calendarData.noon2 track by $index ">
+                        <img class="img-fluid " ng-src="{{n2.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{n2.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection5">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening2 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Evening</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection6">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="e2 in calendarData.evening2 track by $index ">
+                        <img class="img-fluid " ng-src="{{e2.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{e2.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection6">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon4 ">
-                <p class="text-center periodPadding ">Noon</p>
-                <div class="app text-center flex" ng-repeat="n4 in calendarData.noon4 track by $index ">
-                    <img class="img-fluid " ng-src="{{n4.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{n4.name}}</p>
+            <div class="calendarColumn">
+                <h4 class="text-center mealPlanPageTextColor">October 3</h4>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning3 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Morning</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection7">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="m3 in calendarData.morning3 track by $index ">
+                        <img class="img-fluid " ng-src="{{m3.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{m3.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection7">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon3 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Noon</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection8">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="n3 in calendarData.noon3 track by $index ">
+                        <img class="img-fluid " ng-src="{{n3.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{n3.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection8">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening3 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Evening</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection9">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="e3 in calendarData.evening3 track by $index ">
+                        <img class="img-fluid " ng-src="{{e3.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{e3.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection9">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening4 ">
-                <p class="text-center periodPadding ">Evening</p>
-                <div class="app text-center flex" ng-repeat="e4 in calendarData.evening4 track by $index ">
-                    <img class="img-fluid " ng-src="{{e4.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{e4.name}}</p>
+            <div class="calendarColumn">
+                <h4 class="text-center mealPlanPageTextColor">October 4</h4>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning4 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Morning</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection10">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="m4 in calendarData.morning4 track by $index ">
+                        <img class="img-fluid " ng-src="{{m4.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{m4.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection10">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon4 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Noon</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection11">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="n4 in calendarData.noon4 track by $index ">
+                        <img class="img-fluid " ng-src="{{n4.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{n4.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection11">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening4 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Evening</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection12">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="e4 in calendarData.evening4 track by $index ">
+                        <img class="img-fluid " ng-src="{{e4.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{e4.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection12">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="calendarColumn">
-            <h4 class="text-center mealPlanPageTextColor">October 5</h4>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning5 ">
-                <p class="text-center periodPadding "> Morning</p>
-                <div class="app text-center flex" ng-repeat="m5 in calendarData.morning5 track by $index ">
-                    <img class="img-fluid " ng-src="{{m5.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{m5.name}}</p>
+            <div class="calendarColumn">
+                <h4 class="text-center mealPlanPageTextColor">October 5</h4>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning5 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Morning</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection13">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="m5 in calendarData.morning5 track by $index ">
+                        <img class="img-fluid " ng-src="{{m5.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{m5.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection13">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon5 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Noon</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection14">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="n5 in calendarData.noon5 track by $index ">
+                        <img class="img-fluid " ng-src="{{n5.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{n5.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection14">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening5 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Evening</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection15">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="e5 in calendarData.evening5 track by $index ">
+                        <img class="img-fluid " ng-src="{{e5.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{e5.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection15">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon5 ">
-                <p class="text-center periodPadding ">Noon</p>
-                <div class="app text-center flex" ng-repeat="n5 in calendarData.noon5 track by $index ">
-                    <img class="img-fluid " ng-src="{{n5.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{n5.name}}</p>
+            <div class="calendarColumn">
+                <h4 class="text-center mealPlanPageTextColor">October 6</h4>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning6 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Noon</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection16">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="m6 in calendarData.morning6 track by $index ">
+                        <img class="img-fluid " ng-src="{{m6.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{m6.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection16">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon6 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Noon</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection17">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="n6 in calendarData.noon6 track by $index ">
+                        <img class="img-fluid " ng-src="{{n6.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{n6.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection17">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening6 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Evening</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection18">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="e6 in calendarData.evening6 track by $index ">
+                        <img class="img-fluid " ng-src="{{e6.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{e6.name}}</p>
+                    </div>
+                </div>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection18">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening5 ">
-                <p class="text-center periodPadding ">Evening</p>
-                <div class="app text-center flex" ng-repeat="e5 in calendarData.evening5 track by $index ">
-                    <img class="img-fluid " ng-src="{{e5.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{e5.name}}</p>
+            <div class="calendarColumn">
+                <h4 class="text-center mealPlanPageTextColor">October 7</h4>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning7 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Morning</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection19">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="m7 in calendarData.morning7 track by $index ">
+                        <img class="img-fluid " ng-src="{{m7.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{m7.name}}</p>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="calendarColumn">
-            <h4 class="text-center mealPlanPageTextColor">October 6</h4>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning6 ">
-                <p class="text-center periodPadding "> Morning</p>
-                <div class="app text-center flex" ng-repeat="m6 in calendarData.morning6 track by $index ">
-                    <img class="img-fluid " ng-src="{{m6.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{m6.name}}</p>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection19">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon6 ">
-                <p class="text-center periodPadding ">Noon</p>
-                <div class="app text-center flex" ng-repeat="n6 in calendarData.noon6 track by $index ">
-                    <img class="img-fluid " ng-src="{{n6.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{n6.name}}</p>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon7 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Noon</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection20">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="n7 in calendarData.noon7 track by $index ">
+                        <img class="img-fluid " ng-src="{{n7.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{n7.name}}</p>
+                    </div>
                 </div>
-            </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening6 ">
-                <p class="text-center periodPadding ">Evening</p>
-                <div class="app text-center flex" ng-repeat="e6 in calendarData.evening6 track by $index ">
-                    <img class="img-fluid " ng-src="{{e6.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{e6.name}}</p>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection20">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="calendarColumn">
-            <h4 class="text-center mealPlanPageTextColor">October 7</h4>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.morning7 ">
-                <p class="text-center periodPadding "> Morning</p>
-                <div class="app text-center flex" ng-repeat="m7 in calendarData.morning7 track by $index ">
-                    <img class="img-fluid " ng-src="{{m7.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{m7.name}}</p>
+                <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening7 ">
+                    <div class="row width100">
+                        <p class="text-center periodPadding ">Evening</p>
+                        <button type="button" class="btn green addButton" data-toggle="collapse" data-target="#addSection21">Add</button>
+                    </div>
+                    <div class="app text-center flex" ng-repeat="e7 in calendarData.evening7 track by $index ">
+                        <img class="img-fluid " ng-src="{{e7.profile_pic_thumbnail}} ">
+                        <p class="calendarRecipeTitle">{{e7.name}}</p>
+                    </div>
                 </div>
-            </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.noon7 ">
-                <p class="text-center periodPadding ">Noon</p>
-                <div class="app text-center flex" ng-repeat="n7 in calendarData.noon7 track by $index ">
-                    <img class="img-fluid " ng-src="{{n7.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{n7.name}}</p>
-                </div>
-            </div>
-            <div id="sortableLists " ui-sortable="sortableOptions " class="apps-container screen borderCalendarCell hoverable " ng-model="calendarData.evening7 ">
-                <p class="text-center periodPadding ">Evening</p>
-                <div class="app text-center flex" ng-repeat="e7 in calendarData.evening7 track by $index ">
-                    <img class="img-fluid " ng-src="{{e7.profile_pic_thumbnail}} ">
-                    <p class="calendarRecipeTitle">{{e7.name}}</p>
+                <div class="addSection text-center">
+                    <div class="collapse width100" id="addSection21">
+                        <button class="btn light-blue lighten-2 transparent btn-lg" ng-repeat="books in recipeBooks" ng-click="getRecipes(books.id)">{{books.name}}</button>
+                        <div ng-model="recipes" ui-sortable="sortableOptions" class="apps-container source sideBarContainer">
+                            <div ng-repeat="recipe in recipes" class="sideBarRecipes">
+                                <img class="img-fluid sideBarImages" ng-src="{{recipe.profile_pic_thumbnail}}">
+                                <p>{{recipe.name}}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- </div> -->
-<!-- <footer>
-    <div class="row fixed-bottom ">
-        <div class="col-md-6 col-sm-6 ">
-            <button class="btn green " id="saveButton " ng-click="saveMealPlanData(calendarData.morning1,calendarData.morning2,calendarData.morning3,calendarData.morning4,calendarData.morning5,calendarData.morning6,calendarData.morning7,calendarData.noon1,calendarData.noon2,calendarData.noon3,calendarData.noon4,calendarData.noon5,calendarData.noon6,calendarData.noon7,calendarData.evening1,calendarData.evening2,calendarData.evening3,calendarData.evening4,calendarData.evening5,calendarData.evening6,calendarData.evening7) "> Save Meal Plan </button>
-        </div>
-        <div class="col-md-6 col-sm-6 ">
-            <div id="deleteSection " ui-sortable='sortableOptions' class="btn btn-danger apps-container " ng-model="deletedItems ">
-                <div>Delete From Meal Plan</div>
-            </div>
-        </div>
+<div id="deleteSection" class="row fixed-bottom zindex0 apps-container deleteButtonColor btn" ng-model="deletedItems" ui-sortable='sortableOptions'>
+    <div class="center">
+        <p class="text-center">Drag Here to Delete</p>
     </div>
-</footer> -->
 </div>

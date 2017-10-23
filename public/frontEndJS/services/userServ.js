@@ -8,13 +8,10 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
     })
 
     this.createUser = (firstName, email, password) => {
-        console.log(firstName, email, password)
         firebase.auth().createUserWithEmailAndPassword(email, password).then((user) => {
-            console.log('logged in', user)
             let userInfo = [user.uid, user.email, firstName]
             return $http.post('/users/createUser', userInfo)
         }).catch(error => {
-            console.log(error)
             if (error.code === 'auth/argument-error') {
                 alert("Either password or email is messed up")
             } else if (error.code === 'auth/weak-password') {
@@ -34,7 +31,6 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
     }
 
     this.signIn = (email, password) => {
-        console.log(email, password)
         firebase.auth().signInWithEmailAndPassword(email, password)
             .then((result) => {
                 $('#loginModal').modal('toggle')
@@ -56,7 +52,6 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
 
     this.signInAsGuest = () => {
         firebase.auth().signInAnonymously().then(user => {
-                console.log(user)
             })
             .catch(function(error) {
                 var errorCode = error.code;
@@ -91,71 +86,42 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
             })
 
             .then(recipes => {
+                let recipeIds = recipes[1]
                 let recipesArr = []
                 let picObj = {}
-                for (var i = 0; i < recipes[1].length; i++) {
-                    let bookId = recipes[1][i]
+                for (let i = 0; i < recipeIds.length; i++) {
+                    let bookId = recipeIds[i]
                     $http.get(`/users/getRecipesFromBooks/${bookId}`).then(result => {
                         _.map(result.data, x => {
                             let id = x.fkey
                             if (!picObj[id]) {
                                 picObj[id] = [x.profile_pic];
+                                picObj[id].id = id
                             } else if (picObj[id]) {
                                 picObj[id].push(x.profile_pic)
                             }
                         })
 
-                        // if(result.data.length){
-                        //     $http.post('/users/savePicsFromRecipeBook', bookId)
-                        // }
-                        // let length = result.data.length
-                        // let index = i
-                        // console.log(index)
-                        // console.log(recipes[0])
-                        // if (!result.data.length) {
-                        //     recipesArr.push({id : recipes[1][index]})
-                        // } else if (result.data.length > 0) {
-                        //     let y = Math.ceil(Math.random() * length)
-                        //     _.map(result.data, x, y=> {
-                        //         if (!result.data.length) {
-                        //             recipesArr.push({ id: x.fkey, pic: 'http://bigapplecurry.files.wordpress.com/2012/11/istock_000019639558_medium.jpg'})
-                        //         } else if(result.data.length){
-                        //             recipesArr.push({ id: x.fkey, pic: x.profile_pic })
-                        //         }
-                        //     })
-                        // }
+                        return picObj
+                    }).then(pics => {
+                        let index = i;
+                        _.map(recipes[0], x => {
+                            _.map(pics, y => {
+                                let length = y.length
+                                let item = y[Math.floor(Math.random() * y.length)]
+                                if(y.id === x.id){
+                                    x.picture = item
+                                }
+                            })
+                        })
                     })
-
-
-
                 }
-
-                for (var i = 0; i < recipes[1].length; i++) {
-                    let currId = recipes[1][i]
-                    console.log(currId)
-                    console.log(recipes[1])
-                    console.log(picObj[recipes[1][i]])
-
-                }
-
-                // _.map(recipes[1], x => {
-                //     console.log(x)
-                //     let recipeId = x
-                //     console.log(picObj[x])
-                //     if(picObj[recipeId] === x){
-                //         console.log('same')
-                //     }
-                // })
-
-                console.log(recipes[1], "id's")
-                console.log(picObj, "pictures")
                 return recipes
             })
 
     }
 
     this.getRecipesFromBooks = (id) => {
-        console.log("test")
         return $http.get(`/users/getRecipesFromBooks/${id}`)
             .then(result => {
                 return result
@@ -180,7 +146,6 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
             let userId = this.user.uid
             let recipePic = [result[0].fkey, result[0].profile_pic]
             return $http.get(`/users/getRecipeBooks/${userId}`).then(response => {
-                console.log(response)
                 // let existingPics = result.data.recipe_
             })
         })
@@ -273,7 +238,6 @@ angular.module("MPOApp").service("userServ", function($http, $state) {
     }
 
     this.getRecipesFromBooks = (id) => {
-        console.log("test")
         return $http.get(`/users/getRecipesFromBooks/${id}`)
             .then(result => {
                 return result

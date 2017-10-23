@@ -1,8 +1,5 @@
-angular.module('MPOApp', ['ui.router', 'ui.sortable', 'ngMaterial', 'ngMessages', 'material.svgAssetsCache']).config(function($stateProvider, $urlRouterProvider, $provide, $mdDateLocaleProvider) {
+angular.module('MPOApp', ['ui.router', 'ui.sortable']).config(function($stateProvider, $urlRouterProvider) {
 
-    $mdDateLocaleProvider.formatDate = function(date) {
-        return moment(date).format('MM-DD-YYYY');
-    };
 
     $urlRouterProvider.otherwise("/home");
 
@@ -10,11 +7,17 @@ angular.module('MPOApp', ['ui.router', 'ui.sortable', 'ngMaterial', 'ngMessages'
     $stateProvider
         .state("home", {
             url: "/home",
+            params: {
+                searchValue: null
+            },
             templateUrl: "views/home.html",
             controller: "dataCtrl"
         })
         .state("search", {
-            url: "/search",
+            url: "/search/:searchValue",
+            params: {
+                searchValue: null
+            },
             templateUrl: "views/search.html",
             controller: "dataCtrl"
         })

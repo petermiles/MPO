@@ -2,17 +2,14 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
     $scope.dates = mealPlans[1]
     $scope.dateHeaderBegin = mealPlans[2]
     $scope.dateHeaderEnd = mealPlans[3]
-
-
-    // this.myDate = new Date();
-    this.isOpen = false;
     const pageId = $stateParams.id
     $scope.pageTitle = mealPlans[4]
+
+    $scope.deletedItems = []
 
     // $scope.getRecipeBooks = () => {
     userServ.getRecipeBooks().then(result => {
         $scope.recipeBooks = result[0]
-        console.log($scope.recipeBooks)
     })
     // }
 
@@ -30,6 +27,11 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
             .then(result => {
                 return result
             })
+    }
+    $scope.deleteFromList = () => {
+        console.log(this)
+
+        $(this).parent().remove();
     }
 
     $scope.deletedItems = []
@@ -85,14 +87,9 @@ angular.module('MPOApp').controller('mealPrepComplexCtrl', function($scope, $roo
                     ui.item.sortable.sourceModel,
                     $scope.sourceModelClone
                 );
+                console.log(ui.item.sortable.sourceModel)
                 $scope.sourceModelClone = null;
-            } else if (
-                $(e.target).hasClass('delete') &&
-                ui.item.sortable.droptarget &&
-                e.target != ui.item.sortable.droptarget[0]
-            ) {
-
-            }
+            } 
             $scope.saveMealPlanData($scope.calendarData.morning1, $scope.calendarData.morning2, $scope.calendarData.morning3, $scope.calendarData.morning4, $scope.calendarData.morning5, $scope.calendarData.morning6, $scope.calendarData.morning7, $scope.calendarData.noon1, $scope.calendarData.noon2, $scope.calendarData.noon3, $scope.calendarData.noon4, $scope.calendarData.noon5, $scope.calendarData.noon6, $scope.calendarData.noon7, $scope.calendarData.evening1, $scope.calendarData.evening2, $scope.calendarData.evening3, $scope.calendarData.evening4, $scope.calendarData.evening5, $scope.calendarData.evening6, $scope.calendarData.evening7)
         }
     };

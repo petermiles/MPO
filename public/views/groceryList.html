@@ -1,31 +1,29 @@
 <div class="container">
     <h1 class="text-center h1-responsive titlePositoning">My Grocery Lists</h1>
     <!-- Add "users" Recipe Books -->
-    <form>
-        <div class="md-form">
-            <input type="text" id="groceryListName" ng-model="name"></input>
-            <label for="groceryListName"><b>Grocery List Name</b></label>
-        </div>
-        <div class="center">
-            <button class="btn btn-primary text-center" ng-click="createGroceryList(name)">Create Grocery List</button>
-            <button class="btn btn-primary text-center" ng-click="getGroceryLists()">Get Grocery Lists</button>
-        </div>
+    <form class="md-form">
+        <input type="text" id="groceryListName" ng-model="name"></input>
+        <label for="groceryListName"><b>Grocery List Name</b></label>
     </form>
+    <div class="center">
+        <button class="btn light-blue lighten-2 text-center" ng-click="createGroceryList(name)">Create Grocery List</button>
+        <button class="btn light-blue lighten-2 text-center" ng-click="getGroceryLists()">Get Grocery Lists</button>
+    </div>
     <div class="row">
-        <div class="col-lg-4 recipeCard" ng-repeat="list in groceryLists">
-            <a ui-sref="groceryListsComplex({id:list.id})" ng-click="getGroceryLists(list.id)">
-                <!-- Change ui-sref to books.name -->
-                <div class="card">
+        <div class="col-lg-6 col-xs-12 recipeCard flexColumn" ng-repeat="list in groceryLists">
+            <!-- Change ui-sref to books.name -->
+            <div class="card dark-card-body">
+                <a ui-sref="groceryListsComplex({id:list.id})" ng-click="getGroceryLists(list.id)">
                     <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h2 class="card-title h2-responsive text-center">{{list.name}}</h2>
-                        <p class="card-text"></p>
-                        <div class="center">
-                            <a class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
-                        </div>
+                </a>
+                <div class="card-body">
+                    <h2 class="card-title h2-responsive text-center">{{list.name}}</h2>
+                    <p class="card-text"></p>
+                    <div class="center">
+                        <a class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
                     </div>
                 </div>
-            </a>
+            </div>
             <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal" aria-hidden="true">
                 <div class="modal-dialog modal-notify modal-danger" role="document">
                     <div class="modal-content">

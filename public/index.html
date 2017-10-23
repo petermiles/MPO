@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.2/css/mdb.min.css">
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAAAAAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAD/xjgAAAAAAN6sMQDJmygA////AEVFRQCUdisAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARERERERERERVVVVVVVVVVFRERERERERUVDMzMzMzNFRUNDQ0NDQ0VFQzMzMzMzRUVDQ0NDQ0NFRUMzMzMzM0VFRERDQ0NDRUVEREMzMzNFRUREREREREVFAAAAAAAABUUiIiIiIiIlRWZmZmZmZmVFVVVVVVVVVUEREREREREREAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD//wAA" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.5.0/firebase-app.js"></script>
@@ -16,7 +17,6 @@
     <script src="uiScripts.js"></script>
     <script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js'></script>
     <script>
-    // Initialize Firebase
     var config = {
         apiKey: "AIzaSyDsih2I78E9gJVGkgA1qM1NKwN8eAbCm6c",
         authDomain: "mpoapp.firebaseapp.com",
@@ -27,7 +27,7 @@
     };
     firebase.initializeApp(config);
     </script>
-    <title>MPO</title>
+    <title>Meal Plan Online</title>
 </head>
 
 <body>
@@ -35,6 +35,7 @@
     <ui-view id="ui-view"></ui-view>
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
@@ -72,6 +73,8 @@
     <script src="frontEndJS/directives/recipeListBox.js"></script>
     <script src="frontEndJS/directives/backgroundImage.js"></script>
     <script src="frontEndJS/directives/typed.js"></script>
+    <script src="frontEndJS/directives/addButton.js"></script>
+    <script src="frontEndJS/directives/loadingIcon.js"></script>
     <!-- Style Scripts -->
     <!-- <script src="sortable.js"></script> -->
     <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>

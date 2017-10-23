@@ -1,7 +1,5 @@
 <div id='body'>
-    <div ng-hide="loadingIconShow" class="vertCenter">
-        <h1> loading</h1>
-    </div>
+    <loading-icon ng-hide="loadingIconShow"></loading-icon>
     <div ng-show="recipeResultsShow" background-image="https://spoonacular.com/recipeImages/{{recipeData.id}}-556x370.jpg"></div>
     <div class="blackOverlay">
         <div ng-show="recipeResultsShow" class="recipePagePaddingBottom container-fluid">
@@ -85,7 +83,7 @@
             </div>
             <section id="ingredientSection" class="hoverable">
                 <div class="center">
-                    <h1 class="h1-responsive text-center ingredientTitle">Ingredients</h1>
+                    <h1 class="h1-responsive text-center ingredientTitle"><b>Ingredients</b></h1>
                 </div>
                 <div class="container-fluid">
                     <div class="row">
@@ -100,7 +98,7 @@
             </section>
             <section id="instructionsList">
                 <div class="center instructionHeader">
-                    <h1 class="h1-responsive text-center text-shadow display-1"><b>Instructions</b></h1>
+                    <h1 class="h1-responsive text-center recipeTitle"><b>Instructions</b></h1>
                 </div>
                 <div class="container-fluid">
                     <div class="row">
@@ -121,8 +119,8 @@
                     </div>
                 </div>
                 <div id="floatingActionButton" class="center" ng-show="saveButtons">
-                    <button class="btn light-blue lighten-2" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
-                    <button class="btn light-blue lighten-2" ng-click="getRecipeBooksModal()" data-toggle="modal" data-target="#recipeBooks"> Save to Recipe Book </button>
+                    <button class="btn light-blue lighten-2 fabButton" ng-click="getGroceryLists()" data-toggle="modal" data-target="#groceryLists"> Save to Grocery List </button>
+                    <button class="btn light-blue lighten-2 fabButton" ng-click="getRecipeBooksModal()" data-toggle="modal" data-target="#recipeBooks"> Save to Recipe Book </button>
                 </div>
         </div>
         </section>

@@ -11,31 +11,6 @@ function boxControl() {
 
     function link(scope, element, attrs) {
         let clicked = false;
-        // $(element).on('click', element => {
-        //     if (clicked === false) {
-        //         $('#recipeListBox').toggleClass('displayNone')
-        //         setTimeout(function() {
-        //             // $('#recipeListBox').addClass('displayFixed')
-        //             // $('#recipeListBox').css('opacity', '1')
-        //             // $('#recipeListBox').css('background', 'rgba(    255, 152, 0, .5)')
-        //             // $('')
-        //             // $('#recipeListBox').css('width', '50vw')
-        //             // $('#recipeListBox').css('height', '20vh')
-        //         }, 50)
-        //         clicked = true;
-        //     } else if (clicked === true) {
-        //         // $('#recipeListBox').css('opacity', '0')
-        //         // $('#recipeListBox').css('width', '0')
-        //         // $('#recipeListBox').css('height', '0')
-
-        //         setTimeout(function() {
-        //             $('#recipeListBox').toggleClass('displayNone')
-        //         }, 505)
-        //         clicked = false
-        //     }
-
-
-        // })
 
         $(element).on('click', element => {
             if (clicked === false) {

@@ -34,7 +34,7 @@ angular.module("MPOApp").service("dataServ", function($http) {
         let searchQueries = params.join('')
         return $http.put(`/search/recipeBasic/`, { searchQueries })
             .then(response => {
-                return response
+                 return response
             })
     }
 

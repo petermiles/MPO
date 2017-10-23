@@ -1,29 +1,30 @@
-<div class="container">
-<!--     <h1 class="display-3 text-center titlePositioning">Recipe Book ID {{pageTitle}}</h1> -->
+<div class="width100">
+    <!--     <h1 class="display-3 text-center titlePositioning">Recipe Book ID {{pageTitle}}</h1> -->
     <div class="row">
-        <div class="col-6" ng-repeat="recipe in recipes">
+        <div class="col-lg-6 col-xs-12 recipeCard" ng-repeat="recipe in recipes">
             <div class="card">
                 <a ng-click="getRecipeInfo(recipe.id)" ui-sref="recipeCard({id:recipe.recipe_id})">
                     <img class="img-fluid" ng-src="{{recipe.profile_pic}}" alt="{{recipe.name}}">
-                    <div class="card-body">
-                        <h4 class="card-title">{{recipe.name}}</h4>
-                        <p class="card-text">{{recipe.recipe_id}}</p>
-                        <!--{{recipe.recipe_nutrition.Calories.amount}} {{recipe.recipe_nutrition.Calories.unit}} {{recipe.recipe_nutrition.Calories.title}} -->
-                        <a class="btn btn-danger" ng-click="deleteRecipeFromBook(recipe.id, recipe.fkey)">Delete</a>
+                    </a>
+                <div class="card-body dark-card-body">
+                    <h4 class="card-title text-center">{{recipe.name}}</h4>
+                    <!--{{recipe.recipe_nutrition.Calories.amount}} {{recipe.recipe_nutrition.Calories.unit}} {{recipe.recipe_nutrition.Calories.title}} -->
+                    <div class="center">
+                        <a class="btn deleteButtonColor" ng-click="deleteRecipeFromBook(recipe.id, recipe.fkey)">Delete</a>
+                    </div>
+                </div>
             </div>
-            </a>
         </div>
     </div>
-</div>
-<div ng-show="noBooks" class="center noBooks">
-    <h1 class="text-center h1-responsive"><b> Looks like you haven't added any recipes to your book.</b> </h1>
-    <br>
-    <h3 class="text-center lineHeight h2-responsive">
+    <div ng-show="noBooks" class="center noBooks">
+        <h1 class="text-center h1-responsive"><b> Looks like you haven't added any recipes to your book.</b> </h1>
+        <br>
+        <h3 class="text-center lineHeight h2-responsive">
             You can add recipes to your recipe book
             <br>
             from the <button class ="btn btn-success" ui-sref="search"><b>   search</b> </button>page.
         </h3>
-</div>
+    </div>
 </div>
 <!-- <div class="modal fade" id="mealPlans" tabindex="-1" role="dialog" aria-labelledby="mealPlansModal" aria-hidden="true">
             <div class="modal-dialog" role="document">
