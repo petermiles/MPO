@@ -14,7 +14,7 @@
                     <a ui-sref="books({id:books.id})" ng-click="getRecipesFromBooks(books.id)">
                         <!-- Change ui-sref to books.name -->
                         <div class="card dark-card-body">
-                            <img class="img-fluid wicddth100per" ng-src="{{books.picture || defaultPic}}" alt="{{books.name}}">
+                            <img class="img-fluid width100per" ng-src="{{books.picture}}" alt="{{books.name}}">
                             <div class="card-body center">
                                 <h1 class="card-title"><b>{{books.name}}</b></h1>
                                 <a class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>

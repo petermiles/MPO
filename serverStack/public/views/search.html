@@ -1,0 +1,36 @@
+<div class="width100 searchSection">
+    <div class="container">
+        <div class="row searchBar">
+            <form class="md-form col-12" ng-submit="searchRecipeBasic(humanQuery)">
+                <input class="form-control" type="text" ng-model="humanQuery" id="typed-output" placeholder="X" typed-input strings=texttyping  ng-submit="searchRecipeBasic(humanQuery)" required>
+                <input class="displayNone" type="submit" id="submit" value="Submit" />
+            </form>
+        </div>
+    </div>
+    <div ng-show="resultsShown" class="center">
+        <div class="row width100">
+            <div class="col-lg-4 col-xs-12 recipeCard" ng-repeat="recipe in recipeResults">
+                <a ng-click="getRecipeInfo(recipe.id)" ui-sref="recipeCard({id:recipe.id})">
+                    <div class="view overlay hm-zoom">
+                        <div class="card">
+                            <img class="img-fluid" ng-src="https://spoonacular.com/recipeImages/{{recipe.id}}-556x370.jpg" alt="{{recipe.title}}">
+                            <div class="recipeTitleOverlay">
+                                <h2 class="h2-responsive">{{recipe.title}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div ng-show="noResults" class="center">
+        <img src="/sad.svg" class="noResults">
+        <h1 class="text-center">We couldn't find results that match {{humanQuery}}.</h1>
+    </div>
+    <div ng-show="resultsShown" class="center">
+        <div class="pagination">
+            <button class="btn btn-large unique-color-dark paginationButton" ng-click="decrementOffset()" ng-show="showPreviousButton">Go Back A Page</button>
+            <button class="btn btn-large unique-color-dark paginationButton" ng-click="incrementOffset()" ng-show="showNextButton">Next Page</button>
+        </div>
+    </div>
+</div>

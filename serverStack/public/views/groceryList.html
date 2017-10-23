@@ -1,0 +1,47 @@
+<div class="container">
+    <h1 class="text-center h1-responsive groceryListTitlePadding"><b>{{userName}}'s Grocery Lists</b></h1>
+    <form class="md-form">
+        <input type="text" id="groceryListName" ng-model="name"></input>
+        <label for="groceryListName"  class="groceryListName"><b>Grocery List Name</b></label>
+    </form>
+    <div class="center">
+        <button class="btn light-blue lighten-2 text-center createListButton" ng-click="createGroceryList(name)">Create Grocery List</button>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-xs-12 recipeCard flexColumn" ng-repeat="list in groceryLists">
+            <div class="card dark-card-body">
+                <a ui-sref="groceryListsComplex({id:list.id})" ng-click="getGroceryLists(list.id)">
+                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20%282%29.jpg" alt="Card image cap">
+                </a>
+                <div class="card-body">
+                    <h2 class="card-title h2-responsive text-center">{{list.name}}</h2>
+                    <p class="card-text"></p>
+                    <div class="center">
+                        <a class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal">Delete</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModal" aria-hidden="true">
+                <div class="modal-dialog modal-notify modal-danger" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <p class="heading lead">Just to make sure...</p>
+                        </div>
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <h4 class="text-center"><b>Are you sure you want to delete the</b></h4>
+                                <br>
+                                <h2><b>{{list.name}}</b></h2>
+                                <br>
+                                <h4><b>Grocery List?</b></h4>
+                            </div>
+                        </div>
+                        <div class="modal-footer justify-content-center">
+                            <button type="button" class="btn deleteButtonColor btn-large" data-dismiss="modal" data-target="confirmDeleteModal" ng-click="deleteGroceryList(list.id)">Delete</buttona>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

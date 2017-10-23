@@ -1,0 +1,21 @@
+<div class="container">
+    <div class="center noItemsHero" ng-show="noItemsHero">
+        <div class="card hoverable">
+            <div class="card-body center">
+                <h1 class="card-title h1-responsive">You don't have any items saved in your grocery list!</h2>
+                <h4 class="card-text responsve-h4">Try adding some groceries from a recipe card.</h4>
+                <a class="btn light-blue lighten-2" ui-sref="search">Search Recipes</a>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-repeat="item in groceryList track by $index">
+        <div class="col-lg-2 col-xs-2 center">
+            <button class="btn deleteButtonColor" ng-click="deleteItemFromGroceryList(item.id)">Delete</button>
+        </div>
+        <div class="col-lg-10 col-xs-2">
+            <img ng-src="{{item.image}}" alt={{item.name}}>
+            <h3>{{item.amount}} {{item.unit}} of {{item.name}} </h3>
+            <p> This item might be found in the <b>{{item.aisle}}</b> section of your grocery store. </p>
+        </div>
+    </div>
+</div>

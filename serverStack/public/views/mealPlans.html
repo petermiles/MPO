@@ -1,0 +1,42 @@
+<div class="container createMealPlanSection">
+    <h1 class="text-center title-positioning"> <b>{{userName}}'s Meal Plans</b> </h1>
+    <div class="container" ng-init="getMealPlans()">
+        <form class="md-form">
+            <div class="row">
+                <div class="col-lg-6">
+                    <input type="text" id="mealPrepName" class="form-control validate" ng-model="name">
+                    <label for="mealPrepName">Name Your Meal Plan</label>
+                </div>
+                <div class="col-lg-6 center">
+                    <input class="form-control" id="startDate" type="date" ng-model="myDate" placeholder="Start Date">
+                </div>
+            </div>
+            <div class="text-center">
+                <form class="md-form">
+                    <input class="form-control" type="text" id="mealPrepNotes" ng-model="notes" placeholder="Notes">
+                    <button class="btn light-blue lighten-2" ng-click="createMealPlan(name, notes, myDate)">Create Meal Plan</button>
+                </form>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <div class="center">
+            <div class="row">
+                <div class="col-lg-6 col-xs-6 recipeCard" ng-repeat="mealPlan in mealPlans">
+                    <div class="card hoverable">
+                        <a ui-sref="mealPlanCalendar({id:mealPlan.id})">
+                <img class="img-fluid" src="http://via.placeholder.com/710x500" alt="Card image cap" style="width:100%">
+             </a>
+                        <div class="card-body dark-card-body">
+                            <h2 class="card-title text-center h2-reponsive">{{mealPlan.name}}</h2>
+                            <p class="card-text">{{mealPlan.notes}}</p>
+                            <div class="center">
+                                <button class="btn deleteButtonColor" data-toggle="modal" data-target="#confirmDeleteModal" ng-click="deleteMealPlan(mealPlan.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
